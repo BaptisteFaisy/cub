@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:58:49 by lhojoon           #+#    #+#             */
-/*   Updated: 2023/11/26 23:16:38 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/25 19:26:43 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,10 @@ bool	free_mlx(t_mlxvars *p)
 {
 	if (p == NULL)
 		return (false);
-	if (p->map != NULL)
-	{
-		ft_lstclear(&p->map, free);
-		p->map = NULL;
-	}
 	if (p->canvas)
 		mlx_destroy_image(p->mlx, p->canvas);
 	if (p->imgs)
 		img_lst_clear(&(p->imgs), p);
-	if (p->gamedat.userpos)
-		free(p->gamedat.userpos);
 	if (p->mlx == NULL)
 		return (false);
 	if (p->mlx_win != NULL)

@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/25 17:52:26 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/25 19:30:00 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static bool	maps_pipeline(t_mlxvars *vars)
 {
+	(void)vars;
 	return (true);
 }
 
@@ -47,7 +48,7 @@ static bool	img_pipeline(t_mlxvars *vars)
 
 static void	init_draw(t_mlxvars *vars)
 {
-	draw_map(vars);
+	// draw_map(vars);
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->canvas, 0, 0);
 }
 

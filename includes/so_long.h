@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:03:47 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/02/26 13:01:24 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/25 19:32:01 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "libft.h"
 # include "definitions.h"
 # include "struct.h"
-# include "get_next_line.h"
 # include <mlx.h>
 # include <fcntl.h>
 # include <stdlib.h>
@@ -29,7 +28,5 @@
 # include "utils.h"
 # include "events.h"
 # include "images.h"
-# include "ft_heap.h"
-# include "draw.h"
 
 #endif
