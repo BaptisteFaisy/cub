@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:19:50 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/25 19:31:10 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/25 20:09:08 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ typedef struct s_mlxvars
 	t_list		*imgs;
 	t_mlximage	*canvas;
 }	t_mlxvars;
+
+typedef struct s_map_data
+{
+	char		**map;
+	char		**pref;
+}	t_map_data;
 
 t_pos		get_init_pos(void);
 t_pos		get_init_pos_value(int x, int y);
