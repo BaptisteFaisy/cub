@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 20:14:58 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 20:21:01 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static bool	fill_datas(t_map_data *dat, t_list *val)
 {
 	int	i;
 
-	dat->pref = (char **)malloc(sizeof(char *) * 7);
+	dat->pref = (char **)malloc(sizeof(char *) * 8);
 	if (!dat->pref)
 		return (false);
 	i = 0;
@@ -77,6 +77,7 @@ static bool	fill_datas(t_map_data *dat, t_list *val)
 		dat->pref[i++] = ft_strdup(val->content);
 		val = val->next;
 	}
+	dat->pref[i] = NULL;
 	if (!fill_map_data(dat, val))
 	{
 		// TODO : Verify free data
