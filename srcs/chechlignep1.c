@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/26 20:23:24 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/03/26 20:25:58 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,14 @@ int	checklignev2(char **tab, int ligne, char *str, int i)
 	if (i == -1)
 	{
 		ft_putstr_fd("Error : I can't open texture\n", 1);
-		return (0);
+		return (free(str), 0);
 	}
 	close(i);
 	i = open(str, O_DIRECTORY);
 	if (i == -1)
-		return (1);
+		return (free(str), 1);
 	close(i);
 	ft_putstr_fd("Error : Directory found, file expected \n", 1);
-	free(str);
 	return (0);
 }
 
