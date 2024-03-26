@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 15:36:01 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 19:54:29 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static bool	fill_datas(t_map_data *dat, t_list *val)
 	if (!dat->pref)
 		return (false);
 	i = 0;
-	while (val && i <= 5)
+	while (val && i <= 6)
 	{
 		if (ft_strncmp((const char *)val->content, "\n", 1) == 0)
 		{
