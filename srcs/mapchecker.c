@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:22:23 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/26 16:03:38 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/03/26 16:13:51 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,11 @@ int	verifie_cub(const char *string)
 	len = ft_strlen(string);
 	extension = ".cub";
 	ext_len = ft_strlen(extension);
-
-    if (len >= ext_len)
+	if (len >= ext_len)
 	{
-        if (ft_strncmp(string + len - ext_len, extension, INTMAX_MAX) == 0)
-            return 1;
-    }
+		if (ft_strncmp(string + len - ext_len, extension, INTMAX_MAX) == 0)
+			return (1);
+	}
 	return (0);
 }
 
@@ -99,36 +98,7 @@ int	check_input(char **tab)
 			if (tab[i][j] != '0' && tab[i][j] != '1' && tab[i][j] != 'N'
 				&& tab[i][j] != 'S' && tab[i][j] != 'E' && tab[i][j] != 'W'
 				&& tab[i][j] != ' ')
-				{
-					// printf("a\n");
-					return (0);
-				}
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-int	check_double(char **tab)
-{
-	int		i;
-	int		j;
-	bool	cond;
-
-	cond = false;
-	i = 0;
-	while (tab[i])
-	{
-		j = 0;
-		while (tab[i][j])
-		{
-			if ((tab[i][j] == 'N' || tab[i][j] == 'S' || tab[i][j] == 'E'
-				|| tab[i][j] == 'W') && cond == false)
-				cond = true;
-			else if ((tab[i][j] == 'N' || tab[i][j] == 'S' || tab[i][j] == 'E'
-				|| tab[i][j] == 'W'))
-				return (1);
+				return (0);
 			j++;
 		}
 		i++;
