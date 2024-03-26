@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/25 19:20:10 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 15:00:34 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,14 @@ static void	*clear_and_close(int fd, t_list **lst)
 }
 
 /**
- * Function : 
+ * @brief
  * Import map with get_next_line
- * Verify equality of line length
- * Verify minimum length, height (3, 3)
  * 
- * 
- * Return:
+ * @return
  * NULL When error (malloc safe)
  * t_list<char *> when success
 */
-t_list	*read_map(char *filename)
+static t_list	*get_read_map(char *filename)
 {
 	t_list	*read_value;
 	int		fd;
@@ -55,4 +52,50 @@ t_list	*read_map(char *filename)
 	}
 	close(fd);
 	return (read_value);
+}
+
+static bool	fill_datas(t_map_data *dat, t_list *val)
+{
+	int	i;
+
+	dat->pref = (char **)malloc(sizeof(char *) * 6);
+	if (!dat->pref)
+		return (false);
+	i = 0;
+	while (val)
+	{
+		if (ft_strncmp((const char *)val->content, "\n", 1))
+		{
+			val = val->next;
+			continue ;
+		}
+		dat->pref[i] = ft_strdup(val->content);
+		i++;
+		val = val->next;
+	}
+	if (!fill_map_data(dat, val))
+	{
+		// TODO : Verify free data
+		ft_lstclear(&val, free);
+		free(dat->pref);
+		return (false);
+	}
+	return (true);
+}
+
+t_map_data	*read_map(char *filename)
+{
+	t_list		*map_value;
+	t_map_data	*map_data;
+
+	map_data = (t_map_data *)malloc(sizeof(t_map_data));
+	if (!map_data)
+		return (NULL);
+	map_value = get_read_map(filename);
+	if (!map_value)
+		return (free(map_data), NULL);
+	init_map_data(map_data);
+	if (!fill_datas(map_data, map_value))
+		return (free(map_value), free(map_data), NULL);
+	return (map_data);
 }
