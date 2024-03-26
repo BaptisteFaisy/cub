@@ -6,12 +6,11 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:22:23 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/26 10:44:17 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/03/26 15:19:37 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	checkmap_x(char **tab, int i, int j);
-int	checkmap_y(char **tab, int j);
+#include "../includes/so_long.h"
 
 int	checkmap_check_wall(char **tab)
 {
@@ -35,6 +34,7 @@ int	checkmap_check_wall(char **tab)
 		}
 		i++;
 	}
+	return (1);
 }
 
 int	checkmap_x(char **tab, int i, int j)
@@ -67,9 +67,9 @@ int	checkmap_y(char **tab, int j)
 
 int	verifie_cub(const char *string)
 {
-    int			len;
-    const char	*extension;
-    int 		ext_len;
+	int			len;
+	const char	*extension;
+	int			ext_len;
 
 	len = ft_strlen(string);
 	extension = ".cub";
@@ -77,13 +77,13 @@ int	verifie_cub(const char *string)
 
     if (len >= ext_len)
 	{
-        if (ft_strcmp(string + len - ext_len, extension) == 0)
+        if (ft_strncmp(string + len - ext_len, extension, INTMAX_MAX) == 0)
             return 1;
     }
 	return (0);
 }
 
-static int	check_input(char **tab)
+int	check_input(char **tab)
 {
 	int	i;
 	int	j;
@@ -112,7 +112,7 @@ int	check_double(char **tab)
 	int		j;
 	bool	cond;
 
-	cond = false
+	cond = false;
 	i = 0;
 	while (tab[i])
 	{

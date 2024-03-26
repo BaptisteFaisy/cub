@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"string": "c",
-		"so_long.h": "c"
+		"so_long.h": "c",
+		"struct.h": "c"
 	}
 }

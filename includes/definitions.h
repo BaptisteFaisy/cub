@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   definitions.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 14:48:44 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 15:28:46 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINITIONS_H
 # define DEFINITIONS_H
-
+#include "struct.h"
 # define DEF_WINDOW_SIZE_W 800
 # define DEF_WINDOW_SIZE_H 600
 
@@ -31,5 +31,25 @@
 # define DEF_KEY_S 0x73
 # define DEF_KEY_D 0x64
 # define DEF_X11_EVENT_DESTROY_NOTIFY 17
+
+typedef struct s_rgb
+{
+	int	r;
+	int	g;
+	int	b;
+}	t_rgb;
+
+int		verifie_cub(const char *string);
+int		check_input(char **tab);
+int		checkmap_y(char **tab, int j);
+int		checkmap_x(char **tab, int i, int j);
+int		checkmap_check_wall(char **tab);
+int		checklignev2(char **tab, int ligne, char *str, int i);
+t_rgb	grepccolor(char **tab);
+t_rgb	grepfloorcolor(char **tab);
+int		checklignefc(char **tab);
+int		checkligne(char **tab, int ligne);
+int		checklignemain(char **tab);
+int		mapcheck_main(t_map_data *data);
 
 #endif
