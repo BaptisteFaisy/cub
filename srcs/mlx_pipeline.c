@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_pipeline.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 16:05:42 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 20:05:37 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 static bool	maps_pipeline(t_mlxvars *vars)
 {
 	if (!verifie_cub(vars->map_filename))
-		return (false);
+		return (ft_printf("verifie_cub"), false);
 	vars->map_data = read_map(vars->map_filename);
 	if (!vars->map_data)
-		return (false);
+		return (ft_printf("map_data"), false);
 	if (!mapcheck_main(vars->map_data))
-		return (false);
+		return (ft_printf("mapcheck_main"), false);
 	return (true);
 }
 

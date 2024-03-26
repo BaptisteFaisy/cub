@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkermapmain.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:20:09 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/26 20:02:28 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/03/26 20:07:57 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static int	check_double(char **tab);
 
 int	mapcheck_main(t_map_data *data)
 {
-	if (!check_double(data->map) || !check_input(data->map))
-		// || !checkmap_check_wall(data->map) || !checklignemain(data->pref))
-		// || !checklignefc(data->pref))
+	if (!check_double(data->map) || !check_input(data->map)
+		|| !checkmap_check_wall(data->map) || !checklignemain(data->pref)
+		|| !checklignefc(data->pref))
 		return (0);
 	return (1);
 }
