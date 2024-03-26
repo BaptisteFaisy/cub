@@ -6,13 +6,13 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:31:10 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 15:36:01 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 15:53:49 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	draw_square(t_mlxvars *vars, t_mlximage *img, int x, int y)
+void	draw_image(t_mlxvars *vars, t_mlximage *img, int x, int y)
 {
 	unsigned int	color;
 	int				xi;
