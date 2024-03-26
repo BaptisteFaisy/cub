@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/26 20:16:54 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/03/26 20:23:24 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,20 @@ int	checkligne(char **tab, int ligne)
 	if (!str)
 		return (0);
 	if ((tab[ligne][0] != 'N' || tab[ligne][1] != 'O') && ligne == 0)
-		return (0);
+		return (free(str), 0);
 	else if ((tab[ligne][0] != 'S' || tab[ligne][1] != 'O') && ligne == 1)
-		return (0);
+		return (free(str), 0);
 	else if ((tab[ligne][0] != 'W' || tab[ligne][1] != 'E') && ligne == 2)
-		return (0);
+		return (free(str), 0);
 	else if ((tab[ligne][0] != 'E' || tab[ligne][1] != 'A') && ligne == 3)
-		return (0);
+		return (free(str), 0);
 	while (tab[ligne][i] && tab[ligne][i] != '.')
 		i++;
 	if (!tab[ligne][i])
+	{
+		free(str);
 		return (0);
+	}
 	return (checklignev2(tab, ligne, str, i));
 }
 
