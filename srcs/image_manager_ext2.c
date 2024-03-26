@@ -6,11 +6,11 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:31:10 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 14:51:05 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 15:36:01 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "cub.h"
 
 void	draw_square(t_mlxvars *vars, t_mlximage *img, int x, int y)
 {

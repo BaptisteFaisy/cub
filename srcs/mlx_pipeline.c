@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_pipeline.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 15:25:23 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/03/26 15:36:01 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "cub.h"
 
 static bool	maps_pipeline(t_mlxvars *vars)
 {

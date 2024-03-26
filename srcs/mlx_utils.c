@@ -6,11 +6,11 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:35:33 by lhojoon           #+#    #+#             */
-/*   Updated: 2023/11/25 16:53:02 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 15:36:01 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "cub.h"
 
 unsigned int	mlx_get_pixel(t_mlximage *img, int x, int y)
 {

@@ -6,11 +6,11 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 17:01:31 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/25 19:31:02 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 15:36:00 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "cub.h"
 
 t_mlximage	*get_new_sprite_image_ptr(t_mlxvars *vars, char *path)
 {

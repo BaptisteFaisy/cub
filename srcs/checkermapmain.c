@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   checkermapmain.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:20:09 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/26 15:27:16 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/03/26 15:36:00 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/cub.h"
 
 static int	check_double(char **tab);
 

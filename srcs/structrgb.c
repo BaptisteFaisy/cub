@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   structrgb.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 14:39:24 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/26 15:19:44 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/03/26 15:36:01 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/cub.h"
 
 t_rgb	grepfloorcolor(char **tab)
 {

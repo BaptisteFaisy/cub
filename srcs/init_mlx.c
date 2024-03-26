@@ -6,11 +6,11 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:56:00 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 14:45:19 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 15:36:01 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "cub.h"
 
 t_mlxvars	get_init_mlxvars(void)
 {

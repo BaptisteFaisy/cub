@@ -6,11 +6,11 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:58:49 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/25 19:26:43 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 15:36:00 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "cub.h"
 
 static void	img_lst_clear(t_list **lst, t_mlxvars *vars)
 {

@@ -6,14 +6,14 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:37:14 by lhojoon           #+#    #+#             */
-/*   Updated: 2023/11/23 08:53:14 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 15:36:00 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EVENTS_H
 # define EVENTS_H
 
-# include "so_long.h"
+# include "cub.h"
 
 int	x11_destroy_event(t_mlxvars *vars);
 
