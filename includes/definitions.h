@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   definitions.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 15:28:46 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/03/26 15:49:11 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINITIONS_H
 # define DEFINITIONS_H
-#include "struct.h"
+
+# include "struct.h"
+
 # define DEF_WINDOW_SIZE_W 800
 # define DEF_WINDOW_SIZE_H 600
 
@@ -21,7 +23,7 @@
 
 # define DEF_IMG_SIZE 32
 
-# define DEF_PROGRAM_NAME "Take your dogs and get out!"
+# define DEF_PROGRAM_NAME "Cub3D"
 
 # define DEF_MAP_BLANK '0'
 
