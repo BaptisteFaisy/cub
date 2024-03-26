@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 20:12:38 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 15:36:01 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 15:39:39 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ bool	fill_map_data(t_map_data *dat, t_list *val)
 		val = val->next;
 		i++;
 	}
-	dat->map[i] = ft_calloc(sizeof(char), len + 1);
+	dat->map[i] = NULL;
 	return (true);
 }
 
