@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 20:21:01 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 20:28:41 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ t_map_data	*read_map(char *filename)
 		return (free(map_data), NULL);
 	init_map_data(map_data);
 	if (!fill_datas(map_data, map_value))
-		return (free(map_value), free(map_data), NULL);
+		return (ft_lstclear(&map_value, free), free(map_data), NULL);
+	ft_lstclear(&map_value, free);
 	return (map_data);
 }
