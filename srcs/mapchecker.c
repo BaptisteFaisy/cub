@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapchecker.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:22:23 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/26 15:36:01 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 16:03:38 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,14 @@ int	checkmap_check_wall(char **tab)
 		{
 			if (tab[i][j] == '0')
 			{
-				if (checkmap_x(tab, i, j) == 1 && checkmap_y(tab, j) == 1)
+				if (checkmap_x(tab, i, j) == 1 && checkmap_y(tab, j, i) == 1)
+				{
 					return (1);
+				}
 				else
+				{
 					return (0);
+				}
 			}
 			j++;
 		}
@@ -41,24 +45,21 @@ int	checkmap_x(char **tab, int i, int j)
 {
 	while (tab[i][j])
 	{
-		if (tab[i][j] == '1' && tab[i][j + 1] == '\0')
+		if (tab[i][j] == '1')
 			return (1);
 		j++;
 	}
 	return (0);
 }
 
-int	checkmap_y(char **tab, int j)
+int	checkmap_y(char **tab, int j, int i)
 {
-	int	i;
-
-	i = 0;
-	while (tab[i][j] != '1' && tab[i][j] != '\0')
+	while (tab[i][j] != '1')
 		i++;
 	if (tab[i][j] == '\0')
 		return (0);
 	i++;
-	while (tab[i][j] != '1' && tab[i][j] != '\0')
+	while (tab[i][j] != '1')
 		i++;
 	if (tab[i][j] == '\0')
 		return (0);
@@ -98,7 +99,10 @@ int	check_input(char **tab)
 			if (tab[i][j] != '0' && tab[i][j] != '1' && tab[i][j] != 'N'
 				&& tab[i][j] != 'S' && tab[i][j] != 'E' && tab[i][j] != 'W'
 				&& tab[i][j] != ' ')
-				return (0);
+				{
+					// printf("a\n");
+					return (0);
+				}
 			j++;
 		}
 		i++;

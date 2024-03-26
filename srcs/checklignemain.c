@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checklignemain.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 15:14:37 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/26 15:36:01 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 15:54:00 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ int	checklignemain(char **tab)
 {
 	if (!checkligne(tab, 0) || !checkligne(tab, 1) || !checkligne(tab, 2)
 		|| !checkligne(tab, 3))
-		return (0);
+		{
+			// printf("a\n");
+			return (0);
+		}
 	return (1);
 }

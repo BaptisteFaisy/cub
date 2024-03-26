@@ -22,6 +22,7 @@
 # include <stdbool.h>
 # include <math.h>
 # include <stdint.h>
+# include <stdio.h>
 
 # include "manager.h"
 # include "maps.h"

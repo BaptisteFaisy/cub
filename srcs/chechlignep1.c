@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chechlignep1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/26 15:36:01 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 16:04:37 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	checklignev2(char **tab, int ligne, char *str, int i)
 	i = open(str, O_RDONLY);
 	if (i == -1)
 	{
-		ft_putstr_fd("Error : I can't open the map\n", 1);
+		ft_putstr_fd("Error : I can't open texture\n", 1);
 		return (0);
 	}
 	close(i);
@@ -64,6 +64,7 @@ int	checklignev2(char **tab, int ligne, char *str, int i)
 		return (1);
 	close(i);
 	ft_putstr_fd("Error : Directory found, file expected \n", 1);
+	free(str);
 	return (0);
 }
 

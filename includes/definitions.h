@@ -6,13 +6,13 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 15:28:46 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/03/26 16:03:10 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINITIONS_H
 # define DEFINITIONS_H
-#include "struct.h"
+# include "struct.h"
 # define DEF_WINDOW_SIZE_W 800
 # define DEF_WINDOW_SIZE_H 600
 
@@ -41,7 +41,7 @@ typedef struct s_rgb
 
 int		verifie_cub(const char *string);
 int		check_input(char **tab);
-int		checkmap_y(char **tab, int j);
+int		checkmap_y(char **tab, int j, int i);
 int		checkmap_x(char **tab, int i, int j);
 int		checkmap_check_wall(char **tab);
 int		checklignev2(char **tab, int ligne, char *str, int i);
