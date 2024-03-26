@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+         #
+#    By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 11:05:03 by lhojoon           #+#    #+#              #
-#    Updated: 2024/03/26 14:37:33 by lhojoon          ###   ########.fr        #
+#    Updated: 2024/03/26 15:19:59 by bfaisy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,12 @@ SRCS_RAW =	main.c \
 			image_manager_ext2.c \
 			init_pos.c \
 			mlx_utils.c \
-			read_map_2.c
+			read_map_2.c \
+			chechlignep1.c \
+			checkermapmain.c \
+			mapchecker.c \
+			structrgb.c \
+			checklignemain.c
 SRCS = $(addprefix $(DIR)/,$(SRCS_RAW))
 OBJS = $(SRCS:c=o)
 INCLUDES = -I./includes -I./libft -I./ft_printf/includes
