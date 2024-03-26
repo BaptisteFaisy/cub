@@ -6,7 +6,7 @@
 #    By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 11:05:03 by lhojoon           #+#    #+#              #
-#    Updated: 2024/03/25 19:28:40 by lhojoon          ###   ########.fr        #
+#    Updated: 2024/03/26 14:37:33 by lhojoon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = cub3d
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 MINILIBX_FLAGS = -I/usr/include -Imlx_linux
+DEBUG = -g
 
 DIR = srcs
 SRCS_RAW =	main.c \
@@ -26,7 +27,8 @@ SRCS_RAW =	main.c \
 			image_manager_ext1.c \
 			image_manager_ext2.c \
 			init_pos.c \
-			mlx_utils.c
+			mlx_utils.c \
+			read_map_2.c
 SRCS = $(addprefix $(DIR)/,$(SRCS_RAW))
 OBJS = $(SRCS:c=o)
 INCLUDES = -I./includes -I./libft -I./ft_printf/includes

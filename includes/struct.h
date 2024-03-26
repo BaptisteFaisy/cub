@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:19:50 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/25 20:09:08 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 14:50:34 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,30 @@ typedef struct s_mlximage
 	XShmSegmentInfo	shm;
 }	t_mlximage;
 
+typedef struct s_map_data
+{
+	char		**map;
+	char		**pref;
+}	t_map_data;
+
+/**
+ * @brief master varaible for execution
+ * 
+ * @param mlx		mlx pointer - must be free'd
+ * @param mlx_win	mlx window pointer - must be free'd
+ * @param imgs 		list of images - must be free'd
+ * @param canvas	canvas image - must be free'd
+ * @param map_filename	map file name
+ */
 typedef struct s_mlxvars
 {
 	void		*mlx;
 	void		*mlx_win;
 	t_list		*imgs;
 	t_mlximage	*canvas;
+	char		*map_filename;
+	t_map_data	*map_data;
 }	t_mlxvars;
-
-typedef struct s_map_data
-{
-	char		**map;
-	char		**pref;
-}	t_map_data;
 
 t_pos		get_init_pos(void);
 t_pos		get_init_pos_value(int x, int y);

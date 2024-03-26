@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:56:00 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/25 19:18:42 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 14:45:19 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_mlxvars	get_init_mlxvars(void)
 	vars.mlx_win = NULL;
 	vars.imgs = NULL;
 	vars.canvas = NULL;
+	vars.map_data = NULL;
+	vars.map_filename = NULL;
 	return (vars);
 }
 
