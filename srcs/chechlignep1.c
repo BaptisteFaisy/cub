@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chechlignep1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/26 20:15:19 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 20:16:54 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	checklignefc(char **tab)
 	i = checker_nbr(tab, i, 5, true);
 	if (i == 0)
 		return (0);
+	i = 2;
 	i = checker_nbr(tab, i, 6, false);
 	if (i == 0)
 		return (0);
@@ -100,7 +101,6 @@ static int	checker_nbr(char **tab, int i, int ligne, bool cond)
 {
 	int	nbr;
 
-	ft_printf("%s\n", tab[ligne]);
 	nbr = 0;
 	while (tab[ligne][i] != ',' && tab[ligne][i])
 	{
