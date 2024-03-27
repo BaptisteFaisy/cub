@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   definitions.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 16:03:10 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/03/27 18:03:04 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,19 @@ typedef struct s_rgb
 	int	g;
 	int	b;
 }	t_rgb;
+
+typedef struct s_pos
+{
+	double	x;
+	double	y;
+}	t_pos;
+
+typedef struct s_data
+{
+	double	distance;
+	double	degre; // radiant
+	t_pos	final;
+}	t_data;
 
 int		verifie_cub(const char *string);
 int		check_input(char **tab);
