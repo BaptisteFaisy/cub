@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:19:50 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 14:50:34 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/27 19:36:32 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,14 @@ typedef struct s_mlxvars
 	char		*map_filename;
 	t_map_data	*map_data;
 }	t_mlxvars;
+
+typedef enum e_direction
+{
+	NORTH = 0,
+	SOUTH = 1,
+	WEST = 2,
+	EAST = 3
+}	t_direction;
 
 t_pos		get_init_pos(void);
 t_pos		get_init_pos_value(int x, int y);

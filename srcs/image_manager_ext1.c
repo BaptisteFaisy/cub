@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 17:01:31 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 15:36:00 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/27 18:49:22 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ bool	register_image(t_mlxvars *vars, t_mlximage *img)
 	return (true);
 }
 
-t_mlximage	*get_image_by_key(t_mlxvars *vars, t_sl_img_keys idx)
+t_mlximage	*get_image_by_direction(t_mlxvars *vars, t_direction idx)
 {
 	t_list	*item;
 

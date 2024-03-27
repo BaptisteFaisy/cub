@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 20:05:37 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/27 19:44:19 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 static bool	maps_pipeline(t_mlxvars *vars)
 {
 	if (!verifie_cub(vars->map_filename))
-		return (ft_printf("verifie_cub"), false);
+		return (ft_printf("verifie_cub : "), false);
 	vars->map_data = read_map(vars->map_filename);
 	if (!vars->map_data)
-		return (ft_printf("map_data"), false);
+		return (ft_printf("map_data : "), false);
 	if (!mapcheck_main(vars->map_data))
-		return (ft_printf("mapcheck_main"), false);
+		return (ft_printf("mapcheck_main : "), false);
 	return (true);
 }
 
@@ -29,26 +29,6 @@ static bool	hook_pipeline(t_mlxvars *vars)
 	mlx_key_hook(vars->mlx_win, key_event_manager, vars);
 	mlx_hook(vars->mlx_win, DEF_X11_EVENT_DESTROY_NOTIFY,
 		0L, x11_destroy_event, vars);
-	return (true);
-}
-
-static bool	img_pipeline(t_mlxvars *vars)
-{
-	if (!register_image(vars,
-			get_new_sprite_image_ptr(vars, "./assets/blank.xpm")))
-		return (false);
-	if (!register_image(vars,
-			get_new_sprite_image_ptr(vars, "./assets/wall.xpm")))
-		return (false);
-	if (!register_image(vars,
-			get_new_sprite_image_ptr(vars, "./assets/item.xpm")))
-		return (false);
-	if (!register_image(vars,
-			get_new_sprite_image_ptr(vars, "./assets/exit.xpm")))
-		return (false);
-	if (!register_image(vars,
-			get_new_sprite_image_ptr(vars, "./assets/person.xpm")))
-		return (false);
 	return (true);
 }
 
@@ -75,8 +55,6 @@ bool	mlx_pipeline(t_mlxvars *vars)
 		return (ft_printf("Interrupt : mlx_win_pipeline\n"), false);
 	if (hook_pipeline(vars) == false)
 		return (ft_printf("Interrupt : hook_pipeline\n"), false);
-	if (img_pipeline(vars) == false)
-		return (ft_printf("Interrupt : img_pipeline\n"), false);
 	// init_draw(vars);
 	mlx_loop(vars->mlx);
 	return (true);

@@ -4,6 +4,9 @@
 		"so_long.h": "c",
 		"struct.h": "c",
 		"stdbool.h": "c",
-		"cub.h": "c"
+		"cub.h": "c",
+		"libft.h": "c",
+		"definitions.h": "c",
+		"fcntl.h": "c"
 	}
 }
