@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:58:49 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 20:19:11 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/26 20:28:54 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ bool	free_mlx(t_mlxvars *p)
 		ft_freesplit(p->map_data->map);
 		ft_freesplit(p->map_data->pref);
 		free(p->map_data);
+		p->map_data = NULL;
 	}
 	return (true);
 }

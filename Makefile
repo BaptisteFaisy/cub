@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+         #
+#    By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 11:05:03 by lhojoon           #+#    #+#              #
-#    Updated: 2024/03/26 15:19:59 by bfaisy           ###   ########.fr        #
+#    Updated: 2024/03/27 17:10:28 by lhojoon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,11 +38,11 @@ SRCS = $(addprefix $(DIR)/,$(SRCS_RAW))
 OBJS = $(SRCS:c=o)
 INCLUDES = -I./includes -I./libft -I./ft_printf/includes
 
-LIBFT = libft.a
-MINILIBX_A = mlx_linux/libmlx_Linux.a
+LIBFT = libft/libft.a
+MINILIBX = mlx_linux/libmlx_Linux.a
 
 all: $(NAME)
-$(NAME): libcompile $(OBJS)
+$(NAME): ${LIBFT} ${MINILIBX} $(OBJS)
 	$(CC) $(OBJS) $(DEBUG) -Llibft -l:libft.a -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 clean:
 	rm $(OBJS) $(OBJB) -f
@@ -50,15 +50,14 @@ fclean: clean libclean
 	rm $(NAME) -f
 re: fclean all
 
-libcompile: libftcompile minilibxcompile
-libclean: libftclean minilibxclean
-
-libftcompile:
+${LIBFT}:
 	$(MAKE) -C libft
+${MINILIBX}:
+	$(MAKE) -C mlx_linux
+
+libclean: libftclean minilibxclean
 libftclean:
 	$(MAKE) fclean -C libft
-minilibxcompile:
-	$(MAKE) -C mlx_linux
 minilibxclean:
 	$(MAKE) clean -C mlx_linux
 
