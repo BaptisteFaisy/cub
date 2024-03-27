@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/27 19:40:25 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/27 20:02:32 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	get_x_by_angle(double angle)
 {
 	int	dangle;
 
-	dangle = (int)(angle * (M_PI / 180));
+	dangle = (int)ceil(angle * (M_PI / 180));
 	return (dangle / DEF_POV_ANGLE * DEF_WINDOW_SIZE_W);
 }
 

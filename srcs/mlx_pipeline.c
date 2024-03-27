@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/27 19:44:19 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/27 20:09:15 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,32 @@ static bool	hook_pipeline(t_mlxvars *vars)
 	return (true);
 }
 
-static bool	mlx_win_pipeline(t_mlxvars *vars)
+static bool	mlx_var_init_pipeline(t_mlxvars *vars)
 {
 	vars->mlx_win = mlx_new_window(vars->mlx, DEF_WINDOW_SIZE_W,
 			DEF_WINDOW_SIZE_H, DEF_PROGRAM_NAME);
-	if (!vars->mlx_win)
+	vars->canvas = mlx_new_image(vars->mlx,
+			DEF_WINDOW_SIZE_W, DEF_WINDOW_SIZE_H);
+	if (!vars->mlx_win || !vars->canvas)
 		return (false);
 	return (true);
 }
 
-// static void	init_draw(t_mlxvars *vars)
-// {
-// 	// draw_map(vars);
-// 	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->canvas, 0, 0);
-// }
+static void	init_draw(t_mlxvars *vars)
+{
+	draw_screen(vars);
+	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->canvas, 0, 0);
+}
 
 bool	mlx_pipeline(t_mlxvars *vars)
 {
 	if (maps_pipeline(vars) == false)
 		return (ft_printf("Interrupt : maps_pipeline\n"), false);
-	if (mlx_win_pipeline(vars) == false)
+	if (mlx_var_init_pipeline(vars) == false)
 		return (ft_printf("Interrupt : mlx_win_pipeline\n"), false);
 	if (hook_pipeline(vars) == false)
 		return (ft_printf("Interrupt : hook_pipeline\n"), false);
-	// init_draw(vars);
+	init_draw(vars);
 	mlx_loop(vars->mlx);
 	return (true);
 }

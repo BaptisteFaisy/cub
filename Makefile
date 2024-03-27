@@ -6,7 +6,7 @@
 #    By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 11:05:03 by lhojoon           #+#    #+#              #
-#    Updated: 2024/03/27 17:10:28 by lhojoon          ###   ########.fr        #
+#    Updated: 2024/03/27 21:20:40 by lhojoon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,11 @@ SRCS_RAW =	main.c \
 			checkermapmain.c \
 			mapchecker.c \
 			structrgb.c \
-			checklignemain.c
+			checklignemain.c \
+			init_t_player.c \
+			draw_screen.c \
+			print_one_vertical_line.c \
+			move_character.c
 SRCS = $(addprefix $(DIR)/,$(SRCS_RAW))
 OBJS = $(SRCS:c=o)
 INCLUDES = -I./includes -I./libft -I./ft_printf/includes

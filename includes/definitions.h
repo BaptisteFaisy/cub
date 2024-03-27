@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/27 19:40:45 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/27 20:24:00 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define DEF_X11_EVENT_DESTROY_NOTIFY 17
 
 # define DEF_DISTANCE_COEFF 1
+# define DEF_PLAYER_SPEED 0.1
 
 typedef struct s_rgb
 {
@@ -70,5 +71,6 @@ int		checklignefc(char **tab);
 int		checkligne(char **tab, int ligne);
 int		checklignemain(char **tab);
 int		mapcheck_main(t_map_data *data);
+void	draw_screen(t_mlxvars *vars);
 
 #endif
