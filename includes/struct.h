@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:19:50 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/26 14:50:34 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/27 20:02:09 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ typedef struct s_pos
 	int	x;
 	int	y;
 }	t_pos;
+
+typedef struct s_posd
+{
+	double	x;
+	double	y;
+}	t_posd;
 
 typedef struct s_gamedat
 {
@@ -55,6 +61,16 @@ typedef struct s_map_data
 }	t_map_data;
 
 /**
+ * @brief player info struct
+ * 
+ */
+typedef struct s_player
+{
+	double		angle;
+	t_posd		pos;
+}	t_player;
+
+/**
  * @brief master varaible for execution
  * 
  * @param mlx		mlx pointer - must be free'd
@@ -62,6 +78,8 @@ typedef struct s_map_data
  * @param imgs 		list of images - must be free'd
  * @param canvas	canvas image - must be free'd
  * @param map_filename	map file name
+ * @param map_data map data - must be free'd
+ * @param player player info - must be free'd
  */
 typedef struct s_mlxvars
 {
@@ -71,7 +89,16 @@ typedef struct s_mlxvars
 	t_mlximage	*canvas;
 	char		*map_filename;
 	t_map_data	*map_data;
+	t_player	*player;
 }	t_mlxvars;
+
+typedef enum e_direction
+{
+	NORTH = 0,
+	SOUTH = 1,
+	WEST = 2,
+	EAST = 3
+}	t_direction;
 
 t_pos		get_init_pos(void);
 t_pos		get_init_pos_value(int x, int y);
@@ -79,5 +106,6 @@ t_pos		*get_init_pos_ptr(void);
 t_pos		*get_init_pos_ptr_value(int x, int y);
 t_gamedat	get_init_gamedat(void);
 t_mlxvars	get_init_mlxvars(void);
+t_player	*get_init_player_ptr(void);
 
 #endif

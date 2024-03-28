@@ -3,23 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   definitions.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/28 14:06:16 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/03/28 14:11:23 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINITIONS_H
 # define DEFINITIONS_H
+
 # include "struct.h"
-# define DEF_WINDOW_SIZE_W 800
-# define DEF_WINDOW_SIZE_H 600
+
+# define DEF_WINDOW_SIZE_W 1920
+# define DEF_WINDOW_SIZE_H 1000
 
 # define DEF_MAX_WINDOW_SIZE_W 1920
 # define DEF_MAX_WINDOW_SIZE_H 900
 
-# define DEF_IMG_SIZE 32
+# define DEF_IMG_SIZE 100
+
+# define DEF_POV_ANGLE 90
 
 # define DEF_PROGRAM_NAME "Cub3D"
 
@@ -30,7 +34,13 @@
 # define DEF_KEY_A 0x61
 # define DEF_KEY_S 0x73
 # define DEF_KEY_D 0x64
+# define DEF_KEY_LEFT 0xFF51
+# define DEF_KEY_RIGHT 0xFF53
 # define DEF_X11_EVENT_DESTROY_NOTIFY 17
+
+# define DEF_DISTANCE_COEFF 1
+# define DEF_PLAYER_MOVE_SPD 0.1
+# define DEF_PLAYER_ROTATE_SPD 0.1
 
 typedef struct s_rgb
 {
@@ -39,11 +49,11 @@ typedef struct s_rgb
 	int	b;
 }	t_rgb;
 
-typedef struct s_pos
-{
-	double	x;
-	double	y;
-}	t_pos;
+// typedef struct s_pos
+// {
+// 	double	x;
+// 	double	y;
+// }	t_pos;
 
 typedef struct s_data
 {
@@ -65,5 +75,6 @@ int		checkligne(char **tab, int ligne);
 int		checklignemain(char **tab);
 int		mapcheck_main(t_map_data *data);
 char	find_direction(double angle_base, double angle);
+void	draw_screen(t_mlxvars *vars);
 
 #endif
