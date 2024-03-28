@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/27 18:03:04 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/03/28 14:06:16 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_data
 {
 	double	distance;
 	double	degre; // radiant
-	t_pos	final;
+	char	dir;
 }	t_data;
 
 int		verifie_cub(const char *string);
@@ -64,5 +64,6 @@ int		checklignefc(char **tab);
 int		checkligne(char **tab, int ligne);
 int		checklignemain(char **tab);
 int		mapcheck_main(t_map_data *data);
+char	find_direction(double angle_base, double angle);
 
 #endif

@@ -6,11 +6,9 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 13:54:34 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/27 18:15:03 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/03/28 13:30:53 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// https://www.assistancescolaire.com/eleve/3e/maths/reviser-une-notion/calculer-la-longueur-d-un-cote-dans-un-triangle-rectangle-3mtr06
 
 // calculer avec pythagore la distance en prenant l'angle en compte
 // https://youtu.be/xZe0ZYPzxkg?t=264
@@ -18,8 +16,8 @@
 
 #include "../includes/cub.h"
 
-static t_data	calcul_distance(t_pos pos_initial, double x_final,
-					double y_final, double angle);
+static t_data	calcul_distance(t_pos pos_initial, t_data data, int x_final,
+					int y_final);
 // int	distance_mur_positif(int nbr_angle, t_pos pos, char **map)
 // {
 // 	int xarrondir, yarrondir;
@@ -41,31 +39,56 @@ static t_data	calcul_distance(t_pos pos_initial, double x_final,
 // 	}
 // }
 
-t_data	distance_mur_positif(int nbr_angle, t_pos pos, char **map,
-	int double_angle)
+char	find_direction(double angle_base, double angle)
+{
+	angle_base += angle;
+	if (angle_base >= 360)
+		angle_base -= 360;
+	if (angle_base >= 0 && angle_base < 90)
+		return ('E');
+	else if (angle_base >= 90 && angle_base < 180)
+		return ('N');
+	else if (angle_base >= 180 && angle_base < 270)
+		return ('W');
+	else if (angle_base >= 270 && angle_base < 360)
+		return ('S');
+}
+
+double	add_base_angle(double angle_add, double angle_base)
+{
+	double	angle;
+
+	angle_base += angle;
+	if (angle_base >= 360)
+		angle_base -= 360;
+	return (angle_base);
+}
+
+t_data	distance_mur_positif(int angle, t_pos pos, char **map,
+	double angle_base)
 {
 	t_pos	inter;
 	t_pos	arrondie;
-	int		y;
-	int		x;
-	double	angle;
+	t_pos	base;
+	t_data	data;
 
 	arrondie.y = ceil(pos.y) - pos.y;
 	arrondie.x = ceil(pos.x) - pos.x;
-	angle = double_angle + (nbr_angle * 0.046875);
+	data.dir = find_direction(angle_base, angle);
 	angle = tan(angle);
 	inter.x = pos.x + arrondie.x;
 	inter.y = pos.y + arrondie.y;
+	data.degre = angle;
 	while (true)
 	{
-		y = inter.x * angle;
-		x = inter.y / angle;
-		if (x < inter.x)
-			if (check_wall(y, inter.x, map) == true)
-				return (calcul_distance(pos, y, inter.x, angle));
+		base.y = inter.x * angle;
+		base.x = inter.y / angle;
+		if (base.x < inter.x)
+			if (check_wall(base.y, inter.x, map) == true)
+				return (calcul_distance(pos, data, inter.x, base.y));
 		else
-			if (check_wall(inter.y, x, map) == true)
-				return (calcul_distance(pos, inter.y, x, angle));
+			if (check_wall(inter.y, base.x, map) == true)
+				return (calcul_distance(pos, data, base.x, inter.y));
 		inter.x += 1;
 		inter.x += 1;
 	}
@@ -78,14 +101,9 @@ bool	check_wall(int y, int x, char **map)
 	return (false);
 }
 
-static t_data	calcul_distance(t_pos pos_initial, double x_final,
-		double y_final, double angle)
+static t_data	calcul_distance(t_pos pos_initial, t_data data, int x_final,
+	int y_final)
 {	
-	t_data	data;
-
-	data.degre = angle;
-	data.final.x = x_final;
-	data.final.y = y_final;
 	data.distance = sqrt(pow((x_final - pos_initial.x), 2)
 			+ pow((y_final - pos_initial.y), 2));
 	return (data);
