@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/28 14:11:23 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/28 15:16:49 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,6 @@
 # define DEF_PLAYER_MOVE_SPD 0.1
 # define DEF_PLAYER_ROTATE_SPD 0.1
 
-typedef struct s_rgb
-{
-	int	r;
-	int	g;
-	int	b;
-}	t_rgb;
-
-// typedef struct s_pos
-// {
-// 	double	x;
-// 	double	y;
-// }	t_pos;
-
-typedef struct s_data
-{
-	double	distance;
-	double	degre; // radiant
-	t_pos	final;
-}	t_data;
-
 int		verifie_cub(const char *string);
 int		check_input(char **tab);
 int		checkmap_y(char **tab, int j, int i);
@@ -75,5 +55,7 @@ int		checkligne(char **tab, int ligne);
 int		checklignemain(char **tab);
 int		mapcheck_main(t_map_data *data);
 void	draw_screen(t_mlxvars *vars);
+void	img_lst_clear(t_list **lst, t_mlxvars *vars);
+bool	stock_image(t_mlxvars *vars);
 
 #endif

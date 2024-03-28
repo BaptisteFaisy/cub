@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:19:50 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/27 20:02:09 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/28 14:33:24 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,22 @@ typedef enum e_direction
 	WEST = 2,
 	EAST = 3
 }	t_direction;
+
+typedef struct s_data
+{
+	double	distance;
+	double	degre; // radiant
+	t_pos	final;
+}	t_data;
+
+typedef struct s_rgb
+{
+	int	r;
+	int	g;
+	int	b;
+}	t_rgb;
+
+// INITIALISATIONS
 
 t_pos		get_init_pos(void);
 t_pos		get_init_pos_value(int x, int y);

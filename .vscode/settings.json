@@ -8,6 +8,7 @@
 		"libft.h": "c",
 		"definitions.h": "c",
 		"fcntl.h": "c",
-		"manager.h": "c"
+		"manager.h": "c",
+		"stdlib.h": "c"
 	}
 }

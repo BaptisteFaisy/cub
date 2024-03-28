@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/27 20:09:15 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/28 15:16:57 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 static bool	maps_pipeline(t_mlxvars *vars)
 {
 	if (!verifie_cub(vars->map_filename))
-		return (ft_printf("verifie_cub : "), false);
+		return (ft_printf("Error: file is not .cub\n"), false);
 	vars->map_data = read_map(vars->map_filename);
 	if (!vars->map_data)
 		return (ft_printf("map_data : "), false);
 	if (!mapcheck_main(vars->map_data))
 		return (ft_printf("mapcheck_main : "), false);
+	if (!stock_image(vars))
+		return (ft_printf("stock_image : "), false);
 	return (true);
 }
 

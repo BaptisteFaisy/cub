@@ -6,13 +6,13 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:58:49 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/27 20:21:07 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/28 15:11:48 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static void	img_lst_clear(t_list **lst, t_mlxvars *vars)
+void	img_lst_clear(t_list **lst, t_mlxvars *vars)
 {
 	t_list	*lp;
 	t_list	*lp2;
