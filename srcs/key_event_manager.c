@@ -6,11 +6,27 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 20:23:51 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/27 20:24:18 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/28 14:11:40 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "manager.h"
+#include "cub.h"
+
+static void	move_character(t_mlxvars *vars, int key)
+{
+	if (key == DEF_KEY_W)
+		vars->player->pos.x += cos(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
+	else if (key == DEF_KEY_S)
+		vars->player->pos.x -= cos(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
+	else if (key == DEF_KEY_A)
+		vars->player->pos.y += sin(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
+	else if (key == DEF_KEY_D)
+		vars->player->pos.y -= sin(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
+	else if (key == DEF_KEY_LEFT)
+		vars->player->angle += DEF_PLAYER_ROTATE_SPD * M_PI;
+	else if (key == DEF_KEY_RIGHT)
+		vars->player->angle -= DEF_PLAYER_ROTATE_SPD * M_PI;
+}
 
 int	key_event_manager(int key, t_mlxvars *p)
 {
@@ -21,11 +37,7 @@ int	key_event_manager(int key, t_mlxvars *p)
 		else
 			exit(EXIT_SUCCESS);
 	}
-	// TODO : Finish this function
-	// else if (key == DEF_KEY_W)
-	// else if (key == DEF_KEY_A)
-	// else if (key == DEF_KEY_S)
-	// else if (key == DEF_KEY_D)
-	// move character or rotate camera, and re-render
+	move_character(p, key);
+	draw_screen(p);
 	return (0);
 }

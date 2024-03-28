@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/27 20:24:00 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/28 14:11:23 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,13 @@
 # define DEF_KEY_A 0x61
 # define DEF_KEY_S 0x73
 # define DEF_KEY_D 0x64
+# define DEF_KEY_LEFT 0xFF51
+# define DEF_KEY_RIGHT 0xFF53
 # define DEF_X11_EVENT_DESTROY_NOTIFY 17
 
 # define DEF_DISTANCE_COEFF 1
-# define DEF_PLAYER_SPEED 0.1
+# define DEF_PLAYER_MOVE_SPD 0.1
+# define DEF_PLAYER_ROTATE_SPD 0.1
 
 typedef struct s_rgb
 {
