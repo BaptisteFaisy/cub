@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:19:50 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/28 14:33:24 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/29 17:42:49 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ typedef struct s_data
 	double	distance;
 	double	degre; // radiant
 	t_pos	final;
+	char	dir;
 }	t_data;
 
 typedef struct s_rgb

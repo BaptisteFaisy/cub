@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:51:20 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/28 13:54:29 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/03/29 17:48:25 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,4 @@ int	get_pos(char **map)
 		i++;
 	}
 	return (-2);
-}
-
-int	fov_main(int direction_player)
-{
-	double	angle;
-	double	dir_fov;
-	int		nbr_angle;
-
-	nbr_angle = 0;
-	dir_fov = -45;
-	while (nbr_angle != 960)
-	{
-		angle = dir_fov + (nbr_angle * 0.046875);
-		nbr_angle++;
-	}
 }

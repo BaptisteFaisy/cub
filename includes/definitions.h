@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   definitions.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/29 16:23:55 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/29 17:39:37 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,7 @@ void	draw_screen(t_mlxvars *vars);
 void	img_lst_clear(t_list **lst, t_mlxvars *vars);
 bool	stock_image(t_mlxvars *vars);
 bool	parse_user_pos(t_mlxvars *vars);
+t_data	distance_mur_positif(int angle, t_pos pos, char **map,
+			double angle_base);
 
 #endif

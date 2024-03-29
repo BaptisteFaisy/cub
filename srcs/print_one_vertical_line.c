@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   print_one_vertical_line.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/27 20:02:32 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/29 17:49:27 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+// angle : angle du rayon lance
+// dir_fov : angle du premier rayon
+// nbr_angle : numero du rayon
+// pos : position du player x,y
+// angle_base : dir du player
+// distance_mur_positif : retourne une struct contenant tout
+
+t_data	fov_main(double direction_player, t_mlxvars *var)
+{
+	double	angle;
+	double	dir_fov;
+	int		nbr_angle;
+
+	nbr_angle = 0;
+	dir_fov = -45;
+	while (nbr_angle != DEF_WINDOW_SIZE_W)
+	{
+		distance_mur_positif(angle, pos, map, angle_base);
+		angle = dir_fov + (nbr_angle * 0.046875);
+		nbr_angle++;
+	}
+}
 
 // TODO : Test this function by modifying math equation
 static int	get_height_by_distance(double distance, int img_height)
