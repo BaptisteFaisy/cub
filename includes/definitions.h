@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/28 14:11:23 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/29 16:23:55 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,8 @@
 # define DEF_X11_EVENT_DESTROY_NOTIFY 17
 
 # define DEF_DISTANCE_COEFF 1
-# define DEF_PLAYER_MOVE_SPD 0.1
-# define DEF_PLAYER_ROTATE_SPD 0.1
-
-typedef struct s_rgb
-{
-	int	r;
-	int	g;
-	int	b;
-}	t_rgb;
-
-// typedef struct s_pos
-// {
-// 	double	x;
-// 	double	y;
-// }	t_pos;
-
-typedef struct s_data
-{
-	double	distance;
-	double	degre; // radiant
-	char	dir;
-}	t_data;
+# define DEF_PLAYER_MOVE_SPD 0.06
+# define DEF_PLAYER_ROTATE_SPD 0.03
 
 int		verifie_cub(const char *string);
 int		check_input(char **tab);
@@ -76,5 +56,8 @@ int		checklignemain(char **tab);
 int		mapcheck_main(t_map_data *data);
 char	find_direction(double angle_base, double angle);
 void	draw_screen(t_mlxvars *vars);
+void	img_lst_clear(t_list **lst, t_mlxvars *vars);
+bool	stock_image(t_mlxvars *vars);
+bool	parse_user_pos(t_mlxvars *vars);
 
 #endif

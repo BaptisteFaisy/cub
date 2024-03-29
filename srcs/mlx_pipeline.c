@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/27 20:09:15 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/29 16:21:17 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,22 @@
 static bool	maps_pipeline(t_mlxvars *vars)
 {
 	if (!verifie_cub(vars->map_filename))
-		return (ft_printf("verifie_cub : "), false);
+		return (ft_printf("Error: file is not .cub\n"), false);
 	vars->map_data = read_map(vars->map_filename);
 	if (!vars->map_data)
 		return (ft_printf("map_data : "), false);
 	if (!mapcheck_main(vars->map_data))
 		return (ft_printf("mapcheck_main : "), false);
+	if (!stock_image(vars))
+		return (ft_printf("stock_image : "), false);
 	return (true);
 }
 
 static bool	hook_pipeline(t_mlxvars *vars)
 {
-	mlx_key_hook(vars->mlx_win, key_event_manager, vars);
-	mlx_hook(vars->mlx_win, DEF_X11_EVENT_DESTROY_NOTIFY,
-		0L, x11_destroy_event, vars);
+	mlx_hook(vars->mlx_win, KeyPress, KeyPressMask, key_event_manager, vars);
+	mlx_hook(vars->mlx_win, DestroyNotify, StructureNotifyMask,
+		x11_destroy_event, vars);
 	return (true);
 }
 
@@ -39,7 +41,9 @@ static bool	mlx_var_init_pipeline(t_mlxvars *vars)
 	vars->canvas = mlx_new_image(vars->mlx,
 			DEF_WINDOW_SIZE_W, DEF_WINDOW_SIZE_H);
 	if (!vars->mlx_win || !vars->canvas)
-		return (false);
+		return (ft_printf("mlx_new_* : "), false);
+	if (!parse_user_pos(vars))
+		return (ft_printf("parse_user_pos : "), false);
 	return (true);
 }
 
