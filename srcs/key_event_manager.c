@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 20:23:51 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/28 14:11:40 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/29 15:57:17 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,25 @@
 static void	move_character(t_mlxvars *vars, int key)
 {
 	if (key == DEF_KEY_W)
-		vars->player->pos.x += cos(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
-	else if (key == DEF_KEY_S)
-		vars->player->pos.x -= cos(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
-	else if (key == DEF_KEY_A)
+	{
 		vars->player->pos.y += sin(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
-	else if (key == DEF_KEY_D)
+		vars->player->pos.x += cos(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
+	}
+	else if (key == DEF_KEY_S)
+	{
 		vars->player->pos.y -= sin(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
+		vars->player->pos.x -= cos(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
+	}
+	else if (key == DEF_KEY_A)
+	{
+		vars->player->pos.y -= cos(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
+		vars->player->pos.x -= sin(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
+	}
+	else if (key == DEF_KEY_D)
+	{
+		vars->player->pos.y += cos(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
+		vars->player->pos.x += sin(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
+	}
 	else if (key == DEF_KEY_LEFT)
 		vars->player->angle += DEF_PLAYER_ROTATE_SPD * M_PI;
 	else if (key == DEF_KEY_RIGHT)

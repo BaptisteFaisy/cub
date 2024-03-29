@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/28 15:16:57 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/29 15:43:30 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ static bool	mlx_var_init_pipeline(t_mlxvars *vars)
 	vars->canvas = mlx_new_image(vars->mlx,
 			DEF_WINDOW_SIZE_W, DEF_WINDOW_SIZE_H);
 	if (!vars->mlx_win || !vars->canvas)
-		return (false);
+		return (ft_printf("mlx_new_* : "), false);
+	if (!parse_user_pos(vars))
+		return (ft_printf("parse_user_pos : "), false);
 	return (true);
 }
 
