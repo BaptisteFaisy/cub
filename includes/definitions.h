@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/29 15:52:34 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/29 16:23:55 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@
 # define DEF_X11_EVENT_DESTROY_NOTIFY 17
 
 # define DEF_DISTANCE_COEFF 1
-# define DEF_PLAYER_MOVE_SPD 0.1
-# define DEF_PLAYER_ROTATE_SPD 0.05
+# define DEF_PLAYER_MOVE_SPD 0.06
+# define DEF_PLAYER_ROTATE_SPD 0.03
 
 int		verifie_cub(const char *string);
 int		check_input(char **tab);
