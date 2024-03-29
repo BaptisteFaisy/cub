@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/29 15:43:30 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/03/29 16:21:17 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static bool	maps_pipeline(t_mlxvars *vars)
 
 static bool	hook_pipeline(t_mlxvars *vars)
 {
-	mlx_key_hook(vars->mlx_win, key_event_manager, vars);
-	mlx_hook(vars->mlx_win, DEF_X11_EVENT_DESTROY_NOTIFY,
-		0L, x11_destroy_event, vars);
+	mlx_hook(vars->mlx_win, KeyPress, KeyPressMask, key_event_manager, vars);
+	mlx_hook(vars->mlx_win, DestroyNotify, StructureNotifyMask,
+		x11_destroy_event, vars);
 	return (true);
 }
 
