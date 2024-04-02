@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   print_one_vertical_line.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/29 17:49:27 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/04/02 15:59:25 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+bool	print_one_vertical_line(t_mlxvars *var,
+			double distance, double angle, t_direction dir,
+			double percentage);
 
 // angle : angle du rayon lance
 // dir_fov : angle du premier rayon
@@ -19,20 +23,24 @@
 // angle_base : dir du player
 // distance_mur_positif : retourne une struct contenant tout
 
-t_data	fov_main(double direction_player, t_mlxvars *var)
+t_data	fov_main(t_mlxvars *var)
 {
 	double	angle;
 	double	dir_fov;
 	int		nbr_angle;
+	t_data	dat;
 
 	nbr_angle = 0;
 	dir_fov = -45;
 	while (nbr_angle != DEF_WINDOW_SIZE_W)
 	{
-		distance_mur_positif(angle, pos, map, angle_base);
+		dat = distance_mur_positif(angle, var->player->pos, var->map_data->map,
+				var->player->angle);
+		print_one_vertical_line(var, dat.distance, angle, dat.dir, 0.5);
 		angle = dir_fov + (nbr_angle * 0.046875);
 		nbr_angle++;
 	}
+	return (dat);
 }
 
 // TODO : Test this function by modifying math equation

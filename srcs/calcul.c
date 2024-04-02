@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcul.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 13:54:34 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/29 17:50:24 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/04/02 16:00:21 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ double	add_base_angle(double angle_add, double angle_base)
 	return (angle_base);
 }
 
-t_data	distance_mur_positif(int angle, t_pos pos, char **map,
+t_data	distance_mur_positif(int angle, t_posd pos, char **map,
 	double angle_base)
 {
 	t_pos	inter;

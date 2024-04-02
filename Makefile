@@ -6,7 +6,7 @@
 #    By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 11:05:03 by lhojoon           #+#    #+#              #
-#    Updated: 2024/03/29 15:43:50 by lhojoon          ###   ########.fr        #
+#    Updated: 2024/04/02 15:59:36 by lhojoon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRCS_RAW =	main.c \
 			draw_screen.c \
 			print_one_vertical_line.c \
 			stock_image.c \
-			parse_user_pos.c
+			parse_user_pos.c \
+			calcul.c
 SRCS = $(addprefix $(DIR)/,$(SRCS_RAW))
 OBJS = $(SRCS:c=o)
 INCLUDES = -I./includes -I./libft -I./ft_printf/includes
