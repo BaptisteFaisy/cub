@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chechlignep1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/26 20:25:58 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/04/09 19:44:39 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	checkligne(char **tab, int ligne)
 
 	i = 0;
 	j = 0;
+	(void)j;
 	str = malloc(sizeof(char) * ft_strlen(tab[ligne]) + 1);
 	if (!str)
 		return (0);

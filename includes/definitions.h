@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   definitions.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/02 16:21:29 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/04/09 21:20:08 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,29 +38,30 @@
 # define DEF_KEY_RIGHT 0xFF53
 # define DEF_X11_EVENT_DESTROY_NOTIFY 17
 
-# define DEF_DISTANCE_COEFF 1
+# define DEF_DISTANCE_COEFF 10
 # define DEF_PLAYER_MOVE_SPD 0.06
 # define DEF_PLAYER_ROTATE_SPD 0.03
 
-int		verifie_cub(const char *string);
-int		check_input(char **tab);
-int		checkmap_y(char **tab, int j, int i);
-int		checkmap_x(char **tab, int i, int j);
-int		checkmap_check_wall(char **tab);
-int		checklignev2(char **tab, int ligne, char *str, int i);
-t_rgb	grepccolor(char **tab);
-t_rgb	grepfloorcolor(char **tab);
-int		checklignefc(char **tab);
-int		checkligne(char **tab, int ligne);
-int		checklignemain(char **tab);
-int		mapcheck_main(t_map_data *data);
-char	find_direction(double angle_base, double angle);
-void	draw_screen(t_mlxvars *vars);
-void	img_lst_clear(t_list **lst, t_mlxvars *vars);
-bool	stock_image(t_mlxvars *vars);
-bool	parse_user_pos(t_mlxvars *vars);
-t_data	distance_mur_positif(double angle, t_posd pos, char **map,
-			double angle_base);
-t_data	fov_main(t_mlxvars *var);
+int				verifie_cub(const char *string);
+int				check_input(char **tab);
+int				checkmap_y(char **tab, int j, int i);
+int				checkmap_x(char **tab, int i, int j);
+int				checkmap_check_wall(char **tab);
+int				checklignev2(char **tab, int ligne, char *str, int i);
+t_rgb			grepccolor(char **tab);
+t_rgb			grepfloorcolor(char **tab);
+int				checklignefc(char **tab);
+int				checkligne(char **tab, int ligne);
+int				checklignemain(char **tab);
+int				mapcheck_main(t_map_data *data);
+char			find_direction(double angle_base, double angle);
+void			draw_screen(t_mlxvars *vars);
+void			img_lst_clear(t_list **lst, t_mlxvars *vars);
+bool			stock_image(t_mlxvars *vars);
+bool			parse_user_pos(t_mlxvars *vars);
+t_data			distance_mur_positif(double angle, t_posd pos, char **map,
+					double angle_base);
+t_data			fov_main(t_mlxvars *var);
+t_direction		transform_direction_from_char(char c);
 
 #endif

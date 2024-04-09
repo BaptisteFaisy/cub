@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_one_vertical_line.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/09 17:44:49 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/04/09 21:20:00 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,18 @@ t_data	fov_main(t_mlxvars *var)
 	t_data	dat;
 
 	nbr_angle = 0;
-	dir_fov = 45 * M_PI/180 ;
+	dir_fov = 45 * M_PI / 180 ;
 	while (nbr_angle != DEF_WINDOW_SIZE_W)
 	{
-		angle = dir_fov - (nbr_angle * (0.046875 * M_PI/180)) + var->player->angle;
+		angle = dir_fov - (nbr_angle * (0.046875 * M_PI / 180)) + var->player->angle;
 		dat = distance_mur_positif(angle, var->player->pos, var->map_data->map,
 				var->player->angle);
 		// printf("x.fi = %d, y.fin = %d", dat.final.x);
-		print_one_vertical_line(var, dat.distance, angle, dat.dir, 0.5);
+		printf("RESULTAT : %fs %c %f --- angle %f\n", dat.degre, dat.dir, dat.distance, angle);
+		if (print_one_vertical_line(var, dat.distance, angle,
+				transform_direction_from_char(dat.dir), 0.5) == false)
+			printf("Error print one vertical line\n");
+		mlx_put_image_to_window(var->mlx, var->mlx_win, var->canvas, nbr_angle, 0);
 		nbr_angle++;
 	}
 	return (dat);
@@ -47,7 +51,8 @@ t_data	fov_main(t_mlxvars *var)
 // TODO : Test this function by modifying math equation
 static int	get_height_by_distance(double distance, int img_height)
 {
-	return ((DEF_DISTANCE_COEFF - distance) * img_height * DEF_WINDOW_SIZE_H);
+	// return ((DEF_DISTANCE_COEFF - distance) * img_height * DEF_WINDOW_SIZE_H);
+	return ((int)(((distance) / (double)img_height * (double)DEF_WINDOW_SIZE_H) * DEF_DISTANCE_COEFF));
 }
 
 /**
@@ -89,18 +94,22 @@ bool	print_one_vertical_line(t_mlxvars *var,
 	int			i;
 	int			pixel;
 
+	(void)starth;
 	img = get_image_by_direction(var, dir);
 	if (!img)
 		return (false);
 	h = get_height_by_distance(distance, img->height);
 	i = 0;
 	starth = (DEF_WINDOW_SIZE_H - h) / 2;
+	printf("starth: %d h  %d distance %f imgh %d \n", starth, h, distance, img->height);
 	while (i < h)
 	{
 		pixel = mlx_get_pixel(img, percentage * img->width,
 				ceil(((double)i / (double)h) * img->height));
+		printf("pixel : %d ceil : %f x : %d\n", pixel, ceil(((double)i / (double)h) * DEF_WINDOW_SIZE_H), get_x_by_angle(angle));
 		mlx_draw_pixel(var->canvas, get_x_by_angle(angle),
-			ceil(((double)i / (double)h) * DEF_WINDOW_SIZE_H), pixel);
+			ceil(((double)i / (double)h) * DEF_WINDOW_SIZE_H + starth), pixel);
+		// mlx_put_image_to_window(var->mlx, var->mlx_win, var->canvas, 0, 0);
 		i++;
 	}
 	return (true);
