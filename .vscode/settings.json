@@ -9,6 +9,7 @@
 		"definitions.h": "c",
 		"fcntl.h": "c",
 		"manager.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"cmath": "c"
 	}
 }

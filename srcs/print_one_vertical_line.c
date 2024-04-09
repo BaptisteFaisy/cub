@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_one_vertical_line.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/02 15:59:25 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/04/09 17:44:49 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,14 @@ t_data	fov_main(t_mlxvars *var)
 	t_data	dat;
 
 	nbr_angle = 0;
-	dir_fov = -45;
+	dir_fov = 45 * M_PI/180 ;
 	while (nbr_angle != DEF_WINDOW_SIZE_W)
 	{
+		angle = dir_fov - (nbr_angle * (0.046875 * M_PI/180)) + var->player->angle;
 		dat = distance_mur_positif(angle, var->player->pos, var->map_data->map,
 				var->player->angle);
+		// printf("x.fi = %d, y.fin = %d", dat.final.x);
 		print_one_vertical_line(var, dat.distance, angle, dat.dir, 0.5);
-		angle = dir_fov + (nbr_angle * 0.046875);
 		nbr_angle++;
 	}
 	return (dat);
