@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 20:23:51 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/10 13:33:11 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/04/10 14:54:27 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	move_character(t_mlxvars *vars, int key)
 		vars->player->pos.y -= sin(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
 		vars->player->pos.x -= cos(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
 	}
-	else if (key == DEF_KEY_A)
+	else if (key == DEF_KEY_A) // TODO : faut changer la direction qui est inverse
 	{
 		vars->player->pos.y -= cos(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
 		vars->player->pos.x -= sin(vars->player->angle) * DEF_PLAYER_MOVE_SPD;

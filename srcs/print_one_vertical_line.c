@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/10 13:29:30 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/04/10 14:56:41 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ bool	print_one_vertical_line(t_mlxvars *var,
 	img = get_image_by_direction(var, dir);
 	if (!img)
 		return (false);
-	h = get_height_by_distance(distance, img->height);
+	h = get_height_by_distance(distance, img->height) * DEF_DISTANCE_COEFF;
 	i = 0;
 	starth = (DEF_WINDOW_SIZE_H - h) / 2;
 	// printf("starth: %d h  %d distance %f imgh %d \n", starth, h, distance, img->height);
