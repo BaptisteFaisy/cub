@@ -6,7 +6,7 @@
 #    By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 11:05:03 by lhojoon           #+#    #+#              #
-#    Updated: 2024/04/09 20:04:42 by lhojoon          ###   ########.fr        #
+#    Updated: 2024/04/10 13:15:57 by lhojoon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,8 @@ clean:
 fclean: clean libclean
 	rm $(NAME) -f
 re: fclean all
+
+r: clean all
 
 ${LIBFT}:
 	$(MAKE) -C libft

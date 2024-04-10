@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcul.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 13:54:34 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/04/09 18:54:15 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/04/10 13:31:19 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ bool	check_wall(int y, int x, char **map)
 static t_data	calcul_distance(t_posd pos_initial, t_data data, double x_final,
 	double y_final)
 {
-	printf("inter.y%f, (int)base.x%f, angle%f\n", y_final, x_final, data.degre);
+	// printf("inter.y%f, (int)base.x%f, angle%f\n", y_final, x_final, data.degre);
 	data.distance = sqrt(pow((x_final - pos_initial.x), 2)
 			+ pow((y_final - pos_initial.y), 2));
 	return (data);
