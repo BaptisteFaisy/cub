@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:19:50 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/29 17:42:49 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/04/15 12:00:15 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct s_data
 {
 	double	distance;
 	double	degre; // radiant
-	t_pos	final;
+	t_posd	final;
 	char	dir;
 }	t_data;
 

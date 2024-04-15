@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcul.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 13:54:34 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/04/10 13:36:23 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/04/15 16:57:17 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,28 +82,35 @@ t_data	distance_mur_positif(double angle, t_posd pos, char **map,
 	// printf("%f\n", angle);
 	base.x = inter.y / angle;
 	// printf("%f %f\n", inter.y, inter.x);
-	// base.y >= 0 && base.x >= 0 && inter.x >= 0 && inter.y >= 0
-	while (true)
+	while (base.y >= 0 && base.x >= 0 && inter.x >= 0 && inter.y >= 0)
 	{
+		printf("base%f, %f\n", angle, inter.x);
 		base.y = inter.x * angle;
 		if (base.x >= inter.x)
+		{
+			printf("%f %f \n", base.y, inter.x);
 			if (check_wall((int)base.y, (int)inter.x, map) == true)
 				return (calcul_distance(pos, data, inter.x, base.y));
+		}
 		while (base.x < inter.x)
 		{
 			base.x = inter.y / angle;
-			// printf("(int)inter.y%d, (int)base.x%d, angle%f\n", (int)inter.y, (int)base.x, angle);
 			if (check_wall((int)inter.y, (int)base.x, map) == true)
 				return (calcul_distance(pos, data, base.x, inter.y));
 			inter.y = transform_int_with_dir(data, 0, inter.y);
+			// printf("(int)inter.y%d, (int)base.x%d, inter.x%f\n", (int)inter.y, (int)base.x, inter.x);
 		}
-		inter.x = transform_int_with_dir(data, 1, inter.x);
+		if (angle > 1)
+			inter.x++;
+		else
+			inter.x--;
 	}
 	return (data);
 }
 
 bool	check_wall(int y, int x, char **map)
 {
+	printf("%d %d fd\n", y , x);
 	if (map[y][x] == '1')
 		return (true);
 	return (false);
@@ -112,9 +119,10 @@ bool	check_wall(int y, int x, char **map)
 static t_data	calcul_distance(t_posd pos_initial, t_data data, double x_final,
 	double y_final)
 {
-	// printf("inter.y%f, (int)base.x%f, angle%f\n", y_final, x_final, data.degre);
+	printf("inter.y%f, (int)base.x%f, angle%f\n", y_final, x_final, data.degre);
 	data.distance = sqrt(pow((x_final - pos_initial.x), 2)
 			+ pow((y_final - pos_initial.y), 2));
+			// printf("l9\n");
 	return (data);
 }
 

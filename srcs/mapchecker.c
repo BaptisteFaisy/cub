@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:22:23 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/26 20:05:53 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/04/15 12:34:27 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	checkmap_check_wall(char **tab)
 		j = 0;
 		while (tab[i][j])
 		{
-			if (tab[i][j] == '0')
+			if (tab[i][j] == '0' || tab[i][j] == 'N')
 			{
 				if (checkmap_x(tab, i, j) == 1 && checkmap_y(tab, j, i) == 1)
 				{
@@ -54,15 +54,17 @@ int	checkmap_x(char **tab, int i, int j)
 
 int	checkmap_y(char **tab, int j, int i)
 {
-	while (tab[i][j] != '1')
-		i++;
-	if (tab[i][j] == '\0')
+	if (tab[0][j] != '1')
 		return (0);
-	i++;
-	while (tab[i][j] != '1')
+	while (tab[i][j] != '1' && tab[i][j] != '\0')
 		i++;
-	if (tab[i][j] == '\0')
+	if ((tab[i][j] == '0' && tab[i + 1][j] == '\0') || tab[i][j] == '\0')
 		return (0);
+	// i++;
+	// while (tab[i][j] != '1')
+	// 	i++;
+	// if (tab[i][j] == '\0')
+	// 	return (0);
 	return (1);
 }
 
