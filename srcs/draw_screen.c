@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_screen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 19:51:49 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/10 13:28:21 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/04/15 17:44:03 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	draw_screen(t_mlxvars *vars)
 {
 	clean_window(vars);
 	fov_main(vars);
+	// printf("%p\n", vars->canvas);
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->canvas, 0, 0);
 }
