@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 13:54:34 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/04/16 18:03:03 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/04/16 18:36:08 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ bool	check_wall(int y, int x, char **map)
 static t_data	calcul_distance(t_posd pos_initial, t_data data, double x_final,
 	double y_final)
 {
-	// printf("inter.y%f, (int)base.x%f, angle%f\n", y_final, x_final, data.degre);
+	// printf("x.final%f, pos_initial.x%f, y_final%f, pos_initial.y%f\n",x_final, pos_initial.x, y_final, pos_initial.y);
 	data.distance = sqrt(pow((x_final - pos_initial.x), 2)
 			+ pow((y_final - pos_initial.y), 2));
 			// printf("l9\n");

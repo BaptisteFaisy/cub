@@ -31,7 +31,7 @@ t_data	fov_main(t_mlxvars *var)
 	t_data	dat;
 
 	nbr_angle = 0;
-	dir_fov = 45 * M_PI / 180 ;
+	dir_fov = 45 * M_PI / 180;
 	while (nbr_angle != DEF_WINDOW_SIZE_W)
 	{
 		angle = dir_fov - (nbr_angle * (0.046875 * M_PI / 180)) + var->player->angle;
@@ -39,6 +39,11 @@ t_data	fov_main(t_mlxvars *var)
 				var->player->angle);
 		// printf("x.fi = %f, y.fin = %f", dat.final.x, dat.final.y);
 		// printf("RESULTAT : %fs %c %f --- angle %f\n", dat.degre, dat.dir, dat.distance, angle);
+		if (dat.distance <= 0)
+		{
+			printf("Out of map\n");
+			exit (1);
+		}
 		if (print_one_vertical_line(var, dat.distance, nbr_angle,
 				transform_direction_from_char(dat.dir), 0.5) == false)
 			printf("Error print one vertical line\n");
