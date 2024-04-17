@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 14:38:52 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/29 15:48:05 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/04/17 19:10:36 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ bool	parse_user_pos(t_mlxvars *vars)
 	}
 	if (found == false)
 		return (false);
+	x--;
+	y--;
 	vars->player->pos.x = x;
 	vars->player->pos.y = y;
 	vars->player->angle = get_user_angle(vars->map_data->map[y][x]);
