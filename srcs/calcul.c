@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcul.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 13:54:34 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/04/16 18:36:08 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/04/22 15:57:08 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,30 +77,30 @@ t_data	distance_mur_positif(double angle, t_posd pos, char **map,
 	data.dir = find_direction(angle_base / M_PI * 180, angle);
 	inter.x = transform_int_with_dir(data, 1, pos.x);
 	inter.y = transform_int_with_dir(data, 0, pos.y);
-	// printf("%f, %f\n", inter.x, inter.y);
 	data.degre = angle;
-	// printf("%f\n", angle);
 	base.x = inter.y / angle;
 	// printf("%f %f\n", inter.y, inter.x);
 	while (base.x >= 0 && inter.x >= 0 && inter.y >= 0)
 	{
 		// printf("base%f, %f\n", angle, inter.x);
 		base.y = inter.x * angle;
+		base.x = inter.y / angle;
 		if (base.x >= inter.x)
 		{
-			// printf("%f %f \n", base.y, inter.x);
 			if (check_wall((int)base.y, (int)inter.x, map) == true)
 				return (calcul_distance(pos, data, inter.x, base.y));
 		}
-		while (base.x < inter.x)
+		else
 		{
-			base.x = inter.y / angle;
 			if (check_wall((int)inter.y, (int)base.x, map) == true)
 				return (calcul_distance(pos, data, base.x, inter.y));
-			inter.y = transform_int_with_dir(data, 0, inter.y);
-			// printf("(int)inter.y%d, (int)base.x%d, inter.x%f\n", (int)inter.y, (int)base.x, inter.x);
+			printf("(int)inter.y%d, (int)base.x%d, inter.x%f\n", (int)inter.y, (int)base.x, inter.x);
+			if (angle_base / M_PI * 180 >= 90)
+				inter.y++;
+			else
+				inter.y--;
 		}
-		if (angle > 1)
+		if (angle_base / M_PI * 180 >= 90)
 			inter.x++;
 		else
 			inter.x--;
@@ -128,20 +128,21 @@ static t_data	calcul_distance(t_posd pos_initial, t_data data, double x_final,
 
 int	transform_int_with_dir(t_data data, int cond, int pos)
 {
-	// printf("%d\n", pos);
+	printf("%d, %c\n", pos, data.dir);
+	(void )cond;
 	if (cond == 0)
 	{
 		if (data.dir == 'N')
-			return ((pos - 1));
+			return ((--pos));
 		else if (data.dir == 'S')
-			return ((int)pos++);
+			return (++pos);
 	}
 	else
 	{
 		if (data.dir == 'W')
-			return ((int)pos--);
+			return ((int)--pos);
 		if (data.dir == 'E')
-			return ((int)pos++);
+			return ((int)++pos);
 	}
 	return (pos);
 }
