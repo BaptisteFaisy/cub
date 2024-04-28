@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_one_vertical_line.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/17 22:39:15 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/04/26 21:52:52 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,35 +23,68 @@ bool	print_one_vertical_line(t_mlxvars *var,
 // angle_base : dir du player
 // distance_mur_positif : retourne une struct contenant tout
 
-t_data	fov_main(t_mlxvars *var)
+static t_wall_info get_wall_info(t_ray ray, t_mlxvars *var)
 {
-	double	angle;
-	double	dir_fov;
-	int		nbr_angle;
-	t_data	dat;
-
-	nbr_angle = 0;
-	dir_fov = 45 * M_PI / 180;
-	while (nbr_angle != DEF_WINDOW_SIZE_W)
-	{
-		angle = dir_fov - (nbr_angle * (0.046875 * M_PI / 180)) + var->player->angle;
-		dat = distance_mur_positif(angle, var->player->pos, var->map_data->map,
-				var->player->angle);
-		// printf("x.fi = %f, y.fin = %f", dat.final.x, dat.final.y);
-		printf("RESULTAT : %fs %c %f --- angle %f\n", dat.degre, dat.dir, dat.distance, angle);
-		if (dat.distance <= 0)
-		{
-			printf("Out of map\n");
-			exit (1);
-		}
-		if (print_one_vertical_line(var, dat.distance, nbr_angle,
-				transform_direction_from_char(dat.dir), 0.5) == false)
-			printf("Error print one vertical line\n");
-		// mlx_put_image_to_window(var->mlx, var->mlx_win, var->canvas, 0, 0);
-		nbr_angle++;
-	}
-	return (dat);
+	
 }
+
+static t_ray get_ray(unsigned int i, t_mlxvars *var)
+{
+	t_ray	ray;
+	ray.angle = var->player->angle;
+	if (i < DEF_WINDOW_SIZE_W / 2)
+		i = -(i / 2);
+	else
+		i = i / 2;
+	ray.pos.x = var->player->pos.x + cos(ray.angle) * DEF_FOV_COEFF * i;
+	ray.pos.y = var->player->pos.y + sin(ray.angle) * DEF_FOV_COEFF * i;
+	return (ray);
+}
+
+t_data fov_main(t_mlxvars *var)
+{
+	unsigned int	iter_count;
+	t_ray			ray;
+
+	iter_count = 0;
+	while (iter_count < DEF_WINDOW_SIZE_W)
+	{
+		ray = get_ray(iter_count, var);
+		
+		iter_count++;
+	}
+}
+
+
+// t_data	fov_main(t_mlxvars *var)
+// {
+// 	double	angle;
+// 	double	dir_fov;
+// 	int		nbr_angle;
+// 	t_data	dat;
+
+// 	nbr_angle = 0;
+// 	dir_fov = 45 * M_PI / 180;
+// 	while (nbr_angle != DEF_WINDOW_SIZE_W)
+// 	{
+// 		angle = dir_fov - (nbr_angle * (0.046875 * M_PI / 180)) + var->player->angle;
+// 		dat = distance_mur_positif(angle, var->player->pos, var->map_data->map,
+// 				var->player->angle);
+// 		// printf("x.fi = %f, y.fin = %f", dat.final.x, dat.final.y);
+// 		printf("RESULTAT : %fs %c %f --- angle %f\n", dat.degre, dat.dir, dat.distance, angle);
+// 		if (dat.distance <= 0)
+// 		{
+// 			printf("Out of map\n");
+// 			exit (1);
+// 		}
+// 		if (print_one_vertical_line(var, dat.distance, nbr_angle,
+// 				transform_direction_from_char(dat.dir), 0.5) == false)
+// 			printf("Error print one vertical line\n");
+// 		// mlx_put_image_to_window(var->mlx, var->mlx_win, var->canvas, 0, 0);
+// 		nbr_angle++;
+// 	}
+// 	return (dat);
+// }
 
 // TODO : Test this function by modifying math equation
 static int	get_height_by_distance(double distance, int img_height)

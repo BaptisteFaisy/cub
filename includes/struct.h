@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:19:50 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/15 12:00:15 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/04/26 20:52:56 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,18 @@ typedef struct s_rgb
 	int	g;
 	int	b;
 }	t_rgb;
+
+typedef struct s_ray
+{
+	t_posd	pos;
+	float	angle;
+}	t_ray;
+
+typedef struct s_wall_info {
+	float distance;
+	float percentage;
+	t_direction direction;
+}	t_wall_info;
 
 // INITIALISATIONS
 
