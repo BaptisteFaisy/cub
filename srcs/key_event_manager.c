@@ -6,13 +6,13 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 20:23:51 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/16 18:41:08 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/04/22 16:57:17 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static double	radian_value_normalize(double var)
+double	radian_value_normalize(double var)
 {
 	if (var > 2 * M_PI)
 		var -= 2 * M_PI;

@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 13:54:34 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/04/22 15:57:08 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/04/26 17:24:30 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 bool			check_wall(int y, int x, char **map);
 static t_data	calcul_distance(t_posd pos_initial, t_data data, double x_final,
 					double y_final);
-int				transform_int_with_dir(t_data data, int cond, int pos);
+int				transform_int_with_dir(t_data data, int cond, int pos, int nbr_angle);
 // int	distance_mur_positif(int nbr_angle, t_posd pos, char **map)
 // {
 // 	int xarrondir, yarrondir;
@@ -66,51 +66,66 @@ char	find_direction(double angle_base, double angle)
 // 		angle_base += 360;
 // 	return (angle_base);
 // }
-
 t_data	distance_mur_positif(double angle, t_posd pos, char **map,
-	double angle_base)
+	double angle_base, int nbr_angle)
 {
 	t_posd	inter;
 	t_posd	base;
 	t_data	data;
 
 	data.dir = find_direction(angle_base / M_PI * 180, angle);
-	inter.x = transform_int_with_dir(data, 1, pos.x);
-	inter.y = transform_int_with_dir(data, 0, pos.y);
+	inter.x = transform_int_with_dir(data, 1, pos.x, nbr_angle);
+	inter.y = transform_int_with_dir(data, 0, pos.y, nbr_angle);
 	data.degre = angle;
+	if (angle == 0.0000)
+		return (data);
 	base.x = inter.y / angle;
-	// printf("%f %f\n", inter.y, inter.x);
-	while (base.x >= 0 && inter.x >= 0 && inter.y >= 0)
+	base.y = inter.x * angle;
+	printf("%f\n", angle);
+	while (1)
 	{
-		// printf("base%f, %f\n", angle, inter.x);
-		base.y = inter.x * angle;
-		base.x = inter.y / angle;
+		if (angle == 0)
+			break ;
+		base.x = inter.y * angle;
 		if (base.x >= inter.x)
 		{
+			printf("%f %f fd\n", base.y , inter.x);
 			if (check_wall((int)base.y, (int)inter.x, map) == true)
 				return (calcul_distance(pos, data, inter.x, base.y));
 		}
-		else
+		else if (base.x < inter.x && inter.y != 0)
 		{
+			if (angle == 0)
+				break ;
+			base.y = inter.x * angle;
+			printf("%f %f fdgdfgdfgd\n", base.y , inter.x);
 			if (check_wall((int)inter.y, (int)base.x, map) == true)
 				return (calcul_distance(pos, data, base.x, inter.y));
-			printf("(int)inter.y%d, (int)base.x%d, inter.x%f\n", (int)inter.y, (int)base.x, inter.x);
-			if (angle_base / M_PI * 180 >= 90)
+			if (nbr_angle >= 960 && data.dir != 'W' && data.dir != 'S')
 				inter.y++;
-			else
+			else if (data.dir != 'W' && data.dir != 'S')
 				inter.y--;
+			else if (nbr_angle >= 960)
+				inter.y--;
+			else
+				inter.y++;
+			continue ;
 		}
-		if (angle_base / M_PI * 180 >= 90)
+		if (nbr_angle >= 960 && data.dir != 'N' && data.dir != 'W')
 			inter.x++;
-		else
+		else if (data.dir != 'W' && data.dir != 'N')
 			inter.x--;
+		else if (nbr_angle >= 960)
+			inter.x--;
+		else
+			inter.x++;
 	}
 	return (data);
 }
 
 bool	check_wall(int y, int x, char **map)
 {
-	// printf("%d %d fd\n", y , x);
+	printf("%d %d fd\n", y , x);
 	if (map[y][x] == '1')
 		return (true);
 	return (false);
@@ -119,30 +134,38 @@ bool	check_wall(int y, int x, char **map)
 static t_data	calcul_distance(t_posd pos_initial, t_data data, double x_final,
 	double y_final)
 {
-	// printf("x.final%f, pos_initial.x%f, y_final%f, pos_initial.y%f\n",x_final, pos_initial.x, y_final, pos_initial.y);
+
+	//mapX - posX + (1 - stepX) / 2) / rayDirX
 	data.distance = sqrt(pow((x_final - pos_initial.x), 2)
 			+ pow((y_final - pos_initial.y), 2));
 			// printf("l9\n");
 	return (data);
 }
 
-int	transform_int_with_dir(t_data data, int cond, int pos)
+int	transform_int_with_dir(t_data data, int cond, int pos, int nbr_angle)
 {
 	printf("%d, %c\n", pos, data.dir);
-	(void )cond;
 	if (cond == 0)
 	{
-		if (data.dir == 'N')
-			return ((--pos));
-		else if (data.dir == 'S')
-			return (++pos);
+		if (nbr_angle >= 960 && data.dir != 'W' && data.dir != 'S')
+			pos++;
+		else if (data.dir != 'W' && data.dir != 'S')
+			pos--;
+		else if (nbr_angle >= 960)
+			pos--;
+		else
+			pos++;
 	}
 	else
 	{
-		if (data.dir == 'W')
-			return ((int)--pos);
-		if (data.dir == 'E')
-			return ((int)++pos);
+		if (nbr_angle >= 960 && data.dir != 'N' && data.dir != 'W')
+			pos++;
+		else if (data.dir != 'W' && data.dir != 'N')
+			pos--;
+		else if (nbr_angle >= 960)
+			pos--;
+		else
+			pos++;
 	}
 	return (pos);
 }
