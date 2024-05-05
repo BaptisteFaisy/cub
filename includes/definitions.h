@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/26 20:20:30 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/05 21:42:42 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define DEF_DISTANCE_COEFF 4
 # define DEF_PLAYER_MOVE_SPD 0.06
 # define DEF_PLAYER_ROTATE_SPD 0.03
-# define DEF_FOV_COEFF 0.01
+# define DEF_FOV_COEFF 0.0001
 
 int				verifie_cub(const char *string);
 int				check_input(char **tab);
@@ -62,7 +62,14 @@ bool			stock_image(t_mlxvars *vars);
 bool			parse_user_pos(t_mlxvars *vars);
 t_data			distance_mur_positif(double angle, t_posd pos, char **map,
 					double angle_base);
-t_data			fov_main(t_mlxvars *var);
+void			fov_main(t_mlxvars *var);
 t_direction		transform_direction_from_char(char c);
+double			ceilexp(double v);
+double			ceilexp_exceed(double v);
+double			diff_abs(double v);
+double			diff_abs_exceed(double v);
+t_direction		get_direction_of_wall(float angle, bool is_x);
+double			get_distance_of_wall(t_ray ray, t_mlxvars *var);
+double			get_percentage_of_wall(double v);
 
 #endif

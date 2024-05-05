@@ -6,15 +6,14 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/26 21:52:52 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/05 21:41:40 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
 bool	print_one_vertical_line(t_mlxvars *var,
-			double distance, int vertical_count, t_direction dir,
-			double percentage);
+			int vertical_count, t_wall_info wall);
 
 // angle : angle du rayon lance
 // dir_fov : angle du premier rayon
@@ -23,14 +22,54 @@ bool	print_one_vertical_line(t_mlxvars *var,
 // angle_base : dir du player
 // distance_mur_positif : retourne une struct contenant tout
 
-static t_wall_info get_wall_info(t_ray ray, t_mlxvars *var)
+// TODO : check if it exceeds map limit
+static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 {
-	
+	t_wall_info	info;
+	bool		found;
+
+	info.direction = NORTH;
+	info.distance = 0.0;
+	info.percentage = 0.0;
+	found = false;
+	while (!found)
+	{
+		if (diff_abs_exceed(fabs(ray.pos.x)) < diff_abs_exceed(fabs(ray.pos.y)))
+		{
+			printf("IN X\n");
+			ray.pos.x = ceilexp_exceed(ray.pos.x);
+			ray.pos.y = tan(ray.angle) * diff_abs_exceed(fabs(ray.pos.x));
+			// printf("ray x : %f ray y : %f angle : %f\n", ray.pos.x, ray.pos.y, ray.angle);
+			if (var->map_data->map[(int)floor(ray.pos.y)][(int)ray.pos.x] == '1')
+			{
+				info.direction = get_direction_of_wall(ray.angle, true);
+				info.distance = get_distance_of_wall(ray, var);
+				info.percentage = get_percentage_of_wall(ray.pos.y);
+				return (info);
+			}
+		}
+		else
+		{
+			printf("IN Y\n");
+			ray.pos.x = atan(ray.angle) * diff_abs_exceed(fabs(ray.pos.y));
+			ray.pos.y = ceilexp_exceed(ray.pos.y);
+			// printf("ray x : %f ray y : %f angle : %f\n", ray.pos.x, ray.pos.y, ray.angle);
+			if (var->map_data->map[(int)ray.pos.y][(int)floor(ray.pos.x)] == '1')
+			{
+				info.direction = get_direction_of_wall(ray.angle, true);
+				info.distance = get_distance_of_wall(ray, var);
+				info.percentage = get_percentage_of_wall(ray.pos.x);
+				return (info);
+			}
+		}
+	}
+	return (info); // TODO : Potentinal conditional jump
 }
 
-static t_ray get_ray(unsigned int i, t_mlxvars *var)
+static t_ray	get_ray(unsigned int i, t_mlxvars *var)
 {
 	t_ray	ray;
+
 	ray.angle = var->player->angle;
 	if (i < DEF_WINDOW_SIZE_W / 2)
 		i = -(i / 2);
@@ -41,16 +80,19 @@ static t_ray get_ray(unsigned int i, t_mlxvars *var)
 	return (ray);
 }
 
-t_data fov_main(t_mlxvars *var)
+void	fov_main(t_mlxvars *var)
 {
 	unsigned int	iter_count;
 	t_ray			ray;
+	t_wall_info		wall;
 
 	iter_count = 0;
 	while (iter_count < DEF_WINDOW_SIZE_W)
 	{
 		ray = get_ray(iter_count, var);
-		
+		printf("ray x : %f ray y : %f angle : %f\n", ray.pos.x, ray.pos.y, ray.angle);
+		wall = get_wall_info(ray, var);
+		print_one_vertical_line(var, iter_count, wall);
 		iter_count++;
 	}
 }
@@ -112,7 +154,7 @@ static int	get_height_by_distance(double distance, int img_height)
  * shrinking vertical size of a line of image
  * 
  * @param var mlxvars
- * @param distance distance from characher to wall
+ * @param wall_distance distance from characher to wall
  * @param angle angle of ray from character to wall, radian,
  * depending on map's absolute direction
  * @param dir direction of the wall
@@ -123,8 +165,7 @@ static int	get_height_by_distance(double distance, int img_height)
  * @todo Do I have to calculate the average color ? 
  */
 bool	print_one_vertical_line(t_mlxvars *var,
-			double distance, int vertical_count, t_direction dir,
-			double percentage)
+			int vertical_count, t_wall_info wall)
 {
 	t_mlximage	*img;
 	int			h;
@@ -133,16 +174,16 @@ bool	print_one_vertical_line(t_mlxvars *var,
 	int			pixel;
 
 	(void)starth;
-	img = get_image_by_direction(var, dir);
+	img = get_image_by_direction(var, wall.direction);
 	if (!img)
 		return (false);
-	h = get_height_by_distance(distance, img->height) * DEF_DISTANCE_COEFF;
+	h = get_height_by_distance(wall.distance, img->height) * DEF_DISTANCE_COEFF;
 	i = 0;
 	starth = (DEF_WINDOW_SIZE_H - h) / 2;
 	// printf("starth: %d h  %d distance %f imgh %d \n", starth, h, distance, img->height);
 	while (i < h)
 	{
-		pixel = mlx_get_pixel(img, percentage * img->width,
+		pixel = mlx_get_pixel(img, wall.percentage * img->width,
 				ceil(((double)i / (double)h) * img->height));
 		// printf("pixel : %d ceil : %f x : %d\n", pixel, ceil(((double)i / (double)DEF_WINDOW_SIZE_H) * h + starth), vertical_count);
 		mlx_draw_pixel(var->canvas, vertical_count,
