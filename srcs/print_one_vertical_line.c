@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/05 21:41:40 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/06 10:04:02 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,18 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 	return (info); // TODO : Potentinal conditional jump
 }
 
-static t_ray	get_ray(unsigned int i, t_mlxvars *var)
+static t_ray	get_ray(int i, t_mlxvars *var)
 {
 	t_ray	ray;
 
 	ray.angle = var->player->angle;
 	if (i < DEF_WINDOW_SIZE_W / 2)
-		i = -(i / 2);
+		i = -(DEF_WINDOW_SIZE_W / 2) + i;
 	else
-		i = i / 2;
+		i = i - DEF_WINDOW_SIZE_W / 2;
 	ray.pos.x = var->player->pos.x + cos(ray.angle) * DEF_FOV_COEFF * i;
 	ray.pos.y = var->player->pos.y + sin(ray.angle) * DEF_FOV_COEFF * i;
+	// printf("Ray X : %f  Y: %f sin : %f cos : %f y add: %f coeff: %f\n", ray.pos.x, ray.pos.y, sin(ray.angle), cos(ray.angle), sin(ray.angle) * DEF_FOV_COEFF * i, DEF_FOV_COEFF);
 	return (ray);
 }
 
@@ -87,11 +88,14 @@ void	fov_main(t_mlxvars *var)
 	t_wall_info		wall;
 
 	iter_count = 0;
+	printf("player angle deg : %f rad : %f\n", var->player->angle * 180 / M_PI, var->player->angle);
 	while (iter_count < DEF_WINDOW_SIZE_W)
 	{
-		ray = get_ray(iter_count, var);
+		ray = get_ray((int)iter_count, var);
 		printf("ray x : %f ray y : %f angle : %f\n", ray.pos.x, ray.pos.y, ray.angle);
 		wall = get_wall_info(ray, var);
+		printf("wall distance: %f percentage : %f direction : %d\n", wall.distance, wall.percentage, (int)wall.direction);
+		getchar();
 		print_one_vertical_line(var, iter_count, wall);
 		iter_count++;
 	}
