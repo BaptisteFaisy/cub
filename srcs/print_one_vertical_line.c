@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/06 15:00:04 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/06 16:27:32 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,21 @@ bool	print_one_vertical_line(t_mlxvars *var,
 static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 {
 	t_wall_info	info;
-	bool		found;
 
 	info.direction = NORTH;
 	info.distance = 0.0;
 	info.percentage = 0.0;
-	found = false; // inutile
-	while (!found)
+	while (true)
 	{
-		if (diff_abs_exceed(fabs(ray.pos.x)) < diff_abs_exceed(fabs(ray.pos.y))) // diff abs exceed -> get bool is_x and angle to distinguish
+		if (diff_abs_exceed_angle(fabs(ray.pos.x), true, ray.angle)
+			< diff_abs_exceed_angle(fabs(ray.pos.y), false, ray.angle))
 		{
 			printf("IN X : ");
 			printf("__ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
+			ray.pos.y = wall_get_correspondant_pos_y(ray.pos.x, ray.angle);// ca pete
 			ray.pos.x = wall_get_ray_pos_x(ray.pos.x, ray.angle); // bien,, pour moi au moins 
-			ray.pos.y = tan(ray.angle) * diff_abs_exceed(fabs(ray.pos.x)); // ca pete
 			printf("ray x : %f ray y : %f angle : %f diff_abs_exceed : %f tan : %f\n", ray.pos.x, ray.pos.y, ray.angle, diff_abs_exceed(fabs(ray.pos.x)), tan(ray.angle));
-			if (var->map_data->map[(int)floor(ray.pos.y)][(int)ray.pos.x] == '1')
+			if (var->map_data->map[(int)floorexp(ray.pos.y)][(int)ray.pos.x] == '1')
 			{
 				info.direction = get_direction_of_wall(ray.angle, true);
 				info.distance = get_distance_of_wall(ray, var);
@@ -54,10 +53,10 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 		{
 			printf("IN Y : ");
 			printf("__ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
-			ray.pos.x = atan(ray.angle) * diff_abs_exceed(fabs(ray.pos.y));
+			ray.pos.x = wall_get_correspondant_pos_x(ray.pos.y, ray.angle);
 			ray.pos.y = wall_get_ray_pos_y(ray.pos.y, ray.angle);
 			printf("ray x : %f ray y : %f angle : %f diff_abs_exceed: %f tan : %f\n", ray.pos.x, ray.pos.y, ray.angle, diff_abs_exceed(fabs(ray.pos.y)), tan(ray.angle));
-			if (var->map_data->map[(int)ray.pos.y][(int)floor(ray.pos.x)] == '1')
+			if (var->map_data->map[(int)ray.pos.y][(int)floorexp(ray.pos.x)] == '1')
 			{
 				info.direction = get_direction_of_wall(ray.angle, false);
 				info.distance = get_distance_of_wall(ray, var);
@@ -98,7 +97,7 @@ void	fov_main(t_mlxvars *var)
 		printf("ray x : %f ray y : %f angle : %f\n", ray.pos.x, ray.pos.y, ray.angle);
 		wall = get_wall_info(ray, var);
 		printf("wall distance: %f percentage : %f direction : %d\n", wall.distance, wall.percentage, (int)wall.direction);
-		getchar();
+		// getchar();
 		print_one_vertical_line(var, iter_count, wall);
 		iter_count++;
 	}

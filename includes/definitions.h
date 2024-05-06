@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/06 14:41:12 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/06 16:25:46 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,8 @@ double			floorexp(double v);
 double			floorexp_exceed(double v);
 double			wall_get_ray_pos_x(double v, double angle);
 double			wall_get_ray_pos_y(double v, double angle);
+double			diff_abs_exceed_angle(double v, bool is_x, double angle);
+double			wall_get_correspondant_pos_x(double v, double angle);
+double			wall_get_correspondant_pos_y(double v, double angle);
 
 #endif
