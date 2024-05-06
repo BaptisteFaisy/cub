@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:20:09 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/05 21:33:31 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/06 17:07:37 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ t_direction	get_direction_of_wall(float angle, bool is_x)
 	}
 }
 
-double	get_distance_of_wall(t_ray ray, t_mlxvars *var)
+double	get_distance_of_wall(t_ray ray, t_posd origin)
 {
-	return (sqrt(pow(ray.pos.x - var->player->pos.x, 2)
-			+ pow(ray.pos.y - var->player->pos.y, 2)));
+	return (sqrt(pow(ray.pos.x - origin.x, 2)
+			+ pow(ray.pos.y - origin.y, 2)));
 }
 
 double	get_percentage_of_wall(double v)

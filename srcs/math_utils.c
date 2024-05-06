@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 19:52:17 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/06 14:41:30 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/06 17:22:39 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,9 @@ double	diff_abs_exceed(double v)
 		return (1.0);
 	}
 	return (tmp);
+}
+
+bool	fcmp(double a, double b)
+{
+	return (fabs(a - b) < (0.000001 * fabs(a + b)));
 }

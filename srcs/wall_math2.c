@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:47:43 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/06 16:22:12 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/06 17:22:31 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ static double	diff_abs_ceil(double v)
 
 double	diff_abs_exceed_angle(double v, bool is_x, double angle)
 {
+	if ((!is_x && (fcmp(angle, M_PI * 3 / 2) || fcmp(angle, M_PI / 2)))
+		|| (is_x && (fcmp(angle, 0) || fcmp(angle, M_PI))))
+		return (2.0);
 	if (fabs(v) == v)
 		return (1.0);
 	if (is_x)

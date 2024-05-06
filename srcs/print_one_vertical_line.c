@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/06 16:40:52 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/06 17:46:39 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,45 +27,50 @@ bool	print_one_vertical_line(t_mlxvars *var,
 static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 {
 	t_wall_info	info;
+	double		diff;
+	t_posd		origin_pos;
 
-	info.direction = NORTH;
-	info.distance = 0.0;
-	info.percentage = 0.0;
+	origin_pos = ray.pos;
 	while (true)
 	{
+		printf("diff value : x %f y %f\n", diff_abs_exceed_angle(fabs(ray.pos.x), true, ray.angle), diff_abs_exceed_angle(fabs(ray.pos.y), false, ray.angle));
 		if (diff_abs_exceed_angle(fabs(ray.pos.x), true, ray.angle)
-			< diff_abs_exceed_angle(fabs(ray.pos.y), false, ray.angle))
+			> diff_abs_exceed_angle(fabs(ray.pos.y), false, ray.angle))
 		{
-			printf("IN X : ");
+			printf("IN Y : ");
 			printf("__ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
-			ray.pos.y = wall_get_correspondant_pos_y(ray.pos.x, ray.angle);// ca pete CAAAAAAAAAAA
-			ray.pos.x = wall_get_ray_pos_x(ray.pos.x, ray.angle);
+			diff = ray.pos.x;
+			ray.pos.x = wall_get_ray_pos_y(ray.pos.x, ray.angle);
+			diff = ray.pos.x - diff;
+			ray.pos.y += wall_get_correspondant_pos_x(diff, ray.angle);// ca marche pas du coup
 			printf("ray x : %f ray y : %f angle : %f diff_abs_exceed : %f tan : %f\n", ray.pos.x, ray.pos.y, ray.angle, diff_abs_exceed(fabs(ray.pos.x)), tan(ray.angle));
 			if (var->map_data->map[(int)floorexp(ray.pos.y)][(int)ray.pos.x] == '1')
 			{
-				info.direction = get_direction_of_wall(ray.angle, true); // Pas tres bien
-				info.distance = get_distance_of_wall(ray, var);
+				info.direction = get_direction_of_wall(ray.angle, false);
+				info.distance = get_distance_of_wall(ray, origin_pos);
 				info.percentage = get_percentage_of_wall(ray.pos.y);
 				return (info);
 			}
 		}
 		else
 		{
-			printf("IN Y : ");
+			printf("IN X : ");
 			printf("__ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
-			ray.pos.x = wall_get_correspondant_pos_x(ray.pos.y, ray.angle);
-			ray.pos.y = wall_get_ray_pos_y(ray.pos.y, ray.angle);
+			diff = ray.pos.y;
+			ray.pos.y = wall_get_ray_pos_x(ray.pos.y, ray.angle);
+			diff = ray.pos.y - diff;
+			ray.pos.x += wall_get_correspondant_pos_y(diff, ray.angle); // ca marche po
 			printf("ray x : %f ray y : %f angle : %f diff_abs_exceed: %f tan : %f\n", ray.pos.x, ray.pos.y, ray.angle, diff_abs_exceed(fabs(ray.pos.y)), tan(ray.angle));
 			if (var->map_data->map[(int)ray.pos.y][(int)floorexp(ray.pos.x)] == '1')
 			{
-				info.direction = get_direction_of_wall(ray.angle, false);
-				info.distance = get_distance_of_wall(ray, var);
+				info.direction = get_direction_of_wall(ray.angle, true);
+				info.distance = get_distance_of_wall(ray, origin_pos);
 				info.percentage = get_percentage_of_wall(ray.pos.x);
 				return (info);
 			}
 		}
 	}
-	return (info); // TODO : Potentinal conditional jump
+	exit(1); // TODO : Watch free
 }
 
 static t_ray	get_ray(int i, t_mlxvars *var)
@@ -77,9 +82,9 @@ static t_ray	get_ray(int i, t_mlxvars *var)
 		i = -(DEF_WINDOW_SIZE_W / 2) + i;
 	else
 		i = i - DEF_WINDOW_SIZE_W / 2;
-	ray.pos.x = var->player->pos.x + cos(ray.angle) * DEF_FOV_COEFF * i;
-	ray.pos.y = var->player->pos.y + sin(ray.angle) * DEF_FOV_COEFF * i;
-	// printf("Ray X : %f  Y: %f sin : %f cos : %f y add: %f coeff: %f\n", ray.pos.x, ray.pos.y, sin(ray.angle), cos(ray.angle), sin(ray.angle) * DEF_FOV_COEFF * i, DEF_FOV_COEFF);
+	ray.pos.x = var->player->pos.x + sin(ray.angle) * DEF_FOV_COEFF * i;
+	ray.pos.y = var->player->pos.y + cos(ray.angle) * DEF_FOV_COEFF * i;
+	printf("Ray X : %f  Y: %f sin : %f cos : %f angle:  %f coeff: %f\n", ray.pos.x, ray.pos.y, sin(ray.angle), cos(ray.angle), ray.angle, DEF_FOV_COEFF);
 	return (ray);
 }
 
@@ -94,10 +99,10 @@ void	fov_main(t_mlxvars *var)
 	while (iter_count < DEF_WINDOW_SIZE_W)
 	{
 		ray = get_ray((int)iter_count, var);
-		printf("ray x : %f ray y : %f angle : %f\n", ray.pos.x, ray.pos.y, ray.angle);
+		printf("> ray x : %f ray y : %f angle : %f\n", ray.pos.x, ray.pos.y, ray.angle);
 		wall = get_wall_info(ray, var);
 		printf("wall distance: %f percentage : %f direction : %d\n", wall.distance, wall.percentage, (int)wall.direction);
-		getchar();
+		// getchar();
 		print_one_vertical_line(var, iter_count, wall);
 		iter_count++;
 	}

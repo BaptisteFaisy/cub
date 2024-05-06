@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/06 16:25:46 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/06 17:42:43 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define DEF_DISTANCE_COEFF 5
 # define DEF_PLAYER_MOVE_SPD 0.06
 # define DEF_PLAYER_ROTATE_SPD 0.03
-# define DEF_FOV_COEFF 0.000001
+# define DEF_FOV_COEFF 0.001
 
 int				verifie_cub(const char *string);
 int				check_input(char **tab);
@@ -69,7 +69,7 @@ double			ceilexp_exceed(double v);
 double			diff_abs(double v);
 double			diff_abs_exceed(double v);
 t_direction		get_direction_of_wall(float angle, bool is_x);
-double			get_distance_of_wall(t_ray ray, t_mlxvars *var);
+double			get_distance_of_wall(t_ray ray, t_posd origin);
 double			get_percentage_of_wall(double v);
 double			floorexp(double v);
 double			floorexp_exceed(double v);
@@ -78,5 +78,6 @@ double			wall_get_ray_pos_y(double v, double angle);
 double			diff_abs_exceed_angle(double v, bool is_x, double angle);
 double			wall_get_correspondant_pos_x(double v, double angle);
 double			wall_get_correspondant_pos_y(double v, double angle);
+bool			fcmp(double v1, double v2);
 
 #endif
