@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:35:16 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/06 16:22:00 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/06 16:40:17 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,12 @@ static double	securized_tan(double v)
 
 double	wall_get_correspondant_pos_x(double v, double angle)
 {
+	printf("x diff_abs_exceed_angle : %f\n", diff_abs_exceed_angle(v, true, angle));
 	return (atan(angle) * diff_abs_exceed_angle(v, true, angle));
 }
 
 double	wall_get_correspondant_pos_y(double v, double angle)
 {
+	printf("y diff_abs_exceed_angle : %f\n", diff_abs_exceed_angle(v, false, angle));
 	return (securized_tan(angle) * diff_abs_exceed_angle(v, false, angle));
 }
