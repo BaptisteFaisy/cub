@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/06 09:51:14 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/06 14:41:12 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,9 @@ double			diff_abs_exceed(double v);
 t_direction		get_direction_of_wall(float angle, bool is_x);
 double			get_distance_of_wall(t_ray ray, t_mlxvars *var);
 double			get_percentage_of_wall(double v);
+double			floorexp(double v);
+double			floorexp_exceed(double v);
+double			wall_get_ray_pos_x(double v, double angle);
+double			wall_get_ray_pos_y(double v, double angle);
 
 #endif
