@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/26 20:20:30 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/06 17:42:43 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@
 # define DEF_KEY_RIGHT 0xFF53
 # define DEF_X11_EVENT_DESTROY_NOTIFY 17
 
-# define DEF_DISTANCE_COEFF 4
+# define DEF_DISTANCE_COEFF 5
 # define DEF_PLAYER_MOVE_SPD 0.06
 # define DEF_PLAYER_ROTATE_SPD 0.03
-# define DEF_FOV_COEFF 0.01
+# define DEF_FOV_COEFF 0.001
 
 int				verifie_cub(const char *string);
 int				check_input(char **tab);
@@ -61,9 +61,23 @@ void			img_lst_clear(t_list **lst, t_mlxvars *vars);
 bool			stock_image(t_mlxvars *vars);
 bool			parse_user_pos(t_mlxvars *vars);
 t_data			distance_mur_positif(double angle, t_posd pos, char **map,
-					double angle_base, int nbr_angle);
-t_data			fov_main(t_mlxvars *var);
+					double angle_base);
+void			fov_main(t_mlxvars *var);
 t_direction		transform_direction_from_char(char c);
-double			radian_value_normalize(double var);
+double			ceilexp(double v);
+double			ceilexp_exceed(double v);
+double			diff_abs(double v);
+double			diff_abs_exceed(double v);
+t_direction		get_direction_of_wall(float angle, bool is_x);
+double			get_distance_of_wall(t_ray ray, t_posd origin);
+double			get_percentage_of_wall(double v);
+double			floorexp(double v);
+double			floorexp_exceed(double v);
+double			wall_get_ray_pos_x(double v, double angle);
+double			wall_get_ray_pos_y(double v, double angle);
+double			diff_abs_exceed_angle(double v, bool is_x, double angle);
+double			wall_get_correspondant_pos_x(double v, double angle);
+double			wall_get_correspondant_pos_y(double v, double angle);
+bool			fcmp(double v1, double v2);
 
 #endif

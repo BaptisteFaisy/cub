@@ -6,7 +6,7 @@
 #    By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 11:05:03 by lhojoon           #+#    #+#              #
-#    Updated: 2024/04/10 13:15:57 by lhojoon          ###   ########.fr        #
+#    Updated: 2024/05/06 15:47:52 by lhojoon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,11 @@ SRCS_RAW =	main.c \
 			stock_image.c \
 			parse_user_pos.c \
 			calcul.c \
-			transform_direction.c
+			transform_direction.c \
+			math_utils.c \
+			wall_info_ext.c \
+			wall_math.c \
+			wall_math2.c
 SRCS = $(addprefix $(DIR)/,$(SRCS_RAW))
 OBJS = $(SRCS:c=o)
 INCLUDES = -I./includes -I./libft -I./ft_printf/includes
