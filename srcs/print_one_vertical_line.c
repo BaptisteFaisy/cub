@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/06 17:46:39 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/08 18:41:29 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 			diff = ray.pos.x;
 			ray.pos.x = wall_get_ray_pos_y(ray.pos.x, ray.angle);
 			diff = ray.pos.x - diff;
-			ray.pos.y += wall_get_correspondant_pos_x(diff, ray.angle);// ca marche pas du coup
+			ray.pos.y += wall_get_correspondant_pos_y(diff, ray.angle);// ca marche pas du coup
 			printf("ray x : %f ray y : %f angle : %f diff_abs_exceed : %f tan : %f\n", ray.pos.x, ray.pos.y, ray.angle, diff_abs_exceed(fabs(ray.pos.x)), tan(ray.angle));
 			if (var->map_data->map[(int)floorexp(ray.pos.y)][(int)ray.pos.x] == '1')
 			{
@@ -59,7 +59,7 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 			diff = ray.pos.y;
 			ray.pos.y = wall_get_ray_pos_x(ray.pos.y, ray.angle);
 			diff = ray.pos.y - diff;
-			ray.pos.x += wall_get_correspondant_pos_y(diff, ray.angle); // ca marche po
+			ray.pos.x += wall_get_correspondant_pos_x(diff, ray.angle); // ca marche po
 			printf("ray x : %f ray y : %f angle : %f diff_abs_exceed: %f tan : %f\n", ray.pos.x, ray.pos.y, ray.angle, diff_abs_exceed(fabs(ray.pos.y)), tan(ray.angle));
 			if (var->map_data->map[(int)ray.pos.y][(int)floorexp(ray.pos.x)] == '1')
 			{
