@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/08 18:47:23 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/09 15:03:54 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,10 +140,9 @@ void	fov_main(t_mlxvars *var)
 // }
 
 // TODO : Test this function by modifying math equation
-static int	get_height_by_distance(double distance, int img_height)
+static double	get_height_by_distance(double distance, int img_height)
 {
-	// return ((DEF_DISTANCE_COEFF - distance) * img_height * DEF_WINDOW_SIZE_H);
-	return ((int)(((distance) / (double)img_height * (double)DEF_WINDOW_SIZE_H) * DEF_DISTANCE_COEFF));
+	return ((((distance) / (double)img_height * (double)DEF_WINDOW_SIZE_H)));
 }
 
 // /**
@@ -176,7 +175,7 @@ static int	get_height_by_distance(double distance, int img_height)
  * @todo Do I have to calculate the average color ? 
  */
 bool	print_one_vertical_line(t_mlxvars *var,
-			int vertical_count, t_wall_info wall)
+			int x_count, t_wall_info wall)
 {
 	t_mlximage	*img;
 	int			h;
@@ -188,7 +187,7 @@ bool	print_one_vertical_line(t_mlxvars *var,
 	img = get_image_by_direction(var, wall.direction);
 	if (!img)
 		return (false);
-	h = get_height_by_distance(wall.distance, img->height) * DEF_DISTANCE_COEFF;
+	h = (int)ceil(get_height_by_distance(wall.distance, img->height) * DEF_DISTANCE_COEFF);
 	i = 0;
 	starth = (DEF_WINDOW_SIZE_H - h) / 2;
 	// printf("starth: %d h  %d distance %f imgh %d \n", starth, h, distance, img->height);
@@ -197,8 +196,9 @@ bool	print_one_vertical_line(t_mlxvars *var,
 		pixel = mlx_get_pixel(img, wall.percentage * img->width,
 				ceil(((double)i / (double)h) * img->height));
 		// printf("pixel : %d ceil : %f x : %d\n", pixel, ceil(((double)i / (double)DEF_WINDOW_SIZE_H) * h + starth), vertical_count);
-		mlx_draw_pixel(var->canvas, vertical_count,
-			ceil(((double)i / (double)DEF_WINDOW_SIZE_H) * h + starth), pixel);
+		mlx_draw_pixel(var->canvas, x_count,
+			// ceil(((double)i / (double)DEF_WINDOW_SIZE_H) * h) + starth, pixel);
+			ceil(starth + i), pixel);
 		i++;
 	}
 	return (true);

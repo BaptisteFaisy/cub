@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/08 22:04:26 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/09 15:05:23 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@
 # define DEF_KEY_RIGHT 0xFF53
 # define DEF_X11_EVENT_DESTROY_NOTIFY 17
 
-# define DEF_DISTANCE_COEFF 4
+# define DEF_DISTANCE_COEFF 20
 # define DEF_PLAYER_MOVE_SPD 0.06
 // # define DEF_PLAYER_ROTATE_SPD 0.03
 # define DEF_PLAYER_ROTATE_SPD 0.5
-# define DEF_FOV_COEFF 0.0001
+# define DEF_FOV_COEFF 0.001
 
 int				verifie_cub(const char *string);
 int				check_input(char **tab);
