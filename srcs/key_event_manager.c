@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_event_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 20:23:51 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/22 16:57:17 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/08 18:45:00 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ static void	move_character(t_mlxvars *vars, int key)
 {
 	if (key == DEF_KEY_W)
 	{
-		vars->player->pos.y += sin(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
-		vars->player->pos.x += cos(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
+		vars->player->pos.y -= sin(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
+		vars->player->pos.x -= cos(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
 	}
 	else if (key == DEF_KEY_S)
 	{
-		vars->player->pos.y -= sin(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
-		vars->player->pos.x -= cos(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
+		vars->player->pos.y += sin(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
+		vars->player->pos.x += cos(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
 	}
 	else if (key == DEF_KEY_A) // TODO : faut changer la direction qui est inverse
 	{
