@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_one_vertical_line.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/09 15:03:54 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/09 20:08:03 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,19 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 	origin_pos = ray.pos;
 	while (true)
 	{
-		printf("diff value : x %f y %f\n", diff_abs_exceed_angle(fabs(ray.pos.x), true, ray.angle), diff_abs_exceed_angle(fabs(ray.pos.y), false, ray.angle));
+		// printf("diff value : x %f y %f\n", diff_abs_exceed_angle(fabs(ray.pos.x), true, ray.angle), diff_abs_exceed_angle(fabs(ray.pos.y), false, ray.angle));
 		if (diff_abs_exceed_angle(fabs(ray.pos.x), true, ray.angle)
 			> diff_abs_exceed_angle(fabs(ray.pos.y), false, ray.angle))
 		{
+			// getchar();
 			printf("IN Y : ");
 			printf("__ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
 			diff = ray.pos.x;
 			ray.pos.x = wall_get_ray_pos_y(ray.pos.x, ray.angle);
-			diff = ray.pos.x - diff;
-			ray.pos.y += wall_get_correspondant_pos_y(diff, ray.angle);// ca marche pas du coup
-			printf("ray x : %f ray y : %f angle : %f diff_abs_exceed : %f tan : %f\n", ray.pos.x, ray.pos.y, ray.angle, diff_abs_exceed(fabs(ray.pos.x)), tan(ray.angle));
-			if (var->map_data->map[(int)floorexp(ray.pos.y)][(int)ray.pos.x] == '1')
+			diff = fabs(diff - ray.pos.x);
+			ray.pos.y += wall_get_correspondant_pos_y(diff, ray.angle);
+			printf("ray x : %f ray y : %f angle : %f diff %f fuck you %c\n", ray.pos.x, ray.pos.y, ray.angle, diff, var->map_data->map[(int)ray.pos.y][(int)ray.pos.x]);
+			if (var->map_data->map[(int)ray.pos.y][(int)ray.pos.x] == '1')
 			{
 				info.direction = get_direction_of_wall(ray.angle, false);
 				info.distance = get_distance_of_wall(ray, origin_pos);
@@ -57,11 +58,18 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 			printf("IN X : ");
 			printf("__ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
 			diff = ray.pos.y;
-			ray.pos.y = wall_get_ray_pos_x(ray.pos.y, ray.angle);
-			diff = ray.pos.y - diff;
-			ray.pos.x += wall_get_correspondant_pos_x(diff, ray.angle); // ca marche po
-			printf("ray x : %f ray y : %f angle : %f diff_abs_exceed: %f tan : %f\n", ray.pos.x, ray.pos.y, ray.angle, diff_abs_exceed(fabs(ray.pos.y)), tan(ray.angle));
-			if (var->map_data->map[(int)ray.pos.y][(int)floorexp(ray.pos.x)] == '1')
+			ray.pos.y = wall_get_ray_pos_x(ray.pos.y, ray.angle); // ca marche po
+			diff = fabs(diff - ray.pos.y);
+			ray.pos.x += wall_get_correspondant_pos_x(diff, ray.angle);
+			if (ray.pos.x > 5)
+				getchar();
+			printf("(int)floorexp(ray.pos.x)%d\n", (int)floorexp(ray.pos.x));
+			printf("ray x : %f ray y : %f angle : %f diff %f\n", ray.pos.x, ray.pos.y, ray.angle, diff);
+			// if (!fcmp(ray.angle, M_PI / 2))
+			// {
+			// 	getchar();
+			// }
+			if (var->map_data->map[(int)ray.pos.y][(int)ray.pos.x] == '1')
 			{
 				info.direction = get_direction_of_wall(ray.angle, true);
 				info.distance = get_distance_of_wall(ray, origin_pos);

@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/09 15:05:23 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/09 20:13:25 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 
 # define DEF_DISTANCE_COEFF 20
 # define DEF_PLAYER_MOVE_SPD 0.06
-// # define DEF_PLAYER_ROTATE_SPD 0.03
+// # define DEF_PLAYER_ROTATE_SPD 0.25
 # define DEF_PLAYER_ROTATE_SPD 0.5
 # define DEF_FOV_COEFF 0.001
 
@@ -61,8 +61,8 @@ void			draw_screen(t_mlxvars *vars);
 void			img_lst_clear(t_list **lst, t_mlxvars *vars);
 bool			stock_image(t_mlxvars *vars);
 bool			parse_user_pos(t_mlxvars *vars);
-t_data			distance_mur_positif(double angle, t_posd pos, char **map,
-					double angle_base);
+// t_data			distance_mur_positif(double angle, t_posd pos, char **map,
+// 					double angle_base);
 void			fov_main(t_mlxvars *var);
 t_direction		transform_direction_from_char(char c);
 double			ceilexp(double v);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 19:52:17 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/06 17:22:39 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/09 17:15:38 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,12 @@ double	floorexp_exceed(double v)
 	double	tmp;
 
 	tmp = floorexp(v);
+	// printf("abcd %f\n", tmp);
+	// ca marche pas
 	if (tmp == v)
 	{
+		if (v == 0)
+			return (v);
 		if (v < 0)
 		{
 			return (v + 1);
@@ -87,5 +91,6 @@ double	diff_abs_exceed(double v)
 
 bool	fcmp(double a, double b)
 {
+	// printf("a = %f b= %f\n", a, b);
 	return (fabs(a - b) < (0.000001 * fabs(a + b)));
 }
