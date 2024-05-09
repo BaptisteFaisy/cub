@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:35:16 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/09 20:12:52 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/09 20:54:31 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ double	wall_get_correspondant_pos_x(double v, double angle)
 	{
 		return (-fabs((securized_tan(angle)) / v));
 	}
-	return ((securized_tan(angle) / v));
+	return ((fabs(securized_tan(angle)) / v));
 }
 
 double	wall_get_correspondant_pos_y(double v, double angle)
@@ -68,5 +68,5 @@ double	wall_get_correspondant_pos_y(double v, double angle)
 	{
 		return (-fabs((securized_tan(angle)) * v));
 	}
-	return ((securized_tan(angle) * v));
+	return ((fabs(securized_tan(angle)) * v));
 }
