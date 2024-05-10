@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:47:43 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/09 19:32:17 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/10 18:17:53 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,52 @@
 // 	return (ceil(v) - v);
 // }
 
-double	diff_abs_exceed_angle(double v, bool is_x, double angle)
+// double	diff_abs_exceed_angle(double v, bool is_x, double angle)
+// {
+// 	if (!is_x)
+// 	{
+// 		if (angle >= 0  && angle < M_PI)
+// 			return (1 - v - floor(v));
+// 		return (v - floor(v));
+// 	}
+// 	else
+// 	{
+// 		if (angle >= M_PI / 2 && angle < 3 * M_PI / 2)
+// 			return (1 - v - floor(v));
+// 		return (v - floor(v));
+// 	}
+// }
+
+double	positive_dist(double v)
 {
-	if (!is_x)
+	return (v - floor(v));
+}
+
+double	negative_dist(double v)
+{
+	return (1 - v - floor(v));
+}
+
+
+double	diff_abs_exceed_angle(double v, bool is_x, double angle, t_posd pos)
+{
+	t_posd	dest;
+
+	if (is_x)
 	{
 		if (angle >= 0  && angle < M_PI)
-			return (1 - v - floor(v));
-		return (v - floor(v));
+			dest.x = negative_dist(v);
+		else
+			dest.x = positive_dist(v);
+		dest.y = tan(angle) * dest.x;
 	}
 	else
 	{
 		if (angle >= M_PI / 2 && angle < 3 * M_PI / 2)
-			return (1 - v - floor(v));
-		return (v - floor(v));
+			dest.y = negative_dist(v);
+		else
+			dest.y = positive_dist(v);			
+		dest.x = tan(angle) / dest.y;
 	}
+	return (pow(pos.y - dest.y, 2) + pow(pos.x - dest.x, 2));
 }

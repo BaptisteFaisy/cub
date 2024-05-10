@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/09 20:54:00 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/10 18:18:14 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 
 # define DEF_DISTANCE_COEFF 20
 # define DEF_PLAYER_MOVE_SPD 0.06
-// # define DEF_PLAYER_ROTATE_SPD 0.05
+// # define DEF_PLAYER_ROTATE_SPD 0.25
 # define DEF_PLAYER_ROTATE_SPD 0.5
 # define DEF_FOV_COEFF 0.001
 
@@ -76,9 +76,12 @@ double			floorexp(double v);
 double			floorexp_exceed(double v);
 double			wall_get_ray_pos_x(double v, double angle);
 double			wall_get_ray_pos_y(double v, double angle);
-double			diff_abs_exceed_angle(double v, bool is_x, double angle);
+double			diff_abs_exceed_angle(double v, bool is_x, double angle, t_posd pos);
 double			wall_get_correspondant_pos_x(double v, double angle);
 double			wall_get_correspondant_pos_y(double v, double angle);
 bool			fcmp(double v1, double v2);
+double			positive_dist(double v);
+double			negative_dist(double v);
+
 
 #endif

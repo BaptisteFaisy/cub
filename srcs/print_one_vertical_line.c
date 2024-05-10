@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/09 20:58:32 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/10 18:22:47 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,24 @@ bool	print_one_vertical_line(t_mlxvars *var,
 // angle_base : dir du player
 // distance_mur_positif : retourne une struct contenant tout
 
+int	foc(bool is_x, double angle, double v)
+{
+	if (is_x)
+	{
+		if (angle >= M_PI / 2 && angle < 3 * M_PI / 2)
+			return ((int)floor(v));
+		else
+			return ((int)ceil(v));
+	}
+	else
+	{
+		if (angle >= 0 && angle < M_PI)
+			return ((int)floor(v));
+		else
+			return ((int)ceil(v));
+	}
+}
+
 // TODO : check if it exceeds map limit
 // c'est la merde ici
 static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
@@ -34,18 +52,19 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 	while (true)
 	{
 		// printf("diff value : x %f y %f\n", diff_abs_exceed_angle(fabs(ray.pos.x), true, ray.angle), diff_abs_exceed_angle(fabs(ray.pos.y), false, ray.angle));
-		if (diff_abs_exceed_angle(fabs(ray.pos.x), true, ray.angle)
-			> diff_abs_exceed_angle(fabs(ray.pos.y), false, ray.angle))
+		if (diff_abs_exceed_angle(fabs(ray.pos.x), true, ray.angle, var->player->pos)
+			< diff_abs_exceed_angle(fabs(ray.pos.y), false, ray.angle, var->player->pos))
 		{
 			// getchar();
-			printf("IN Y : ");
+			printf("IN X : ");
 			printf("__ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
 			diff = ray.pos.x;
 			ray.pos.x = wall_get_ray_pos_y(ray.pos.x, ray.angle);
 			diff = fabs(diff - ray.pos.x);
 			ray.pos.y += wall_get_correspondant_pos_y(diff, ray.angle);
-			printf("ray x : %f ray y : %f angle : %f diff %f fuck you %c\n", ray.pos.x, ray.pos.y, ray.angle, diff, var->map_data->map[(int)ray.pos.y][(int)ray.pos.x]);
-			if (var->map_data->map[(int)ray.pos.y][(int)ray.pos.x] == '1')
+			printf("dd -> ray x : %f ray y : %f angle : %f diff %f\n", ray.pos.x, ray.pos.y, ray.angle, diff);
+			printf("fuck you %c\n", var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)]);
+			if (var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)] == '1')
 			{
 				info.direction = get_direction_of_wall(ray.angle, false);
 				info.distance = get_distance_of_wall(ray, origin_pos);
@@ -55,7 +74,7 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 		}
 		else
 		{
-			printf("IN X : ");
+			printf("IN Y : ");
 			printf("__ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
 			diff = ray.pos.y;
 			ray.pos.y = wall_get_ray_pos_x(ray.pos.y, ray.angle); // ca marche po
@@ -64,16 +83,13 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 			if (ray.pos.x > 5)
 				getchar();
 			printf("(int)floorexp(ray.pos.x)%d\n", (int)floorexp(ray.pos.x));
-			printf("ray x : %f ray y : %f angle : %f diff %f\n", ray.pos.x, ray.pos.y, ray.angle, diff);
-			// if (!fcmp(ray.angle, M_PI / 2))
-			// {
-			// 	getchar();
-			// }
-			if (var->map_data->map[(int)ray.pos.y][(int)ray.pos.x] == '1')
+			printf("dd -> ray x : %f ray y : %f angle : %f diff %f\n", ray.pos.x, ray.pos.y, ray.angle, diff);
+			printf("fuck you %c\n", var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)]);
+			if (var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)] == '1')
 			{
-				info.direction = get_direction_of_wall(ray.angle, true);
+				info.direction = get_direction_of_wall(ray.angle, false);
 				info.distance = get_distance_of_wall(ray, origin_pos);
-				info.percentage = get_percentage_of_wall(ray.pos.x);
+				info.percentage = get_percentage_of_wall(ray.pos.y);
 				return (info);
 			}
 		}
