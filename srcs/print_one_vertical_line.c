@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/11 15:26:11 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/12 01:35:14 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,8 +138,7 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 				< diff_abs_exceed_angle(fabs(ray.pos.y), false, ray.angle, var->player->pos)))
 		{
 			is_x_force = false;
-			printf("IN X : ");
-			printf("__ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
+			printf("IN X : __ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
 			diff = ray.pos.x;
 			origin_value = diff;
 			ray.pos.x = wall_get_ray_pos_y(ray.pos.x, ray.angle);
@@ -166,8 +165,7 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 		else
 		{
 			is_y_force = false;
-			printf("IN Y : ");
-			printf("__ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
+			printf("IN Y : __ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
 			diff = ray.pos.y;
 			origin_value = diff;
 			ray.pos.y = wall_get_ray_pos_x(ray.pos.y, ray.angle); // ca marche po
