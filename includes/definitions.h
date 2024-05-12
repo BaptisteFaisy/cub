@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/11 15:30:21 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/12 23:26:21 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@
 # define DEF_KEY_RIGHT 0xFF53
 # define DEF_X11_EVENT_DESTROY_NOTIFY 17
 
-# define DEF_DISTANCE_COEFF 0.01
+# define DEF_DISTANCE_COEFF 0.001
 # define DEF_PLAYER_MOVE_SPD 0.06
-# define DEF_PLAYER_ROTATE_SPD 0.1
+# define DEF_PLAYER_ROTATE_SPD 0.25
 // # define DEF_PLAYER_ROTATE_SPD 0.5
 # define DEF_FOV_COEFF 0.001
 

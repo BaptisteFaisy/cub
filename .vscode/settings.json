@@ -10,6 +10,7 @@
 		"fcntl.h": "c",
 		"manager.h": "c",
 		"stdlib.h": "c",
-		"cmath": "c"
+		"cmath": "c",
+		"cstdlib": "c"
 	}
 }
