@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/12 01:35:14 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/14 21:20:08 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,15 +134,15 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 	while (true)
 	{
 		// printf("diff value : x %f y %f\n", diff_abs_exceed_angle(fabs(ray.pos.x), true, ray.angle), diff_abs_exceed_angle(fabs(ray.pos.y), false, ray.angle));
-		if (!is_y_force && (is_x_force || diff_abs_exceed_angle(fabs(ray.pos.x), true, ray.angle, var->player->pos)
-				< diff_abs_exceed_angle(fabs(ray.pos.y), false, ray.angle, var->player->pos)))
+		if (!is_y_force && (is_x_force || diff_abs_exceed_angle(ray.pos.x, true, ray.angle, var->player->pos)
+				< diff_abs_exceed_angle(ray.pos.y, false, ray.angle, var->player->pos)))
 		{
 			is_x_force = false;
 			printf("IN X : __ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
 			diff = ray.pos.x;
-			origin_value = diff;
+			origin_value = ray.pos.x;
 			ray.pos.x = wall_get_ray_pos_y(ray.pos.x, ray.angle);
-			diff = ray.pos.x - diff;
+			diff -= ray.pos.x;
 			th = wall_get_correspondant_pos_y(diff, ray.angle);
 			if (!check_crash_wall(var, ray, ray.pos.y + th, false))
 			{
@@ -153,7 +153,7 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 			}
 			ray.pos.y += th;
 			printf("dd -> ray x : %f ray y : %f angle : %f diff %f\n", ray.pos.x, ray.pos.y, ray.angle, diff);
-			printf("fuck you %c\n", var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)]);
+			printf("RESULT %c\n\n", var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)]);
 			if (var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)] == '1')
 			{
 				info.direction = get_direction_of_wall(ray.angle, false);
@@ -167,9 +167,9 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 			is_y_force = false;
 			printf("IN Y : __ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
 			diff = ray.pos.y;
-			origin_value = diff;
+			origin_value = ray.pos.y;
 			ray.pos.y = wall_get_ray_pos_x(ray.pos.y, ray.angle); // ca marche po
-			diff = ray.pos.y - diff;
+			diff -= ray.pos.y;
 			th = wall_get_correspondant_pos_x(diff, ray.angle);
 			if (!check_crash_wall(var, ray, ray.pos.x + th, true))
 			{
@@ -181,9 +181,8 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 			ray.pos.x += th;
 			// if (ray.pos.x > 5)
 			// 	getchar();
-			// printf("(int)floorexp(ray.pos.x)%d\n", (int)floorexp(ray.pos.x));
 			printf("dd -> ray x : %f ray y : %f angle : %f diff %f\n", ray.pos.x, ray.pos.y, ray.angle, diff);
-			printf("fuck you %c\n", var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)]);
+			printf("RESULT %c\n\n", var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)]);
 			if (var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)] == '1')
 			{
 				info.direction = get_direction_of_wall(ray.angle, true);

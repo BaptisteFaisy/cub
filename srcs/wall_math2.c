@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall_math2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:47:43 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/10 18:17:53 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/14 20:43:14 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ double	negative_dist(double v)
 	return (1 - v - floor(v));
 }
 
-
 double	diff_abs_exceed_angle(double v, bool is_x, double angle, t_posd pos)
 {
 	t_posd	dest;
@@ -74,8 +73,8 @@ double	diff_abs_exceed_angle(double v, bool is_x, double angle, t_posd pos)
 		if (angle >= M_PI / 2 && angle < 3 * M_PI / 2)
 			dest.y = negative_dist(v);
 		else
-			dest.y = positive_dist(v);			
-		dest.x = tan(angle) / dest.y;
+			dest.y = positive_dist(v);
+		dest.x = dest.y / tan(angle);
 	}
 	return (pow(pos.y - dest.y, 2) + pow(pos.x - dest.x, 2));
 }

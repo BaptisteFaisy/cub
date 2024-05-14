@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:35:16 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/12 23:44:17 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/14 19:38:21 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ double	wall_get_correspondant_pos_x(double v, double angle)
 	// return (fabs(v / securized_tan(angle + M_PI)));
 	if (angle >= M_PI / 2 && angle < 3 * M_PI / 2)
 	{
-		return (-fabs((v / tan(angle + M_PI))));
+		return (-fabs((v / tan(angle))));
 	}
-	return (fabs(v / tan(angle + M_PI)));
+	return (fabs(v / tan(angle)));
 }
 
 double	wall_get_correspondant_pos_y(double v, double angle)
