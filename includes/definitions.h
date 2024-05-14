@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   definitions.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/12 23:26:21 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/14 21:26:16 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define DEF_KEY_LEFT 0xFF51
 # define DEF_KEY_RIGHT 0xFF53
 # define DEF_X11_EVENT_DESTROY_NOTIFY 17
-
+# define ROT 0.2
 # define DEF_DISTANCE_COEFF 0.001
 # define DEF_PLAYER_MOVE_SPD 0.06
 # define DEF_PLAYER_ROTATE_SPD 0.25
@@ -82,6 +82,8 @@ double			wall_get_correspondant_pos_y(double v, double angle);
 bool			fcmp(double v1, double v2);
 double			positive_dist(double v);
 double			negative_dist(double v);
+void			set_dir(t_mlxvars *cub);
+void			find_color(t_mlxvars *cub);
 
 
 #endif

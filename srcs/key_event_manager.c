@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_event_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 20:23:51 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/12 01:33:49 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/14 19:29:54 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,31 @@ static void	move_character(t_mlxvars *vars, int key)
 		vars->player->pos.x += sin(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
 	}
 	else if (key == DEF_KEY_LEFT)
-		vars->player->angle += DEF_PLAYER_ROTATE_SPD * M_PI;
+	{
+		vars->ray.old_dir_x = vars->ray.dir_x;
+		vars->ray.dir_x = vars->ray.dir_x * cos(ROT)
+			- vars->ray.dir_y * sin(ROT);
+		vars->ray.dir_y = vars->ray.old_dir_x * sin(ROT)
+			+ vars->ray.dir_y * cos(ROT);
+		vars->ray.old_plane_x = vars->ray.plane_x;
+		vars->ray.plane_x = vars->ray.plane_x * cos(ROT)
+			- vars->ray.plane_y * sin(ROT);
+		vars->ray.plane_y = vars->ray.old_plane_x * sin(ROT)
+			+ vars->ray.plane_y * cos(ROT);
+	}
 	else if (key == DEF_KEY_RIGHT)
-		vars->player->angle -= DEF_PLAYER_ROTATE_SPD * M_PI;
-	vars->player->angle = radian_value_normalize(vars->player->angle);
+	{
+		vars->ray.old_dir_x = vars->ray.dir_x;
+		vars->ray.dir_x = vars->ray.dir_x * cos(-ROT)
+			- vars->ray.dir_y * sin(-ROT);
+		vars->ray.dir_y = vars->ray.old_dir_x * sin(-ROT)
+			+ vars->ray.dir_y * cos(-ROT);
+		vars->ray.old_plane_x = vars->ray.plane_x;
+		vars->ray.plane_x = vars->ray.plane_x * cos(-ROT)
+			- vars->ray.plane_y * sin(-ROT);
+		vars->ray.plane_y = vars->ray.old_plane_x * sin(-ROT)
+			+ vars->ray.plane_y * cos(-ROT);
+	}
 }
 
 int	key_event_manager(int key, t_mlxvars *p)

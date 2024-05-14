@@ -11,6 +11,7 @@
 		"manager.h": "c",
 		"stdlib.h": "c",
 		"cmath": "c",
-		"cstdlib": "c"
+		"cstdlib": "c",
+		"iterator": "c"
 	}
 }

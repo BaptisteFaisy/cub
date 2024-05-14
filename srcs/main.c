@@ -6,11 +6,44 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:32:47 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/09 20:03:20 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/14 19:35:15 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+
+void	set_dir(t_mlxvars *cub)
+{
+	if (cub->pos.orientation == 'W')
+	{
+		cub->ray.dir_x = 0;
+		cub->ray.dir_y = -1;
+		cub->ray.plane_x = -0.66;
+		cub->ray.plane_y = 0;
+	}
+	if (cub->pos.orientation == 'S')
+	{
+		cub->ray.dir_x = 1;
+		cub->ray.dir_y = 0;
+		cub->ray.plane_x = 0;
+		cub->ray.plane_y = -0.66;
+	}
+	if (cub->pos.orientation == 'N')
+	{
+		cub->ray.dir_x = -1;
+		cub->ray.dir_y = 0;
+		cub->ray.plane_x = 0;
+		cub->ray.plane_y = 0.66;
+	}
+	if (cub->pos.orientation == 'E')
+	{
+		cub->ray.dir_x = 0;
+		cub->ray.dir_y = 1;
+		cub->ray.plane_x = 0.66;
+		cub->ray.plane_y = 0;
+	}
+}
 
 int	main(int argc, char *argv[])
 {

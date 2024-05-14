@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_user_pos.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 14:38:52 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/17 19:10:36 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/14 20:58:32 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,28 @@ static bool	search_player_pos(int x, int y, char **map)
 	return (false);
 }
 
-static double	get_user_angle(char c)
+static double	get_user_angle(char c, t_mlxvars *cub)
 {
 	if (c == 'N')
+	{
+		cub->pos.orientation = c;
 		return (M_PI / 2);
+	}
 	if (c == 'S')
+	{
+		cub->pos.orientation = c;
 		return ((M_PI * 3) / 2);
+	}
 	if (c == 'E')
+	{
+		cub->pos.orientation = c;
 		return (0);
+	}
 	if (c == 'W')
+	{
+		cub->pos.orientation = c;
 		return (M_PI);
+	}
 	return (M_PI / 2);
 }
 
@@ -58,6 +70,6 @@ bool	parse_user_pos(t_mlxvars *vars)
 	y--;
 	vars->player->pos.x = x;
 	vars->player->pos.y = y;
-	vars->player->angle = get_user_angle(vars->map_data->map[y][x]);
+	vars->player->angle = get_user_angle(vars->map_data->map[y][x], vars);
 	return (true);
 }

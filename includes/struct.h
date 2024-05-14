@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:19:50 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/26 20:52:56 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/14 21:24:21 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,18 @@ typedef struct s_pos
 
 typedef struct s_posd
 {
+	char			orientation;
 	double	x;
 	double	y;
 }	t_posd;
+
+typedef enum e_direction
+{
+	NORTH = 0,
+	SOUTH = 1,
+	WEST = 2,
+	EAST = 3
+}	t_direction;
 
 typedef struct s_gamedat
 {
@@ -81,6 +90,76 @@ typedef struct s_player
  * @param map_data map data - must be free'd
  * @param player player info - must be free'd
  */
+
+typedef struct s_ray
+{
+	double			dir_x;
+	double			dir_y;
+	double			plane_x;
+	double			plane_y;
+	double			time;
+	double			oldtime;
+	double			camera_x;
+	double			width_screen;
+	double			ray_dir_x;
+	double			ray_dir_y;
+	int				map_x;
+	int				map_y;
+	double			side_dist_x;
+	double			side_dist_y;
+	double			delta_dist_x;
+	double			delta_dist_y;
+	double			perp_wall_dist;
+	int				step_x;
+	int				step_y;
+	int				hit;
+	int				side;
+	int				line_height;
+	int				draw_start;
+	int				draw_end;
+	double			move_speed;
+	double			rot_speed;
+	double			old_dir_x;
+	double			old_plane_x;
+	double			frame_time;
+	int				color;
+	int				tex_y;
+	double			tot_dist;
+	int				lh;
+	double			step;
+	char			*picked_img;
+}					t_ray;
+
+typedef struct s_img
+{
+	void			*north;
+	void			*south;
+	void			*west;
+	void			*east;
+	char			**map;
+	char			*north_texture;
+	char			*south_texture;
+	char			*west_texture;
+	char			*east_texture;
+	char			*floor_color;
+	char			*sky_color;
+	int				width;
+	int				height;
+	int				size_map;
+	int				rgb_floor[3];
+	int				rgb_sky[3];
+	int				endian;
+	void			*img_floor;
+	void			*img_sky;
+	int				pixel_bits;
+	int				line_bytes;
+	char			*buffer;
+	int				pixel;
+	int				ray_bpp;
+	int				ray_lb;
+	int				ray_end;
+}					t_img;
+
 typedef struct s_mlxvars
 {
 	void		*mlx;
@@ -90,15 +169,10 @@ typedef struct s_mlxvars
 	char		*map_filename;
 	t_map_data	*map_data;
 	t_player	*player;
+	t_ray		ray;
+	t_posd		pos;
+	t_img		img;
 }	t_mlxvars;
-
-typedef enum e_direction
-{
-	NORTH = 0,
-	SOUTH = 1,
-	WEST = 2,
-	EAST = 3
-}	t_direction;
 
 typedef struct s_data
 {
@@ -115,17 +189,7 @@ typedef struct s_rgb
 	int	b;
 }	t_rgb;
 
-typedef struct s_ray
-{
-	t_posd	pos;
-	float	angle;
-}	t_ray;
 
-typedef struct s_wall_info {
-	float distance;
-	float percentage;
-	t_direction direction;
-}	t_wall_info;
 
 // INITIALISATIONS
 
