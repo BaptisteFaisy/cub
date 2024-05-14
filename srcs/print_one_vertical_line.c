@@ -22,23 +22,23 @@ bool	print_one_vertical_line(t_mlxvars *var,
 // angle_base : dir du player
 // distance_mur_positif : retourne une struct contenant tout
 
-int	foc(bool is_x, double angle, double v)
-{
-	if (is_x)
-	{
-		if (angle >= M_PI / 2 && angle < 3 * M_PI / 2)
-			return ((int)floor(v));
-		else
-			return ((int)ceil(v));
-	}
-	else
-	{
-		if (angle >= 0 && angle < M_PI)
-			return ((int)floor(v));
-		else
-			return ((int)ceil(v));
-	}
-}
+// int	foc(bool is_x, double angle, double v)
+// {
+// 	if (is_x)
+// 	{
+// 		if (angle >= M_PI / 2 && angle < 3 * M_PI / 2)
+// 			return ((int)floor(v));
+// 		else
+// 			return ((int)ceil(v));
+// 	}
+// 	else
+// 	{
+// 		if (angle >= 0 && angle < M_PI)
+// 			return ((int)floor(v));
+// 		else
+// 			return ((int)ceil(v));
+// 	}
+// }
 
 bool	get_is_negative(double angle, bool is_x)
 {
@@ -223,9 +223,8 @@ void	fov_main(t_mlxvars *var)
 	{
 		ray = get_ray((int)iter_count, var);
 		printf("> ray x : %f ray y : %f angle : %f\n", ray.pos.x, ray.pos.y, ray.angle);
-		wall = get_wall_info(ray, var);
 		printf("wall distance: %f percentage : %f direction : %d\n", wall.distance, wall.percentage, (int)wall.direction);
-		// getchar();
+		
 		print_one_vertical_line(var, iter_count, wall);
 		iter_count++;
 	}
