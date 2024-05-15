@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 21:15:30 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/05/14 21:27:54 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/16 01:40:55 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	find_color(t_mlxvars *cub)
 	}
 	else
 	{
+		// printf("aaa%f\n", cub->ray.ray_dir_x);
 		if (cub->ray.ray_dir_x > 0)
 			cub->ray.color = set_pixel_color(0x7CFC00, cub, tex_pos, cub->ray.picked_img);
 		else
@@ -59,7 +60,10 @@ static int	where_x_on_texture(int face, t_mlxvars *cub, double wall_x)
 
 static int	get_pixel(t_mlxvars *cub, char *img, int x, int y)
 {
-	return (*(int *)(img + (y * cub->img.ray_lb + x * \
+	printf("%d %d %d %d\n", y, cub->img.ray_lb, x, cub->img.ray_bpp);
+	return (*(int *)
+	(img + 
+	(y * cub->img.ray_lb + x * 
 	(cub->img.ray_bpp / 8))));
 }
 
@@ -72,5 +76,7 @@ int set_pixel_color(int face, t_mlxvars *cub, double tex_pos, char *img)
 	wall_x = where_wall_hit(face, cub);
 	texture_x = where_x_on_texture(face, cub, wall_x);
 	color = (get_pixel(cub, img, texture_x, (int) tex_pos & (cub->img.width - 1)));
+	printf("aaaa%d\n", color);
+	getchar();
 	return (color);
 }

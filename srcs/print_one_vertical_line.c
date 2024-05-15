@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/14 21:26:51 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/16 00:51:54 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,6 +213,7 @@
 
 static void	*pick_img_source(t_mlxvars *cub)
 {
+	// printf("%d %f\n", cub->ray.side, cub->ray.ray_dir_x);
 	if (cub->ray.side == 0 && cub->ray.ray_dir_x < 0)
 		return (cub->img.south);
 	else if (cub->ray.side == 0 && cub->ray.ray_dir_x > 0)
@@ -220,7 +221,9 @@ static void	*pick_img_source(t_mlxvars *cub)
 	else if (cub->ray.side == 1 && cub->ray.ray_dir_y > 0)
 		return (cub->img.west);
 	else if (cub->ray.side == 1 && cub->ray.ray_dir_y < 0)
+	{
 		return (cub->img.east);
+	}
 	return (NULL);
 }
 
@@ -234,9 +237,10 @@ void	get_wall_dist(t_mlxvars *cub)
 	{
 		cub->ray.perp_wall_dist = cub->ray.side_dist_y - cub->ray.delta_dist_y;
 	}
-	printf("fucking distance : %f\n", cub->ray.perp_wall_dist);
+	// printf("fucking distance : %f\n", cub->ray.perp_wall_dist);
 	cub->ray.line_height = (int)(DEF_WINDOW_SIZE_H / cub->ray.perp_wall_dist);
 	cub->ray.draw_start = -cub->ray.line_height / 2 + DEF_WINDOW_SIZE_H / 2;
+	// printf("ray.draw_start%d\n", cub->ray.draw_start);
 	if (cub->ray.draw_start < 0)
 		cub->ray.draw_start = 0;
 	cub->ray.draw_end = cub->ray.line_height / 2 + DEF_WINDOW_SIZE_H / 2;
@@ -266,12 +270,14 @@ void	digital_differential_analysis(t_mlxvars *cub)
 		{
 			cub->ray.side_dist_x += cub->ray.delta_dist_x;
 			cub->ray.map_x += cub->ray.step_x;
+			// printf("cub->ray.map_x%d, cub->ray.map_y%d\n", cub->ray.map_x, cub->ray.map_y);
 			cub->ray.side = 0;
 		}
 		else
 		{
 			cub->ray.side_dist_y += cub->ray.delta_dist_y;
 			cub->ray.map_y += cub->ray.step_y;
+			// printf("cub->ray.map_x%d, cub->ray.map_y%d\n", cub->ray.map_x, cub->ray.map_y);
 			cub->ray.side = 1;
 		}
 		if (cub->map_data->map[cub->ray.map_x][cub->ray.map_y] == '1')
@@ -321,8 +327,8 @@ void	calculate_delta(t_mlxvars *cub)
 
 void	draw_line(int x, t_mlxvars *cub)
 {
-	cub->img.buffer = mlx_get_data_addr(cub->img.img_floor,
-			&cub->img.pixel_bits, &cub->img.line_bytes, &cub->img.endian);
+	// cub->img.buffer = mlx_get_data_addr(cub->img.img_floor,
+	// 		&cub->img.pixel_bits, &cub->img.line_bytes, &cub->img.endian);
 	cub->ray.lh = (int)(DEF_WINDOW_SIZE_H / cub->ray.tot_dist);
 	cub->ray.step = 1.0f * cub->img.width / cub->ray.lh;
 	cub->ray.picked_img = mlx_get_data_addr(pick_img_source(cub),
@@ -331,6 +337,7 @@ void	draw_line(int x, t_mlxvars *cub)
 	{
 		find_color(cub);
 		cub->img.pixel = (cub->ray.draw_start * cub->img.line_bytes) + (x * 4);
+		// printf("aaaa%s\n", cub->img.buffer);
 		if (cub->img.endian == 0)
 		{
 			cub->img.buffer[cub->img.pixel + 0] = (cub->ray.color) & 0xFF;
@@ -346,8 +353,8 @@ void	draw_line(int x, t_mlxvars *cub)
 void	fov_main(t_mlxvars *cub)
 {
 	unsigned int	iter_count;
-	cub->ray.dir_x = cub->player->pos.x;
-	cub->ray.dir_y = cub->player->pos.y;
+	// cub->ray.dir_x = cub->player->pos.x;
+	// cub->ray.dir_y = cub->player->pos.y;
 
 	iter_count = -1;
 	// printf("player angle deg : %f rad : %f\n", var->player->angle * 180 / M_PI, var->player->angle);
@@ -362,13 +369,17 @@ void	fov_main(t_mlxvars *cub)
 			* cub->ray.camera_x;
 		cub->ray.map_x = (int)cub->pos.y;
 		cub->ray.map_y = (int)cub->pos.x;
+		// printf("pos.x%f\n", cub->pos.x);
 		cub->ray.hit = 0;
 		calculate_delta(cub);
 		handle_step(cub);
 		digital_differential_analysis(cub);
 		get_wall_dist(cub);
+		draw_line(iter_count, cub);
 		// print_one_vertical_line(cub, iter_count, wall);
 	}
+	// mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->img.img_floor, 0,
+	// 	0);
 }
 
 

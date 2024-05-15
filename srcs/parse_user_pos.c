@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 14:38:52 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/14 20:58:32 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/15 20:53:35 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,10 @@ bool	parse_user_pos(t_mlxvars *vars)
 		return (false);
 	x--;
 	y--;
-	vars->player->pos.x = x;
-	vars->player->pos.y = y;
-	vars->player->angle = get_user_angle(vars->map_data->map[y][x], vars);
+	vars->player.pos.x = x;
+	vars->player.pos.y = y;
+	vars->pos.y = y;
+	vars->pos.x = x;
+	vars->player.angle = get_user_angle(vars->map_data->map[y][x], vars);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/14 19:44:47 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/15 21:57:43 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static bool	mlx_var_init_pipeline(t_mlxvars *vars)
 	if (!parse_user_pos(vars))
 		return (ft_printf("parse_user_pos : "), false);
 	set_dir(vars);
+	// printf("%fddddddddd\n", vars->ray.dir_x);
 	return (true);
 }
 

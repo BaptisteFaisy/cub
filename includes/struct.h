@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:19:50 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/14 21:24:21 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/15 20:51:50 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ typedef struct s_mlxvars
 	t_mlximage	*canvas;
 	char		*map_filename;
 	t_map_data	*map_data;
-	t_player	*player;
+	t_player	player;
 	t_ray		ray;
 	t_posd		pos;
 	t_img		img;
@@ -198,7 +198,7 @@ t_pos		get_init_pos_value(int x, int y);
 t_pos		*get_init_pos_ptr(void);
 t_pos		*get_init_pos_ptr_value(int x, int y);
 t_gamedat	get_init_gamedat(void);
-t_mlxvars	get_init_mlxvars(void);
+t_mlxvars	*get_init_mlxvars(t_mlxvars	*cub);
 t_player	*get_init_player_ptr(void);
 
 #endif
