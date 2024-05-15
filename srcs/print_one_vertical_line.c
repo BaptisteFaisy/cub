@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/16 01:22:33 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/16 01:46:14 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,13 +146,9 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 	is_y_force = false;
 	while (true)
 	{
-		// getchar();
 		(void)check_crash_wall;
-		// printf("diff value : x %f y %f\n", diff_abs_exceed_angle(fabs(ray.pos.x), true, ray.angle), diff_abs_exceed_angle(fabs(ray.pos.y), false, ray.angle));
 		if (!false && (false || diff_abs_exceed_angle(ray.pos.x, true, ray.angle)
 				<= diff_abs_exceed_angle(ray.pos.y, false, ray.angle)))
-		// if (!is_y_force && (is_x_force || diff_abs_exceed_angle(ray.pos.x, true, ray.angle)
-				// <= diff_abs_exceed_angle(ray.pos.y, false, ray.angle)))
 		{
 			is_x_force = false;
 			printf("IN X : __ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
@@ -162,13 +158,6 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 			diff -= ray.pos.x;
 			th = wall_get_correspondant_pos_y(diff, ray.angle);
 			printf("th ::: %f ray y : %f diff : %f\n", th, ray.pos.y, diff);
-			// if (!check_crash_wall(var, ray, th, false))
-			// {
-			// 	printf("th: %f CRASH WALL !!!!\n", th);
-			// 	is_y_force = true;
-			// 	ray.pos.x = origin_value;
-			// 	continue ;
-			// }
 			ray.pos.y += th;
 			printf("dd -> ray x : %f ray y : %f || y : %d x : %d || angle : %f diff %f\n", ray.pos.x, ray.pos.y, foc(false, ray.angle, ray.pos.y), foc(true, ray.angle, ray.pos.x), ray.angle, diff);
 			printf("RESULT %c\n\n", var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)]);
@@ -179,14 +168,6 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 				info.percentage = get_percentage_of_wall(ray.pos.y);
 				return (info);
 			}
-			// printf("RESULT %c\n\n", var->map_data->map[(int)floor(ray.pos.y)][(int)floor(ray.pos.x)]);
-			// if (var->map_data->map[(int)floor(ray.pos.y)][(int)floor(ray.pos.x)] == '1')
-			// {
-			// 	info.direction = get_direction_of_wall(ray.angle, false);
-			// 	info.distance = get_distance_of_wall(ray, origin_pos);
-			// 	info.percentage = get_percentage_of_wall(ray.pos.y);
-			// 	return (info);
-			// }
 		}
 		else
 		{
@@ -198,25 +179,8 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 			diff -= ray.pos.y;
 			th = wall_get_correspondant_pos_x(diff, ray.angle);
 			printf("th ::: %f ray x : %f diff : %f\n", th, ray.pos.x, diff);
-			// if (!check_crash_wall(var, ray, th, true))
-			// {
-			// 	printf("th: %f CRASH WALL !!!!\n", th);
-			// 	is_x_force = true;
-			// 	ray.pos.y = origin_value;
-			// 	continue ;
-			// }
 			ray.pos.x += th;
-			// if (ray.pos.x > 5)
-			// 	getchar();
 			printf("dd -> ray x : %f ray y : %f || y : %d x : %d || angle : %f diff %f\n", ray.pos.x, ray.pos.y, foc(false, ray.angle, ray.pos.y), foc(true, ray.angle, ray.pos.x), ray.angle, diff);
-			// printf("RESULT %c\n\n", var->map_data->map[(int)floor(ray.pos.y)][(int)floor(ray.pos.x)]);
-			// if (var->map_data->map[(int)floor(ray.pos.y)][(int)floor(ray.pos.x)] == '1')
-			// {
-			// 	info.direction = get_direction_of_wall(ray.angle, true);
-			// 	info.distance = get_distance_of_wall(ray, origin_pos);
-			// 	info.percentage = get_percentage_of_wall(ray.pos.x);
-			// 	return (info);
-			// }
 			printf("RESULT %c\n\n", var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)]);
 			if (var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)] == '1')
 			{
@@ -259,62 +223,16 @@ void	fov_main(t_mlxvars *var)
 		printf("> ray x : %f ray y : %f angle : %f\n", ray.pos.x, ray.pos.y, ray.angle);
 		wall = get_wall_info(ray, var);
 		printf("wall distance: %f percentage : %f direction : %d\n", wall.distance, wall.percentage, (int)wall.direction);
-		// getchar();
 		print_one_vertical_line(var, iter_count, wall);
 		iter_count++;
 	}
 }
-
-
-// t_data	fov_main(t_mlxvars *var)
-// {
-// 	double	angle;
-// 	double	dir_fov;
-// 	int		nbr_angle;
-// 	t_data	dat;
-
-// 	nbr_angle = 0;
-// 	dir_fov = 45 * M_PI / 180;
-// 	while (nbr_angle != DEF_WINDOW_SIZE_W)
-// 	{
-// 		angle = dir_fov - (nbr_angle * (0.046875 * M_PI / 180)) + var->player->angle;
-// 		dat = distance_mur_positif(angle, var->player->pos, var->map_data->map,
-// 				var->player->angle);
-// 		// printf("x.fi = %f, y.fin = %f", dat.final.x, dat.final.y);
-// 		printf("RESULTAT : %fs %c %f --- angle %f\n", dat.degre, dat.dir, dat.distance, angle);
-// 		if (dat.distance <= 0)
-// 		{
-// 			printf("Out of map\n");
-// 			exit (1);
-// 		}
-// 		if (print_one_vertical_line(var, dat.distance, nbr_angle,
-// 				transform_direction_from_char(dat.dir), 0.5) == false)
-// 			printf("Error print one vertical line\n");
-// 		// mlx_put_image_to_window(var->mlx, var->mlx_win, var->canvas, 0, 0);
-// 		nbr_angle++;
-// 	}
-// 	return (dat);
-// }
 
 // TODO : Test this function by modifying math equation
 static double	get_height_by_distance(double distance, int img_height)
 {
 	return ((((double)img_height * (double)DEF_WINDOW_SIZE_H) / distance));
 }
-
-// /**
-//  * @brief Get the x by angle object
-//  * 
-//  * @param angle radian, depending on the screen's direction
-//  * @return int 
-//  */
-// static int	get_x_by_angle(double angle)
-// {
-// 	int	dangle;
-
-// 	dangle = (int)ceil(angle * (M_PI / 180));
-// 	return (dangle / DEF_POV_ANGLE * DEF_WINDOW_SIZE_W);
-// }
 
 /**
  * @brief print one vertical line on the canvas while
