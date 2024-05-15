@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:47:43 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/14 20:43:14 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/16 01:14:23 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,33 +48,38 @@
 
 double	positive_dist(double v)
 {
-	return (v - floor(v));
+	if (ceil(v) == v)
+		return (1.0);
+	return (ceil(v) - v);
 }
 
 double	negative_dist(double v)
 {
-	return (1 - v - floor(v));
+	if (floor(v) == v)
+		return (1.0);
+	return (v - floor(v));
 }
 
-double	diff_abs_exceed_angle(double v, bool is_x, double angle, t_posd pos)
+double	diff_abs_exceed_angle(double v, bool is_x, double angle)
 {
 	t_posd	dest;
 
 	if (is_x)
 	{
-		if (angle >= 0  && angle < M_PI)
+		if (get_is_negative(angle, true))
 			dest.x = negative_dist(v);
 		else
 			dest.x = positive_dist(v);
-		dest.y = tan(angle) * dest.x;
+		dest.y = fabs(tan(angle)) * dest.x;
 	}
 	else
 	{
-		if (angle >= M_PI / 2 && angle < 3 * M_PI / 2)
+		if (get_is_negative(angle, false))
 			dest.y = negative_dist(v);
 		else
 			dest.y = positive_dist(v);
-		dest.x = dest.y / tan(angle);
+		dest.x = dest.y / fabs(tan(angle));
 	}
-	return (pow(pos.y - dest.y, 2) + pow(pos.x - dest.x, 2));
+	printf("diff_abs : x %f y %f is : %s | dist : %f\n", dest.x, dest.y, is_x ? "x" : "y", sqrt(pow(dest.y, 2) + pow(dest.x , 2)));
+	return (pow(dest.y, 2) + pow(dest.x, 2));
 }

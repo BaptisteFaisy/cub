@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/14 21:20:08 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/16 01:17:37 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ bool	get_is_negative(double angle, bool is_x)
 static bool	is_inside_map(char ch)
 {
 	printf("--> %c\n", ch);
-	// getchar();
 	if (ch == '1' || ch == 0)
 		return (false);
 	return (true);
@@ -60,56 +59,70 @@ static bool	is_inside_map(char ch)
 
 static bool	check_crash_wall(t_mlxvars *var, t_ray ray, double th, bool is_x)
 {
-	int	i;
-	int	v;
+	double	i;
+	double	v;
 
 	if (is_x)
 	{
-		i = foc(true, ray.angle, ray.pos.x);
-		v = foc(false, ray.angle, ray.pos.y);
-		printf("X i and v : %d %d th : %f is : %s\n", i, v, th, get_is_negative(ray.angle, true) ? "true" : "false");
-		// getchar();
+		i = ray.pos.x + th;
+		v = ray.pos.y + th * fabs(tan(ray.angle));
+		printf("X ray x: %f ray y : %f |||  i and v : %f %f th : %f is : %s\n", ray.pos.x, ray.pos.y, i, v, th, get_is_negative(ray.angle, true) ? "true" : "false");
+		if (v < 0 || i < 0)
+			return (false);
 		if (get_is_negative(ray.angle, true))
 		{
-			while (i > th)
+			while (i > ray.pos.x)
 			{
-				if (is_inside_map(var->map_data->map[v][i]) == false)
+				if (v < 0 || i < 0)
+					return (false);
+				if (is_inside_map(var->map_data->map[(int)floor(v)][(int)floor(i)]) == false)
 					return (false);
 				i -= 1.0;
+				v -= fabs(tan(ray.angle));
 			}
 		}
 		else
 		{
-			while (i < th)
+			while (i < ray.pos.x)
 			{
-				if (is_inside_map(var->map_data->map[v][i]) == false)
+				if (v < 0 || i < 0)
+					return (false);
+				if (is_inside_map(var->map_data->map[(int)floor(v)][(int)floor(i)]) == false)
 					return (false);
 				i += 1.0;
+				v += fabs(tan(ray.angle));
 			}
 		}
 	}
 	else
 	{
-		i = foc(false, ray.angle, ray.pos.y);
-		v = foc(true, ray.angle, ray.pos.x);
-		printf("Y i and v : %d %d th : %f is : %s\n", i, v, th, get_is_negative(ray.angle, false) ? "true" : "false");
-		// getchar();
+		i = ray.pos.y + th;
+		v = ray.pos.x + th / tan(ray.angle);
+		printf("X ray x: %f ray y : %f |||  i and v : %f %f th : %f is : %s\n", ray.pos.x, ray.pos.y, i, v, th, get_is_negative(ray.angle, false) ? "true" : "false");
+		if (v < 0 || i < 0)
+			return (false);
 		if (get_is_negative(ray.angle, false))
 		{
-			while (i > th)
+			while (i > ray.pos.y)
 			{
-				if (is_inside_map(var->map_data->map[i][v]) == false)
+				if (v < 0 || i < 0)
+					return (false);
+				if (is_inside_map(var->map_data->map[(int)floor(i)][(int)floor(v)]) == false)
 					return (false);
 				i -= 1.0;
+				v -= fabs(tan(ray.angle));
 			}
 		}
 		else
 		{
-			while (i < th)
+			while (i < ray.pos.y)
 			{
-				if (is_inside_map(var->map_data->map[i][v]) == false)
+				if (v < 0 || i < 0)
+					return (false);
+				if (is_inside_map(var->map_data->map[(int)floor(i)][(int)floor(v)]) == false)
 					return (false);
 				i += 1.0;
+				v += fabs(tan(ray.angle));
 			}
 		}
 	}
@@ -133,34 +146,47 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 	is_y_force = false;
 	while (true)
 	{
+		// getchar();
+		(void)check_crash_wall;
 		// printf("diff value : x %f y %f\n", diff_abs_exceed_angle(fabs(ray.pos.x), true, ray.angle), diff_abs_exceed_angle(fabs(ray.pos.y), false, ray.angle));
-		if (!is_y_force && (is_x_force || diff_abs_exceed_angle(ray.pos.x, true, ray.angle, var->player->pos)
-				< diff_abs_exceed_angle(ray.pos.y, false, ray.angle, var->player->pos)))
+		if (!false && (false || diff_abs_exceed_angle(ray.pos.x, true, ray.angle)
+				<= diff_abs_exceed_angle(ray.pos.y, false, ray.angle)))
+		// if (!is_y_force && (is_x_force || diff_abs_exceed_angle(ray.pos.x, true, ray.angle)
+				// <= diff_abs_exceed_angle(ray.pos.y, false, ray.angle)))
 		{
 			is_x_force = false;
 			printf("IN X : __ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
 			diff = ray.pos.x;
 			origin_value = ray.pos.x;
-			ray.pos.x = wall_get_ray_pos_y(ray.pos.x, ray.angle);
+			ray.pos.x = wall_get_ray_pos_x(ray.pos.x, ray.angle);
 			diff -= ray.pos.x;
 			th = wall_get_correspondant_pos_y(diff, ray.angle);
-			if (!check_crash_wall(var, ray, ray.pos.y + th, false))
-			{
-				printf("th: %f CRASH WALL !!!!\n", th);
-				is_y_force = true;
-				ray.pos.x = origin_value;
-				continue ;
-			}
+			printf("th ::: %f ray y : %f diff : %f\n", th, ray.pos.y, diff);
+			// if (!check_crash_wall(var, ray, th, false))
+			// {
+			// 	printf("th: %f CRASH WALL !!!!\n", th);
+			// 	is_y_force = true;
+			// 	ray.pos.x = origin_value;
+			// 	continue ;
+			// }
 			ray.pos.y += th;
-			printf("dd -> ray x : %f ray y : %f angle : %f diff %f\n", ray.pos.x, ray.pos.y, ray.angle, diff);
-			printf("RESULT %c\n\n", var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)]);
-			if (var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)] == '1')
+			printf("dd -> ray x : %f ray y : %f || y : %d x : %d || angle : %f diff %f\n", ray.pos.x, ray.pos.y, foc(false, ray.angle, ray.pos.y), foc(true, ray.angle, ray.pos.x), ray.angle, diff);
+			printf("RESULT %c\n\n", var->map_data->map[foc(false, ray.angle + M_PI, ray.pos.y)][foc(true, ray.angle + M_PI, ray.pos.x)]);
+			if (var->map_data->map[foc(false, ray.angle + M_PI, ray.pos.y)][foc(true, ray.angle + M_PI, ray.pos.x)] == '1')
 			{
 				info.direction = get_direction_of_wall(ray.angle, false);
 				info.distance = get_distance_of_wall(ray, origin_pos);
 				info.percentage = get_percentage_of_wall(ray.pos.y);
 				return (info);
 			}
+			// printf("RESULT %c\n\n", var->map_data->map[(int)floor(ray.pos.y)][(int)floor(ray.pos.x)]);
+			// if (var->map_data->map[(int)floor(ray.pos.y)][(int)floor(ray.pos.x)] == '1')
+			// {
+			// 	info.direction = get_direction_of_wall(ray.angle, false);
+			// 	info.distance = get_distance_of_wall(ray, origin_pos);
+			// 	info.percentage = get_percentage_of_wall(ray.pos.y);
+			// 	return (info);
+			// }
 		}
 		else
 		{
@@ -168,22 +194,31 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 			printf("IN Y : __ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
 			diff = ray.pos.y;
 			origin_value = ray.pos.y;
-			ray.pos.y = wall_get_ray_pos_x(ray.pos.y, ray.angle); // ca marche po
+			ray.pos.y = wall_get_ray_pos_y(ray.pos.y, ray.angle); // ca marche po
 			diff -= ray.pos.y;
 			th = wall_get_correspondant_pos_x(diff, ray.angle);
-			if (!check_crash_wall(var, ray, ray.pos.x + th, true))
-			{
-				printf("th: %f CRASH WALL !!!!\n", th);
-				is_x_force = true;
-				ray.pos.y = origin_value;
-				continue ;
-			}
+			printf("th ::: %f ray x : %f diff : %f\n", th, ray.pos.x, diff);
+			// if (!check_crash_wall(var, ray, th, true))
+			// {
+			// 	printf("th: %f CRASH WALL !!!!\n", th);
+			// 	is_x_force = true;
+			// 	ray.pos.y = origin_value;
+			// 	continue ;
+			// }
 			ray.pos.x += th;
 			// if (ray.pos.x > 5)
 			// 	getchar();
-			printf("dd -> ray x : %f ray y : %f angle : %f diff %f\n", ray.pos.x, ray.pos.y, ray.angle, diff);
-			printf("RESULT %c\n\n", var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)]);
-			if (var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)] == '1')
+			printf("dd -> ray x : %f ray y : %f || y : %d x : %d || angle : %f diff %f\n", ray.pos.x, ray.pos.y, foc(false, ray.angle, ray.pos.y), foc(true, ray.angle, ray.pos.x), ray.angle, diff);
+			// printf("RESULT %c\n\n", var->map_data->map[(int)floor(ray.pos.y)][(int)floor(ray.pos.x)]);
+			// if (var->map_data->map[(int)floor(ray.pos.y)][(int)floor(ray.pos.x)] == '1')
+			// {
+			// 	info.direction = get_direction_of_wall(ray.angle, true);
+			// 	info.distance = get_distance_of_wall(ray, origin_pos);
+			// 	info.percentage = get_percentage_of_wall(ray.pos.x);
+			// 	return (info);
+			// }
+			printf("RESULT %c\n\n", var->map_data->map[foc(false, ray.angle + M_PI, ray.pos.y)][foc(true, ray.angle + M_PI, ray.pos.x)]);
+			if (var->map_data->map[foc(false, ray.angle + M_PI, ray.pos.y)][foc(true, ray.angle + M_PI, ray.pos.x)] == '1')
 			{
 				info.direction = get_direction_of_wall(ray.angle, true);
 				info.distance = get_distance_of_wall(ray, origin_pos);
