@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/16 01:17:37 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/16 01:22:33 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ int	foc(bool is_x, double angle, double v)
 	if (is_x)
 	{
 		if (angle >= M_PI / 2 && angle < 3 * M_PI / 2)
-			return ((int)floor(v));
-		else
 			return ((int)ceil(v));
+		else
+			return ((int)floor(v));
 	}
 	else
 	{
 		if (angle >= 0 && angle < M_PI)
-			return ((int)floor(v));
-		else
 			return ((int)ceil(v));
+		else
+			return ((int)floor(v));
 	}
 }
 
@@ -171,8 +171,8 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 			// }
 			ray.pos.y += th;
 			printf("dd -> ray x : %f ray y : %f || y : %d x : %d || angle : %f diff %f\n", ray.pos.x, ray.pos.y, foc(false, ray.angle, ray.pos.y), foc(true, ray.angle, ray.pos.x), ray.angle, diff);
-			printf("RESULT %c\n\n", var->map_data->map[foc(false, ray.angle + M_PI, ray.pos.y)][foc(true, ray.angle + M_PI, ray.pos.x)]);
-			if (var->map_data->map[foc(false, ray.angle + M_PI, ray.pos.y)][foc(true, ray.angle + M_PI, ray.pos.x)] == '1')
+			printf("RESULT %c\n\n", var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)]);
+			if (var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)] == '1')
 			{
 				info.direction = get_direction_of_wall(ray.angle, false);
 				info.distance = get_distance_of_wall(ray, origin_pos);
@@ -217,8 +217,8 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 			// 	info.percentage = get_percentage_of_wall(ray.pos.x);
 			// 	return (info);
 			// }
-			printf("RESULT %c\n\n", var->map_data->map[foc(false, ray.angle + M_PI, ray.pos.y)][foc(true, ray.angle + M_PI, ray.pos.x)]);
-			if (var->map_data->map[foc(false, ray.angle + M_PI, ray.pos.y)][foc(true, ray.angle + M_PI, ray.pos.x)] == '1')
+			printf("RESULT %c\n\n", var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)]);
+			if (var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)] == '1')
 			{
 				info.direction = get_direction_of_wall(ray.angle, true);
 				info.distance = get_distance_of_wall(ray, origin_pos);
