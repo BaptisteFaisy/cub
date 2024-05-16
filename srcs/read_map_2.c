@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 20:12:38 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 00:43:27 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/17 00:44:24 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool	fill_map_data(t_map_data *dat, t_list *val)
 		return (false);
 	else
 		val = val->next;
-	dat->map = (char **)malloc(sizeof(char *) * (ft_lstsize(val) + 1));
+	dat->map = (char **)malloc(sizeof(char *) * (ft_lstsize(val) + 2));
 	if (!dat->map)
 		return (false);
 	i = 0;
@@ -56,6 +56,7 @@ bool	fill_map_data(t_map_data *dat, t_list *val)
 		i++;
 	}
 	dat->map[i] = ft_calloc(sizeof(char), len + 1);
+	dat->map[i + 1] = NULL;
 	return (true);
 }
 
