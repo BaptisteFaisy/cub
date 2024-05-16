@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 20:23:51 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/14 19:33:10 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/16 22:43:06 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,13 @@ double	radian_value_normalize(double var)
 
 static void	move_character(t_mlxvars *vars, int key)
 {
+	t_posd	pos;
+
+	pos.x = vars->player->pos.x;
+	pos.y = vars->player->pos.y;
 	if (key == DEF_KEY_W)
 	{
+		
 		vars->player->pos.y -= sin(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
 		vars->player->pos.x += cos(vars->player->angle) * DEF_PLAYER_MOVE_SPD;
 	}
