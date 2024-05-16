@@ -1,0 +1,3 @@
+TO DO :
+quand on va full droite ca rentre dans une boucle infini
+quand on essaye de se deplacer puis qu'on tourne ca segv
