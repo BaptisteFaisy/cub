@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/16 01:49:01 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/16 02:08:47 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,22 +258,23 @@ bool	print_one_vertical_line(t_mlxvars *var,
 	int			i;
 	int			pixel;
 
-	(void)starth;
 	img = get_image_by_direction(var, wall.direction);
 	if (!img)
 		return (false);
 	h = (int)ceil(get_height_by_distance(wall.distance, img->height) * DEF_DISTANCE_COEFF);
 	i = 0;
+	if (h > DEF_WINDOW_SIZE_H)
+		h = DEF_WINDOW_SIZE_H;
 	starth = (DEF_WINDOW_SIZE_H - h) / 2;
 	// printf("starth: %d h  %d distance %f imgh %d \n", starth, h, distance, img->height);
-	while (i < h)
+	while (i < h && (starth + i) < DEF_WINDOW_SIZE_H)
 	{
 		pixel = mlx_get_pixel(img, wall.percentage * img->width,
 				ceil(((double)i / (double)h) * img->height));
 		// printf("pixel : %d ceil : %f x : %d\n", pixel, ceil(((double)i / (double)DEF_WINDOW_SIZE_H) * h + starth), vertical_count);
 		mlx_draw_pixel(var->canvas, x_count,
 			// ceil(((double)i / (double)DEF_WINDOW_SIZE_H) * h) + starth, pixel);
-			ceil(starth + i), pixel);
+			(starth + i), pixel);
 		i++;
 	}
 	return (true);
