@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/16 22:35:49 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/16 23:58:19 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ int	foc(bool is_x, double angle, double v)
 		if (angle >= M_PI / 2 && angle < 3 * M_PI / 2)
 			return ((int)ceil(v));
 		else
-			return ((int)floor(v));
+			return ((int)floor(v) + 1);
 	}
 	else
 	{
 		if (angle >= 0 && angle < M_PI)
 			return ((int)ceil(v));
 		else
-			return ((int)floor(v));
+			return ((int)floor(v) + 1);
 	}
 }
 
