@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_one_vertical_line.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/16 01:49:01 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/16 18:39:11 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,86 +49,6 @@ bool	get_is_negative(double angle, bool is_x)
 	return (false);
 }
 
-static bool	is_inside_map(char ch)
-{
-	printf("--> %c\n", ch);
-	if (ch == '1' || ch == 0)
-		return (false);
-	return (true);
-}
-
-static bool	check_crash_wall(t_mlxvars *var, t_ray ray, double th, bool is_x)
-{
-	double	i;
-	double	v;
-
-	if (is_x)
-	{
-		i = ray.pos.x + th;
-		v = ray.pos.y + th * fabs(tan(ray.angle));
-		printf("X ray x: %f ray y : %f |||  i and v : %f %f th : %f is : %s\n", ray.pos.x, ray.pos.y, i, v, th, get_is_negative(ray.angle, true) ? "true" : "false");
-		if (v < 0 || i < 0)
-			return (false);
-		if (get_is_negative(ray.angle, true))
-		{
-			while (i > ray.pos.x)
-			{
-				if (v < 0 || i < 0)
-					return (false);
-				if (is_inside_map(var->map_data->map[(int)floor(v)][(int)floor(i)]) == false)
-					return (false);
-				i -= 1.0;
-				v -= fabs(tan(ray.angle));
-			}
-		}
-		else
-		{
-			while (i < ray.pos.x)
-			{
-				if (v < 0 || i < 0)
-					return (false);
-				if (is_inside_map(var->map_data->map[(int)floor(v)][(int)floor(i)]) == false)
-					return (false);
-				i += 1.0;
-				v += fabs(tan(ray.angle));
-			}
-		}
-	}
-	else
-	{
-		i = ray.pos.y + th;
-		v = ray.pos.x + th / tan(ray.angle);
-		printf("X ray x: %f ray y : %f |||  i and v : %f %f th : %f is : %s\n", ray.pos.x, ray.pos.y, i, v, th, get_is_negative(ray.angle, false) ? "true" : "false");
-		if (v < 0 || i < 0)
-			return (false);
-		if (get_is_negative(ray.angle, false))
-		{
-			while (i > ray.pos.y)
-			{
-				if (v < 0 || i < 0)
-					return (false);
-				if (is_inside_map(var->map_data->map[(int)floor(i)][(int)floor(v)]) == false)
-					return (false);
-				i -= 1.0;
-				v -= fabs(tan(ray.angle));
-			}
-		}
-		else
-		{
-			while (i < ray.pos.y)
-			{
-				if (v < 0 || i < 0)
-					return (false);
-				if (is_inside_map(var->map_data->map[(int)floor(i)][(int)floor(v)]) == false)
-					return (false);
-				i += 1.0;
-				v += fabs(tan(ray.angle));
-			}
-		}
-	}
-	return (true);
-}
-
 // TODO : check if it exceeds map limit
 // c'est la merde ici
 static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
@@ -136,29 +56,18 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 	t_wall_info	info;
 	double		diff;
 	t_posd		origin_pos;
-	double		th;
-	bool		is_x_force;
-	bool		is_y_force;
-	double		origin_value;
 
 	origin_pos = ray.pos;
-	is_x_force = false;
-	is_y_force = false;
 	while (true)
 	{
-		(void)check_crash_wall;
-		if (!false && (false || diff_abs_exceed_angle(ray.pos.x, true, ray.angle)
-				<= diff_abs_exceed_angle(ray.pos.y, false, ray.angle)))
+		if (diff_abs_exceed_angle(ray.pos.x, true, ray.angle)
+			<= diff_abs_exceed_angle(ray.pos.y, false, ray.angle))
 		{
-			is_x_force = false;
 			printf("IN X : __ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
 			diff = ray.pos.x;
-			origin_value = ray.pos.x;
 			ray.pos.x = wall_get_ray_pos_x(ray.pos.x, ray.angle);
 			diff -= ray.pos.x;
-			th = wall_get_correspondant_pos_y(diff, ray.angle);
-			printf("th ::: %f ray y : %f diff : %f\n", th, ray.pos.y, diff);
-			ray.pos.y += th;
+			ray.pos.y += wall_get_correspondant_pos_y(diff, ray.angle);
 			printf("dd -> ray x : %f ray y : %f || y : %d x : %d || angle : %f diff %f\n", ray.pos.x, ray.pos.y, foc(false, ray.angle, ray.pos.y), foc(true, ray.angle, ray.pos.x), ray.angle, diff);
 			printf("RESULT %c\n\n", var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)]);
 			if (var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)] == '1')
@@ -171,15 +80,11 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 		}
 		else
 		{
-			is_y_force = false;
 			printf("IN Y : __ RAY X : %f RAY Y %f\n", ray.pos.x, ray.pos.y);
 			diff = ray.pos.y;
-			origin_value = ray.pos.y;
 			ray.pos.y = wall_get_ray_pos_y(ray.pos.y, ray.angle); // ca marche po
 			diff -= ray.pos.y;
-			th = wall_get_correspondant_pos_x(diff, ray.angle);
-			printf("th ::: %f ray x : %f diff : %f\n", th, ray.pos.x, diff);
-			ray.pos.x += th;
+			ray.pos.x += wall_get_correspondant_pos_x(diff, ray.angle);
 			printf("dd -> ray x : %f ray y : %f || y : %d x : %d || angle : %f diff %f\n", ray.pos.x, ray.pos.y, foc(false, ray.angle, ray.pos.y), foc(true, ray.angle, ray.pos.x), ray.angle, diff);
 			printf("RESULT %c\n\n", var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)]);
 			if (var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)] == '1')
