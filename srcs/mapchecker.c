@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:22:23 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/04/15 12:34:27 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/17 00:32:16 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,7 @@ int	checkmap_check_wall(char **tab)
 		{
 			if (tab[i][j] == '0' || tab[i][j] == 'N')
 			{
-				if (checkmap_x(tab, i, j) == 1 && checkmap_y(tab, j, i) == 1)
-				{
-					return (1);
-				}
-				else
+				if (!(checkmap_x(tab, i, j) == 1 && checkmap_y(tab, j, i) == 1))
 				{
 					return (0);
 				}
@@ -52,14 +48,29 @@ int	checkmap_x(char **tab, int i, int j)
 	return (0);
 }
 
+static int	ft_strlenvertical(char **str, int ligne)
+{
+	int		i;
+	int 	nbr;
+	i = 0;
+	nbr = 0;
+	while (str[i][ligne])
+	{
+		nbr++;
+		i++;
+	}
+	return (nbr);
+}
+
 int	checkmap_y(char **tab, int j, int i)
 {
 	if (tab[0][j] != '1')
 		return (0);
-	while (tab[i][j] != '1' && tab[i][j] != '\0')
+	while (tab[i][j] != '1' && i != ft_strlenvertical(tab, j))
 		i++;
 	if ((tab[i][j] == '0' && tab[i + 1][j] == '\0') || tab[i][j] == '\0')
 		return (0);
+	printf("s\n");
 	// i++;
 	// while (tab[i][j] != '1')
 	// 	i++;
