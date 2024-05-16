@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calculmain.c                                       :+:      :+:    :+:   */
+/*   mapchecker2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/28 11:51:20 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/03/29 17:48:25 by bfaisy           ###   ########.fr       */
+/*   Created: 2024/05/17 00:51:37 by lhojoon           #+#    #+#             */
+/*   Updated: 2024/05/17 00:51:56 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	get_pos(char **map)
+int	check_input(char **tab)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (map[i])
+	while (tab[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (tab[i][j])
 		{
-			if (map[i][j] == 'N')
-				return (90);
-			else if (map[i][j] == 'W')
-				return (180);
-			else if (map[i][j] == 'S')
-				return (270);
-			else if (map[i][j] == 'E')
+			if (tab[i][j] != '0' && tab[i][j] != '1' && tab[i][j] != 'N'
+				&& tab[i][j] != 'S' && tab[i][j] != 'E' && tab[i][j] != 'W'
+				&& tab[i][j] != ' ')
+			{
 				return (0);
+			}
 			j++;
 		}
 		i++;
 	}
-	return (-2);
+	return (1);
 }

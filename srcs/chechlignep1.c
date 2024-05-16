@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/04/09 19:44:39 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/17 00:52:19 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,7 @@ int	checkligne(char **tab, int ligne)
 	while (tab[ligne][i] && tab[ligne][i] != '.')
 		i++;
 	if (!tab[ligne][i])
-	{
-		free(str);
-		return (0);
-	}
+		return (free(str), 0);
 	return (checklignev2(tab, ligne, str, i));
 }
 

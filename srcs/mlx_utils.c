@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:35:33 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/16 01:59:56 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/17 00:57:38 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	mlx_draw_pixel(t_mlximage *mlx_img, int x, int y, int color)
 {
 	char			*target;
 
-	// printf("print print print x : %d y : %d\n", x,y );
 	target = mlx_img->data + (x * mlx_img->bpp / 8 + y * mlx_img->size_line);
 	*(unsigned int *)target = color;
 }

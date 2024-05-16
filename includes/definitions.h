@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   definitions.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 00:39:55 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/17 01:01:30 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 
 # define DEF_MAP_BLANK '0'
 
+# define DEF_MAPCHECK_MAIN_ERR "mapcheck_main : Map validation failed\n"
+
 # define DEF_KEY_ESC 0xFF1B
 # define DEF_KEY_W 0x77
 # define DEF_KEY_A 0x61
@@ -38,9 +40,10 @@
 # define DEF_KEY_RIGHT 0xFF53
 # define DEF_X11_EVENT_DESTROY_NOTIFY 17
 
-# define DEF_DISTANCE_COEFF 0.005
 # define DEF_PLAYER_MOVE_SPD 0.3
 # define DEF_PLAYER_ROTATE_SPD 0.025
+# define DEF_DISTANCE_COEFF 0.005
+# define DEF_HEIGHT_COEFF 5000
 # define DEF_FOV_COEFF 0.005
 // # define DEF_CAMERA_CHECK_STRICT
 

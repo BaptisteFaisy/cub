@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_pipeline.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/09 20:04:45 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/17 01:00:30 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static bool	maps_pipeline(t_mlxvars *vars)
 	if (!vars->map_data)
 		return (ft_printf("map_data : "), false);
 	if (!mapcheck_main(vars->map_data))
-		return (ft_printf("mapcheck_main : "), false);
+		return (ft_printf(DEF_MAPCHECK_MAIN_ERR), false);
 	if (!stock_image(vars))
 		return (ft_printf("stock_image : "), false);
 	return (true);

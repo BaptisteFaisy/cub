@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 20:12:38 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 00:44:24 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/17 00:57:35 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ static int	get_longest_line(t_list *map)
 		tmp = tmp->next;
 	}
 	return (max);
+}
+
+static void	fill_map_data_ext(int i, char **map, int len)
+{
+	map[i] = ft_calloc(sizeof(char), len + 1);
+	map[i + 1] = NULL;
 }
 
 bool	fill_map_data(t_map_data *dat, t_list *val)
@@ -55,9 +61,7 @@ bool	fill_map_data(t_map_data *dat, t_list *val)
 		val = val->next;
 		i++;
 	}
-	dat->map[i] = ft_calloc(sizeof(char), len + 1);
-	dat->map[i + 1] = NULL;
-	return (true);
+	return (fill_map_data_ext(i, dat->map, len), true);
 }
 
 void	init_map_data(t_map_data *dat)

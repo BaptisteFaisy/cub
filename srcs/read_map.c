@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 00:42:16 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/17 00:53:07 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,8 @@ static bool	fill_datas(t_map_data *dat, t_list *val)
 	}
 	dat->pref[i] = NULL;
 	if (!fill_map_data(dat, val))
-	{
 		// TODO : Verify free data
-		ft_lstclear(&val, free);
-		free(dat->pref);
-		return (false);
-	}
+		return (ft_lstclear(&val, free), free(dat->pref), false);
 	return (true);
 }
 
