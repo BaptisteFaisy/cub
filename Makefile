@@ -6,7 +6,7 @@
 #    By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 11:05:03 by lhojoon           #+#    #+#              #
-#    Updated: 2024/05/06 15:47:52 by lhojoon          ###   ########.fr        #
+#    Updated: 2024/05/17 00:24:25 by lhojoon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,6 @@ SRCS_RAW =	main.c \
 			print_one_vertical_line.c \
 			stock_image.c \
 			parse_user_pos.c \
-			calcul.c \
 			transform_direction.c \
 			math_utils.c \
 			wall_info_ext.c \

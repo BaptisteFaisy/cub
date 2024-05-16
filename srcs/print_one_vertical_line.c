@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/16 23:58:19 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/17 00:32:11 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,9 +136,7 @@ void	fov_main(t_mlxvars *var)
 // TODO : Test this function by modifying math equation
 static double	get_height_by_distance(double distance, int img_height)
 {
-	// return (((double)img_height * (double)DEF_WINDOW_SIZE_H) - pow(distance * 3000, 1));
-	// return (((double)img_height * (double)DEF_WINDOW_SIZE_H) - pow(distance * 30, 2));
-	return (((double)img_height * (double)DEF_WINDOW_SIZE_H) / (distance + 5));
+	return (((double)img_height * (double)DEF_WINDOW_SIZE_H) - (distance * 5000));
 }
 
 /**

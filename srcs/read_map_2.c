@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 20:12:38 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/09 20:05:08 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/17 00:43:27 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ bool	fill_map_data(t_map_data *dat, t_list *val)
 		val = val->next;
 		i++;
 	}
-	dat->map[i] = NULL;
+	dat->map[i] = ft_calloc(sizeof(char), len + 1);
 	return (true);
 }
 
