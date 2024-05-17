@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 20:23:51 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/16 23:46:57 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/17 02:38:44 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static bool	is_in_map(t_mlxvars *var, t_posd pos, double angle)
 	t_posd	p1;
 	t_posd	p2;
 	int		x;
-
 	x = DEF_WINDOW_SIZE_W / 2;
+
 	p1.x = pos.x + sin(angle) * DEF_FOV_COEFF * -x;
 	p1.y = pos.y + cos(angle) * DEF_FOV_COEFF * -x;
 	p2.x = pos.x + sin(angle) * DEF_FOV_COEFF * x;
@@ -62,6 +62,17 @@ static bool	is_in_map(t_mlxvars *var, t_posd pos, double angle)
 		return (false);
 	return (true);
 }
+
+// static bool	is_in_map(t_mlxvars *var, t_posd pos, double angle)
+// {
+// 	// t_posd	p1;
+// 	// t_posd	p2;
+
+// 	if (var->map_data->map[foc(false, angle, pos.y)]
+// 		[foc(true, angle, pos.x)] == '1')
+// 		return (false);
+// 	return (true);
+// }
 
 #endif
 

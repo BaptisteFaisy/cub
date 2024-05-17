@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_user_pos.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 14:38:52 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/17 19:10:36 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/17 02:42:45 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ bool	parse_user_pos(t_mlxvars *vars)
 		return (false);
 	x--;
 	y--;
-	vars->player->pos.x = x;
-	vars->player->pos.y = y;
+	vars->player->pos.x = x + 0.5;
+	vars->player->pos.y = y + 0.5;
 	vars->player->angle = get_user_angle(vars->map_data->map[y][x]);
 	return (true);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_one_vertical_line.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 00:56:56 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/17 03:11:02 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static t_wall_info	get_wall_info(t_ray ray, t_mlxvars *var)
 			ray.pos.y = wall_get_ray_pos_y(ray.pos.y, ray.angle); // ca marche po
 			diff -= ray.pos.y;
 			ray.pos.x += wall_get_correspondant_pos_x(diff, ray.angle);
+			// printf("%d %d \n", foc(false, ray.angle, ray.pos.y), foc(true, ray.angle, ray.pos.x));
 			if (var->map_data->map[foc(false, ray.angle, ray.pos.y)][foc(true, ray.angle, ray.pos.x)] == '1')
 			{
 				info.direction = get_direction_of_wall(ray.angle, true);
@@ -61,13 +62,15 @@ static t_ray	get_ray(int i, t_mlxvars *var)
 {
 	t_ray	ray;
 
-	ray.angle = var->player->angle;
 	if (i < DEF_WINDOW_SIZE_W / 2)
 		i = -(DEF_WINDOW_SIZE_W / 2) + i;
 	else
 		i = i - DEF_WINDOW_SIZE_W / 2;
-	ray.pos.x = var->player->pos.x + sin(ray.angle) * DEF_FOV_COEFF * i;
-	ray.pos.y = var->player->pos.y + cos(ray.angle) * DEF_FOV_COEFF * i;
+	ray.pos.x = var->player->pos.x;
+	ray.pos.y = var->player->pos.y;
+	ray.angle = var->player->angle - (i * 0.001);
+	// ray.pos.x = var->player->pos.x + sin(ray.angle) * DEF_FOV_COEFF * i;
+	// ray.pos.y = var->player->pos.y + cos(ray.angle) * DEF_FOV_COEFF * i;
 	return (ray);
 }
 

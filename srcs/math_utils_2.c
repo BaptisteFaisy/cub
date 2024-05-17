@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math_utils_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 00:46:14 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 00:54:27 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/17 02:43:37 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ int	foc(bool is_x, double angle, double v)
 	if (is_x)
 	{
 		if (angle >= M_PI / 2 && angle < 3 * M_PI / 2)
-			return ((int)ceil(v));
+			return ((int)ceil(v) - 1);
 		else
-			return ((int)floor(v) + 1);
+			return ((int)floor(v));
 	}
 	else
 	{
 		if (angle >= 0 && angle < M_PI)
-			return ((int)ceil(v));
+			return ((int)ceil(v) - 1);
 		else
-			return ((int)floor(v) + 1);
+			return ((int)floor(v));
 	}
 }
 

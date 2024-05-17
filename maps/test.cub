@@ -1,6 +1,6 @@
 NO ./maps/minion.xpm
-SO ./maps/south.xpm
-WE ./maps/west.xpm
+SO ./maps/mec.xpm
+WE ./maps/meuf.xpm
 EA ./maps/east.xpm
 
 F 220,100,0
