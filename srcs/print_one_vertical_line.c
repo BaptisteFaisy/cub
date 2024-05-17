@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 18:33:08 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/17 21:20:50 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_ray	get_ray(int i, t_mlxvars *var)
 		i = i - DEF_WINDOW_SIZE_W / 2;
 	ray.pos.x = var->player->pos.x;
 	ray.pos.y = var->player->pos.y;
-	ray.angle = var->player->angle - (i * 0.001);
+	ray.angle = radian_value_normalize(var->player->angle - (i * 0.001));
 	return (ray);
 }
 
