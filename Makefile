@@ -6,7 +6,7 @@
 #    By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 11:05:03 by lhojoon           #+#    #+#              #
-#    Updated: 2024/05/17 00:51:55 by lhojoon          ###   ########.fr        #
+#    Updated: 2024/05/17 18:33:16 by lhojoon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ SRCS_RAW =	main.c \
 			wall_math.c \
 			wall_math2.c \
 			math_utils_2.c \
-			mapchecker2.c
+			mapchecker2.c \
+			get_wall_info.c
 SRCS = $(addprefix $(DIR)/,$(SRCS_RAW))
 OBJS = $(SRCS:c=o)
 INCLUDES = -I./includes -I./libft -I./ft_printf/includes
