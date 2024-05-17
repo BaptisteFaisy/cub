@@ -60,13 +60,10 @@ int				checklignefc(char **tab);
 int				checkligne(char **tab, int ligne);
 int				checklignemain(char **tab);
 int				mapcheck_main(t_map_data *data);
-char			find_direction(double angle_base, double angle);
 void			draw_screen(t_mlxvars *vars);
 void			img_lst_clear(t_list **lst, t_mlxvars *vars);
 bool			stock_image(t_mlxvars *vars);
 bool			parse_user_pos(t_mlxvars *vars);
-// t_data			distance_mur_positif(double angle, t_posd pos, char **map,
-// 					double angle_base);
 void			fov_main(t_mlxvars *var);
 t_direction		transform_direction_from_char(char c);
 double			ceilexp(double v);
@@ -90,5 +87,6 @@ bool			get_is_negative(double angle, bool is_x);
 int				foc(bool is_x, double angle, double v);
 t_wall_info		get_wall_info(t_ray ray, t_mlxvars *var);
 double			radian_value_normalize(double var);
+bool			set_color(t_mlxvars *var);
 
 #endif

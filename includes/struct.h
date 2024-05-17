@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:19:50 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/04/26 20:52:56 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/17 21:59:17 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,14 @@ typedef struct s_player
  */
 typedef struct s_mlxvars
 {
-	void		*mlx;
-	void		*mlx_win;
-	t_list		*imgs;
-	t_mlximage	*canvas;
-	char		*map_filename;
-	t_map_data	*map_data;
-	t_player	*player;
+	void			*mlx;
+	void			*mlx_win;
+	t_list			*imgs;
+	unsigned int	colors[2];
+	t_mlximage		*canvas;
+	char			*map_filename;
+	t_map_data		*map_data;
+	t_player		*player;
 }	t_mlxvars;
 
 typedef enum e_direction

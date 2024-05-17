@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 01:00:30 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:01:55 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static bool	maps_pipeline(t_mlxvars *vars)
 		return (ft_printf(DEF_MAPCHECK_MAIN_ERR), false);
 	if (!stock_image(vars))
 		return (ft_printf("stock_image : "), false);
+	if (!set_color(vars))
+		return (ft_printf("set_color : "), false);
 	return (true);
 }
 

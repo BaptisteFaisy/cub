@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 19:51:49 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/05 19:31:15 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:13:11 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,20 @@
 
 static void	clean_window(t_mlxvars *vars)
 {
-	int		x;
-	int		y;
+	int				x;
+	int				y;
+	short			coeff;
 
 	y = 0;
+	coeff = 0;
 	while (y < DEF_WINDOW_SIZE_H)
 	{
 		x = 0;
+		if (y >= DEF_WINDOW_SIZE_H / 2)
+			coeff = 1;
 		while (x < DEF_WINDOW_SIZE_W)
 		{
-			mlx_draw_pixel(vars->canvas, x, y, mlx_rgb_to_int(0, 0, 0, 0));
+			mlx_draw_pixel(vars->canvas, x, y, vars->colors[coeff]);
 			x++;
 		}
 		y++;
