@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_event_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 20:23:51 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 02:38:44 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/17 22:29:43 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,5 @@ int	key_event_manager(int key, t_mlxvars *p)
 	}
 	move_character(p, key);
 	draw_screen(p);
-	printf("Player pos : %f %f , angle : %f\n", p->player->pos.x, p->player->pos.y, p->player->angle * (180 / M_PI));
 	return (0);
 }
