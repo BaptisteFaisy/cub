@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 22:28:39 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/17 23:32:48 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static t_ray	get_ray(int i, t_mlxvars *var)
 		i = i - DEF_WINDOW_SIZE_W / 2;
 	ray.pos.x = var->player->pos.x;
 	ray.pos.y = var->player->pos.y;
-	ray.angle = radian_value_normalize(var->player->angle - (i * 0.001));
+	ray.angle = radian_value_normalize(var->player->angle
+			- (i * DEF_ROT_FOV_COEFF));
 	return (ray);
 }
 
@@ -41,7 +42,7 @@ static t_ray	get_ray(int i, t_mlxvars *var)
 		i = -(DEF_WINDOW_SIZE_W / 2) + i;
 	else
 		i = i - DEF_WINDOW_SIZE_W / 2;
-	ray.angle = var->player->angle;
+	ray.angle = radian_value_normalize(var->player->angle - (i * 0.0003));
 	ray.pos.x = var->player->pos.x + sin(ray.angle) * DEF_FOV_COEFF * i;
 	ray.pos.y = var->player->pos.y + cos(ray.angle) * DEF_FOV_COEFF * i;
 	return (ray);

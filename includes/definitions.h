@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   definitions.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 21:30:33 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/17 23:34:03 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,11 @@
 
 # define DEF_PLAYER_MOVE_SPD 0.1
 # define DEF_PLAYER_ROTATE_SPD 0.020
-# define DEF_DISTANCE_COEFF 0.005
-# define DEF_HEIGHT_COEFF 5000
-# define DEF_FOV_COEFF 0.001
+# define DEF_DISTANCE_COEFF 0.004
+# define DEF_HEIGHT_COEFF 4000
+# define DEF_FOV_COEFF 0.0002
+# define DEF_ROT_FOV_COEFF 0.001
+// # define DEF_FOV_COEFF 0.0001
 // # define DEF_CAMERA_CHECK_STRICT
 // # define DEF_CAMERA_PLANE
 
