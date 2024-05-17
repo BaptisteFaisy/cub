@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 21:20:50 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:28:39 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ bool	print_one_vertical_line(t_mlxvars *var,
 	if (h > DEF_WINDOW_SIZE_H)
 		h = DEF_WINDOW_SIZE_H;
 	starth = (DEF_WINDOW_SIZE_H - h) / 2;
-	while (i < h && (starth + i) < DEF_WINDOW_SIZE_H)
+	while (i < h - 3 && (starth + i) < DEF_WINDOW_SIZE_H - 3)
 	{
 		pixel = mlx_get_pixel(img, wall.percentage * img->width,
 				ceil(((double)i / (double)h) * img->height));
