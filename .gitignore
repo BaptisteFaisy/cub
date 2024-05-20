@@ -1,4 +1,5 @@
 *.o
 cub3d
+cub3D
 .vscode
 vgcore.*
