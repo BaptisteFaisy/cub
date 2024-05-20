@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:47:43 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/16 22:41:02 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/20 16:12:21 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,13 @@ double	diff_abs_exceed_angle(double v, bool is_x, double angle)
 		dest.x = dest.y / fabs(tan(angle));
 	}
 	return (pow(dest.y, 2) + pow(dest.x, 2));
+}
+
+double	radian_value_normalize(double var)
+{
+	if (var >= 2 * M_PI)
+		var -= 2 * M_PI;
+	else if (var < 0)
+		var += 2 * M_PI;
+	return (var);
 }

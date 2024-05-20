@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapchecker.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:22:23 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/05/17 21:50:26 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/05/20 16:06:59 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,11 @@ int	checkmap_check_wall(char **tab)
 		j = 0;
 		while (tab[i][j])
 		{
-			if (tab[i][j] == '0' || tab[i][j] == 'N' || tab[i][j] == 'W' || tab[i][j] == 'E' || tab[i][j] == 'S')
+			if (tab[i][j] == '0' || tab[i][j] == 'N'
+				|| tab[i][j] == 'W' || tab[i][j] == 'E' || tab[i][j] == 'S')
 			{
 				if (!(checkmap_x(tab, i, j) == 1 && checkmap_y(tab, j, i) == 1))
-				{
-					// printf("a%d %d\n", i, j);
 					return (0);
-				}
 			}
 			j++;
 		}
@@ -66,9 +64,9 @@ static int	ft_strlenvertical(char **str, int ligne)
 
 int	checkmap_y(char **tab, int j, int i)
 {
-	int i2;
-	i2 = 0;
+	int	i2;
 
+	i2 = 0;
 	if (tab[0][j] != '1' && tab[0][j] != ' ')
 		return (0);
 	if (tab[0][j] == ' ')

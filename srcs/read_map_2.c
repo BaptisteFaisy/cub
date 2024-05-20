@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 20:12:38 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 00:57:35 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/20 16:16:24 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ bool	fill_map_data(t_map_data *dat, t_list *val)
 	{
 		dat->map[i] = ft_calloc(sizeof(char), len + 1);
 		if (!dat->map[i])
-			return (false); // TODO : free existing map, dat->map
+			return (ft_freesplit(dat->map), false);
 		((char *)val->content)[ft_strlen((char *)val->content) - 1] = '\0';
 		ft_strlcpy(dat->map[i], (char *)val->content,
 			ft_strlen((char *)val->content) + 1);

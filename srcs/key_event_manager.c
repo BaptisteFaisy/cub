@@ -6,20 +6,11 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 20:23:51 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 22:29:43 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/20 16:12:25 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
-
-double	radian_value_normalize(double var)
-{
-	if (var >= 2 * M_PI)
-		var -= 2 * M_PI;
-	else if (var < 0)
-		var += 2 * M_PI;
-	return (var);
-}
 
 #ifdef DEF_CAMERA_CHECK_STRICT
 
@@ -48,15 +39,6 @@ static bool	is_in_map(t_mlxvars *var, t_posd pos, double angle)
 
 static bool	is_in_map(t_mlxvars *var, t_posd pos, double angle)
 {
-	t_posd	p1;
-	t_posd	p2;
-	int		x;
-	x = DEF_WINDOW_SIZE_W / 2;
-
-	p1.x = pos.x + sin(angle) * DEF_FOV_COEFF * -x;
-	p1.y = pos.y + cos(angle) * DEF_FOV_COEFF * -x;
-	p2.x = pos.x + sin(angle) * DEF_FOV_COEFF * x;
-	p2.y = pos.y + cos(angle) * DEF_FOV_COEFF * x;
 	if (var->map_data->map[foc(false, angle, pos.y)]
 		[foc(true, angle, pos.x)] == '1')
 		return (false);
@@ -76,6 +58,12 @@ static bool	is_in_map(t_mlxvars *var, t_posd pos, double angle)
 
 #endif
 
+static void	move_character_add(t_posd *pos, double x, double y)
+{
+	pos->x += x * DEF_PLAYER_MOVE_SPD;
+	pos->y += y * DEF_PLAYER_MOVE_SPD;
+}
+
 static void	move_character(t_mlxvars *vars, int key)
 {
 	t_posd	pos;
@@ -85,25 +73,13 @@ static void	move_character(t_mlxvars *vars, int key)
 	pos.y = vars->player->pos.y;
 	angle = vars->player->angle;
 	if (key == DEF_KEY_W)
-	{
-		pos.y -= sin(angle) * DEF_PLAYER_MOVE_SPD;
-		pos.x += cos(angle) * DEF_PLAYER_MOVE_SPD;
-	}
+		move_character_add(&pos, cos(angle), -sin(angle));
 	else if (key == DEF_KEY_S)
-	{
-		pos.y += sin(angle) * DEF_PLAYER_MOVE_SPD;
-		pos.x -= cos(angle) * DEF_PLAYER_MOVE_SPD;
-	}
+		move_character_add(&pos, -cos(angle), sin(angle));
 	else if (key == DEF_KEY_A)
-	{
-		pos.y -= cos(angle) * DEF_PLAYER_MOVE_SPD;
-		pos.x -= sin(angle) * DEF_PLAYER_MOVE_SPD;
-	}
+		move_character_add(&pos, -sin(angle), -cos(angle));
 	else if (key == DEF_KEY_D)
-	{
-		pos.y += cos(angle) * DEF_PLAYER_MOVE_SPD;
-		pos.x += sin(angle) * DEF_PLAYER_MOVE_SPD;
-	}
+		move_character_add(&pos, sin(angle), cos(angle));
 	else if (key == DEF_KEY_LEFT)
 		angle += DEF_PLAYER_ROTATE_SPD * M_PI;
 	else if (key == DEF_KEY_RIGHT)

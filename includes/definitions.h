@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 23:34:03 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/05/20 18:25:01 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ int				foc(bool is_x, double angle, double v);
 t_wall_info		get_wall_info(t_ray ray, t_mlxvars *var);
 double			radian_value_normalize(double var);
 bool			set_color(t_mlxvars *var);
+void			y_calculate_coordination(t_ray *ray);
 
 #endif
