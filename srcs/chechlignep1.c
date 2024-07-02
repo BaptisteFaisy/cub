@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chechlignep1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/05/17 00:52:19 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/02 17:22:11 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int	checklignefc(char **tab)
 	i = checker_nbr(tab, i, 5, true);
 	if (i == 0)
 		return (0);
+	if (tab[5][i] != '\0')
+		return (0);
 	i = 2;
 	i = checker_nbr(tab, i, 6, false);
 	if (i == 0)
@@ -94,6 +96,8 @@ int	checklignefc(char **tab)
 	i = checker_nbr(tab, i, 6, true);
 	if (i == 0)
 		return (0);
+	if (tab[6][i] != '\0')
+		return (0);
 	return (1);
 }
 
@@ -102,7 +106,7 @@ static int	checker_nbr(char **tab, int i, int ligne, bool cond)
 	int	nbr;
 
 	nbr = 0;
-	while (tab[ligne][i] != ',' && tab[ligne][i])
+	while (tab[ligne][i] != ',' && ft_isdigit(tab[ligne][i]))
 	{
 		nbr = nbr * 10 + tab[ligne][i] - '0';
 		i++;
@@ -111,6 +115,7 @@ static int	checker_nbr(char **tab, int i, int ligne, bool cond)
 		return (0);
 	if (nbr < 0 || nbr > 256)
 		return (0);
-	i++;
+	if (cond == false)
+		i++;
 	return (i);
 }
