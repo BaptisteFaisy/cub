@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/02 17:22:11 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/05 17:39:11 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,25 @@ int	checklignev2(char **tab, int ligne, char *str, int i)
 	return (0);
 }
 
+int	checklignefc2(char **tab)
+{
+	int	i;
+
+	i = 2;
+	i = checker_nbr(tab, i, 6, false);
+	if (i == 0)
+		return (0);
+	i = checker_nbr(tab, i, 6, false);
+	if (i == 0)
+		return (0);
+	i = checker_nbr(tab, i, 6, true);
+	if (i == 0)
+		return (0);
+	if (tab[6][i] != '\0')
+		return (0);
+	return (1);
+}
+
 int	checklignefc(char **tab)
 {
 	int	i;
@@ -86,19 +105,7 @@ int	checklignefc(char **tab)
 		return (0);
 	if (tab[5][i] != '\0')
 		return (0);
-	i = 2;
-	i = checker_nbr(tab, i, 6, false);
-	if (i == 0)
-		return (0);
-	i = checker_nbr(tab, i, 6, false);
-	if (i == 0)
-		return (0);
-	i = checker_nbr(tab, i, 6, true);
-	if (i == 0)
-		return (0);
-	if (tab[6][i] != '\0')
-		return (0);
-	return (1);
+	return (checklignefc2(tab));
 }
 
 static int	checker_nbr(char **tab, int i, int ligne, bool cond)
