@@ -3,7 +3,7 @@ SO ./maps/mec.xpm
 WE ./maps/meuf.xpm
 EA ./maps/east.xpm
 
-F 0,0,255
+F 0,0,0
 C 0,255,0
 
 11111111111111
