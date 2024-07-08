@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:19:50 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 21:59:17 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/08 18:10:23 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef enum e_direction
 typedef struct s_data
 {
 	double	distance;
-	double	degre; // radiant
+	double	degre;
 	t_posd	final;
 	char	dir;
 }	t_data;
@@ -123,12 +123,15 @@ typedef struct s_ray
 }	t_ray;
 
 typedef struct s_wall_info {
-	float distance;
-	float percentage;
-	t_direction direction;
+	float		distance;
+	float		percentage;
+	t_direction	direction;
 }	t_wall_info;
 
-// INITIALISATIONS
+typedef struct s_i {
+	bool	para;
+	bool	para1;
+}	t_i;
 
 t_pos		get_init_pos(void);
 t_pos		get_init_pos_value(int x, int y);

@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/05 17:39:11 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/08 19:00:31 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	checker_nbr(char **tab, int i, int ligne, bool cond);
 
-int	checkligne(char **tab, int ligne)
+int	checkligne(char **tab, int ligne, int *para)
 {
 	int		i;
 	char	*str;
@@ -22,23 +22,27 @@ int	checkligne(char **tab, int ligne)
 
 	i = 0;
 	j = 0;
-	(void)j;
 	str = malloc(sizeof(char) * ft_strlen(tab[ligne]) + 1);
 	if (!str)
 		return (0);
-	if ((tab[ligne][0] != 'N' || tab[ligne][1] != 'O') && ligne == 0)
+	if ((tab[ligne][0] == 'N' && tab[ligne][1] == 'O' && para[0] == 0))
+		return (para[0] = 1, checklignev2(tab, ligne, str, i));
+	if ((tab[ligne][0] == 'N' && tab[ligne][1] == 'O' && para[0] == 1))
 		return (free(str), 0);
-	else if ((tab[ligne][0] != 'S' || tab[ligne][1] != 'O') && ligne == 1)
+	if ((tab[ligne][0] == 'S' || tab[ligne][1] == 'O') && para[1] == 0)
+		return (para[1] = 1, checklignev2(tab, ligne, str, i));
+	if ((tab[ligne][0] == 'S' && tab[ligne][1] == 'O') && para[1] == 1)
 		return (free(str), 0);
-	else if ((tab[ligne][0] != 'W' || tab[ligne][1] != 'E') && ligne == 2)
+	if ((tab[ligne][0] == 'W' || tab[ligne][1] == 'E') && para[2] == 0)
+		return (para[2] = 1, checklignev2(tab, ligne, str, i));
+	if ((tab[ligne][0] == 'W' && tab[ligne][1] == 'E') && para[2] == 1)
 		return (free(str), 0);
-	else if ((tab[ligne][0] != 'E' || tab[ligne][1] != 'A') && ligne == 3)
+	if ((tab[ligne][0] == 'E' || tab[ligne][1] == 'A') && para[3] == 0)
+		return (para[3] = 1, checklignev2(tab, ligne, str, i));
+	if ((tab[ligne][0] == 'E' && tab[ligne][1] == 'A') && para[3] == 1)
 		return (free(str), 0);
-	while (tab[ligne][i] && tab[ligne][i] != '.')
-		i++;
-	if (!tab[ligne][i])
-		return (free(str), 0);
-	return (checklignev2(tab, ligne, str, i));
+	else
+		return (1);
 }
 
 int	checklignev2(char **tab, int ligne, char *str, int i)
@@ -46,6 +50,8 @@ int	checklignev2(char **tab, int ligne, char *str, int i)
 	int	j;
 
 	j = 0;
+	while (tab[ligne][i] && tab[ligne][i] != '.')
+		i++;
 	while (tab[ligne][i])
 	{
 		str[j] = tab[ligne][i];
@@ -68,44 +74,52 @@ int	checklignev2(char **tab, int ligne, char *str, int i)
 	return (0);
 }
 
-int	checklignefc2(char **tab)
+int	checklignefc2(char **tab, int ligne)
 {
 	int	i;
 
 	i = 2;
-	i = checker_nbr(tab, i, 6, false);
+	i = checker_nbr(tab, i, ligne, false);
 	if (i == 0)
 		return (0);
-	i = checker_nbr(tab, i, 6, false);
+	i = checker_nbr(tab, i, ligne, false);
 	if (i == 0)
 		return (0);
-	i = checker_nbr(tab, i, 6, true);
+	i = checker_nbr(tab, i, ligne, true);
 	if (i == 0)
 		return (0);
-	if (tab[6][i] != '\0')
+	if (tab[ligne][i] != '\0')
 		return (0);
 	return (1);
 }
 
-int	checklignefc(char **tab)
+int	checklignefc(char **tab, int *para, int ligne)
 {
 	int	i;
 
 	i = 2;
-	if (tab[5][0] != 'F' || tab[6][0] != 'C')
+	if (tab[ligne][0] == 'F' && para[4] == 0)
+		para[4] = 1;
+	else if (tab[ligne][0] == 'F' && para[4] == 1)
 		return (0);
-	i = checker_nbr(tab, i, 5, false);
+	else if (tab[ligne][0] == 'C' && para[5] == 0)
+		para[5] = 1;
+	else if (tab[ligne][0] == 'C' && para[5] == 1)
+		return (0);
+	else
+		return (1);
+	i = checker_nbr(tab, i, ligne, false);
 	if (i == 0)
 		return (0);
-	i = checker_nbr(tab, i, 5, false);
+	i = checker_nbr(tab, i, ligne, false);
 	if (i == 0)
 		return (0);
-	i = checker_nbr(tab, i, 5, true);
+	i = checker_nbr(tab, i, ligne, true);
 	if (i == 0)
 		return (0);
-	if (tab[5][i] != '\0')
+	if (tab[ligne][i] != '\0')
 		return (0);
-	return (checklignefc2(tab));
+	return (checklignefc2(tab, ligne));
 }
 
 static int	checker_nbr(char **tab, int i, int ligne, bool cond)

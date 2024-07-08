@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:16:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/08 14:15:10 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/08 15:48:33 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	fov_main(t_mlxvars *var)
 static double	get_height_by_distance(double distance, int img_height)
 {
 	return (((DEF_WINDOW_SIZE_H
-			- log((distance) * DEF_HEIGHT_COEFF) * 260) - 100) / 1.2);
+				- log((distance) * DEF_HEIGHT_COEFF) * 260) - 100) / 1.2);
 	(void)img_height;
 }
 

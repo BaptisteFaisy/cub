@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   definitions.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/08 13:45:55 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/08 18:56:44 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ int				checkmap_check_wall(char **tab);
 int				checklignev2(char **tab, int ligne, char *str, int i);
 t_rgb			grepccolor(char **tab);
 t_rgb			grepfloorcolor(char **tab);
-int				checklignefc(char **tab);
-int				checkligne(char **tab, int ligne);
+int				checklignefc(char **tab, int *para, int ligne);
+int				checkligne(char **tab, int ligne, int *para);
 int				checklignemain(char **tab);
 int				mapcheck_main(t_map_data *data);
 void			draw_screen(t_mlxvars *vars);
@@ -93,5 +93,6 @@ t_wall_info		get_wall_info(t_ray ray, t_mlxvars *var);
 double			radian_value_normalize(double var);
 bool			set_color(t_mlxvars *var);
 void			y_calculate_coordination(t_ray *ray);
+int				check_xv2(int j2, char **tab, int i, t_i cond);
 
 #endif

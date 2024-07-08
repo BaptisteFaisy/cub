@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:22:23 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/05 17:46:42 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/08 18:09:49 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,30 +40,24 @@ int	checkmap_check_wall(char **tab)
 
 int	checkmap_x(char **tab, int i, int j)
 {
-	bool	para;
-	bool	para2;
-	int		j2;
+	t_i	cond;
+	int	j2;
 
-	para = 0;
-	para2 = 0;
+	cond.para = 0;
+	cond.para1 = 0;
 	j2 = j;
-	while (tab[i][j])
+	while (tab[i][j] && tab[i][j] != ' ')
 	{
 		if (tab[i][j] == '1')
-			para = 1;
+		{
+			cond.para = 1;
+			break ;
+		}
 		j++;
 	}
-	while (j2 != -1)
-	{
-		if (tab[i][j2] == '1')
-			para2 = 1;
-		j2--;
-	}
-	if (para2 == 0 || para == 0)
-	{
+	if (tab[i][j] == ' ')
 		return (0);
-	}
-	return (1);
+	return (check_xv2(j2, tab, i, cond));
 }
 
 static int	ft_strlenvertical(char **str, int ligne)
@@ -88,7 +82,7 @@ int	checkmap_y(char **tab, int j, int i)
 
 	i2 = 0;
 	i3 = i;
-	if (tab[0][j] != '1' && tab[0][j] != ' ')
+	if (tab[0][j] != '1' && tab[0][j] != ' ' && tab[0][j] != '\0')
 		return (0);
 	if (tab[0][j] == ' ')
 	{
@@ -97,11 +91,14 @@ int	checkmap_y(char **tab, int j, int i)
 		if ((tab[i2][j] == '0' && tab[i2 + 1][j] == '\0') || tab[i][j] == '\0')
 			return (0);
 	}
-	while (tab[i][j] != '1' && i != ft_strlenvertical(tab, j))
+	while (tab[i][j] != '1' && i != ft_strlenvertical(tab, j)
+		&& tab[i][j] != ' ')
 		i++;
+	if (tab[i][j] == ' ')
+		return (0);
 	if ((tab[i][j] == '0' && tab[i + 1][j] == '\0') || tab[i][j] == '\0')
 		return (0);
-	while (tab[i3--][j] != '1' && i3 != 0)
+	while (tab[i3--][j] != '1' && i3 != -1)
 		if (tab[i3][j] == ' ' || tab[i3][j] == '\0')
 			return (0);
 	return (1);
