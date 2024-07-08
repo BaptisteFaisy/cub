@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/06/19 12:08:25 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/08 13:45:55 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@
 
 # define DEF_PLAYER_MOVE_SPD 0.1
 # define DEF_PLAYER_ROTATE_SPD 0.020
-# define DEF_DISTANCE_COEFF 0.004
-# define DEF_HEIGHT_COEFF 4000
-# define DEF_ROT_FOV_COEFF 0.001
+// # define DEF_DISTANCE_COEFF 0.004
+# define DEF_DISTANCE_COEFF 1
+# define DEF_HEIGHT_COEFF 0.7
+# define DEF_ROT_FOV_COEFF 0.0004
 # define DEF_FOV_COEFF 0.0002
 
 // # define DEF_FOV_COEFF 0.0001
