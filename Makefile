@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+         #
+#    By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 11:05:03 by lhojoon           #+#    #+#              #
-#    Updated: 2024/05/20 20:08:35 by lhojoon          ###   ########.fr        #
+#    Updated: 2024/07/12 16:28:45 by bfaisy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ SRCS_RAW =	main.c \
 			mapchecker2.c \
 			get_wall_info.c \
 			set_color.c \
-			get_wall_info_2.c
+			get_wall_info_2.c \
+			liste.c
 SRCS = $(addprefix $(DIR)/,$(SRCS_RAW))
 OBJS = $(SRCS:c=o)
 INCLUDES = -I./includes -I./libft -I./ft_printf/includes

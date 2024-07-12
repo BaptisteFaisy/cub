@@ -6,30 +6,33 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 15:14:37 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/11 16:35:20 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/12 17:03:34 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-int	checklignemain(char **tab) // ici ca check
+int	checklignemain(char **mer, t_tab *head) // ici
 {
-	int	*para;
-	int	i;
+	int		*para;
+	int		i;
+	t_tab	*liste;
 
 	i = 0;
+	liste = head;
 	para = malloc(sizeof(int) * 6);
-	if (!para)
+	if (!para || !liste)
 		exit (1);
+	init(liste);
 	while (i != 6)
 	{
 		para[i] = 0;
 		i++;
 	}
 	i = 0;
-	while (i != 7)
+	while (i != 7) // ligne jusqu a check
 	{
-		if (!checkligne(tab, i, para) || !checklignefc(tab, para, i)) // checkligne marche pas
+		if (!checkligne(mer, i, para, liste) || !checklignefc(mer, para, i, liste)) // checkligne marche
 		{
 			printf("ok\n");
 			return (0);
@@ -39,7 +42,6 @@ int	checklignemain(char **tab) // ici ca check
 	i = 0;
 	while (i != 6)
 	{
-		printf("%d\n", para[i]);
 		if (para[i] == 0)
 		{
 			printf("error 0 found\n");

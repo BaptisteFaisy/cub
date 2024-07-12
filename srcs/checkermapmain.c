@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:20:09 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/08 18:54:43 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/12 17:04:14 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	check_double(char **tab);
 int	mapcheck_main(t_map_data *data)
 {
 	if (!check_double(data->map) || !check_input(data->map)
-		|| !checkmap_check_wall(data->map) || !checklignemain(data->pref))
+		|| !checkmap_check_wall(data->map) || !checklignemain(data->pref, t_tab *head))
 		return (0);
 	return (1);
 }

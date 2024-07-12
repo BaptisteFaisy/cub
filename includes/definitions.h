@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/08 18:56:44 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/12 17:05:59 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ int				check_input(char **tab);
 int				checkmap_y(char **tab, int j, int i);
 int				checkmap_x(char **tab, int i, int j);
 int				checkmap_check_wall(char **tab);
-int				checklignev2(char **tab, int ligne, char *str, int i);
+int				checklignev2(char **tab, int ligne, char *str, int i, t_tab *liste);
 t_rgb			grepccolor(char **tab);
 t_rgb			grepfloorcolor(char **tab);
-int				checklignefc(char **tab, int *para, int ligne);
-int				checkligne(char **tab, int ligne, int *para);
-int				checklignemain(char **tab);
-int				mapcheck_main(t_map_data *data);
+int				checklignefc(char **tab, int *para, int ligne, t_tab *liste);
+int				checkligne(char **tab, int ligne, int *para, t_tab *liste);
+int				checklignemain(char **tab, t_tab *head);
+int				mapcheck_main(t_map_data *data, t_tab *head);
 void			draw_screen(t_mlxvars *vars);
 void			img_lst_clear(t_list **lst, t_mlxvars *vars);
 bool			stock_image(t_mlxvars *vars);
@@ -94,5 +94,7 @@ double			radian_value_normalize(double var);
 bool			set_color(t_mlxvars *var);
 void			y_calculate_coordination(t_ray *ray);
 int				check_xv2(int j2, char **tab, int i, t_i cond);
+void			create_next(t_tab *liste, char *str);
+void			init(t_tab *liste);
 
 #endif
