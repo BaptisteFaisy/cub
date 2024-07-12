@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 15:14:37 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/08 19:05:07 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/11 16:35:20 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int	checklignemain(char **tab) // ici ca check
 		para[i] = 0;
 		i++;
 	}
-	while (tab[i])
+	i = 0;
+	while (i != 7)
 	{
-		printf("a\n");
 		if (!checkligne(tab, i, para) || !checklignefc(tab, para, i)) // checkligne marche pas
 		{
-			printf("a\n");
+			printf("ok\n");
 			return (0);
 		}
 		i++;
@@ -39,6 +39,7 @@ int	checklignemain(char **tab) // ici ca check
 	i = 0;
 	while (i != 6)
 	{
+		printf("%d\n", para[i]);
 		if (para[i] == 0)
 		{
 			printf("error 0 found\n");

@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/08 19:00:31 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/11 16:35:02 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,12 @@ int	checkligne(char **tab, int ligne, int *para)
 	if ((tab[ligne][0] == 'W' && tab[ligne][1] == 'E') && para[2] == 1)
 		return (free(str), 0);
 	if ((tab[ligne][0] == 'E' || tab[ligne][1] == 'A') && para[3] == 0)
-		return (para[3] = 1, checklignev2(tab, ligne, str, i));
+	{
+		printf("q\n");
+		return (para[3] = 1, checklignev2(tab, ligne, str, i));}
 	if ((tab[ligne][0] == 'E' && tab[ligne][1] == 'A') && para[3] == 1)
-		return (free(str), 0);
+	{	
+		return (free(str), 0);}
 	else
 		return (1);
 }
