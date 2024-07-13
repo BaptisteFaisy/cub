@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/12 16:35:21 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 15:56:29 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,41 +17,37 @@ static int	checker_nbr(char **tab, int i, int ligne, bool cond);
 int	checkligne(char **tab, int ligne, int *para, t_tab *liste)
 {
 	int		i;
-	char	*str;
-	int		j;
 
 	i = 0;
-	j = 0;
-	str = malloc(sizeof(char) * ft_strlen(tab[ligne]) + 1);
-	if (!str)
-		return (0);
 	if ((tab[ligne][0] == 'N' && tab[ligne][1] == 'O' && para[0] == 0))
-		return (para[0] = 1, checklignev2(tab, ligne, str, i, liste));
+		return (para[0] = 1, checklignev2(tab, ligne, i, liste));
 	if ((tab[ligne][0] == 'N' && tab[ligne][1] == 'O' && para[0] == 1))
-		return (free(str), 0);
+		return (0);
 	if ((tab[ligne][0] == 'S' || tab[ligne][1] == 'O') && para[1] == 0)
-		return (para[1] = 1, checklignev2(tab, ligne, str, i, liste));
+		return (para[1] = 1, checklignev2(tab, ligne, i, liste));
 	if ((tab[ligne][0] == 'S' && tab[ligne][1] == 'O') && para[1] == 1)
-		return (free(str), 0);
+		return (0);
 	if ((tab[ligne][0] == 'W' || tab[ligne][1] == 'E') && para[2] == 0)
-		return (para[2] = 1, checklignev2(tab, ligne, str, i, liste));
+		return (para[2] = 1, checklignev2(tab, ligne, i, liste));
 	if ((tab[ligne][0] == 'W' && tab[ligne][1] == 'E') && para[2] == 1)
-		return (free(str), 0);
+		return (0);
 	if ((tab[ligne][0] == 'E' || tab[ligne][1] == 'A') && para[3] == 0)
-	{
-		return (para[3] = 1, checklignev2(tab, ligne, str, i, liste));}
+		return (para[3] = 1, checklignev2(tab, ligne, i, liste));
 	if ((tab[ligne][0] == 'E' && tab[ligne][1] == 'A') && para[3] == 1)
-	{	
-		return (free(str), 0);}
+		return (0);
 	else
 		return (1);
 }
 
-int	checklignev2(char **tab, int ligne, char *str, int i, t_tab *liste)
+int	checklignev2(char **tab, int ligne, int i, t_tab *liste)
 {
-	int	j;
+	int		j;
+	char	*str;
 
 	j = 0;
+	str = malloc(sizeof(char) * ft_strlen(tab[ligne]) + 1);
+	if (!str)
+		return (0);
 	while (tab[ligne][i] && tab[ligne][i] != '.')
 		i++;
 	while (tab[ligne][i])
@@ -63,18 +59,13 @@ int	checklignev2(char **tab, int ligne, char *str, int i, t_tab *liste)
 	str[j] = '\0';
 	i = open(str, O_RDONLY);
 	if (i == -1)
-	{
-		ft_putstr_fd("Error : I can't open texture\n", 1);
-		return (free(str), 0);
-	}
+		return (ft_putstr_fd("Error : I can't open texture\n", 1), free(str), 0);
 	close(i);
 	i = open(str, O_DIRECTORY);
 	if (i == -1)
 		return (create_next(liste, str), free(str), 1);
-	close(i);
-	ft_putstr_fd("Error : Directory found, file expected \n", 1);
-	free(str);
-	return (0);
+	return (close(i),
+		ft_putstr_fd("Error : Directory found \n", 1), free(str), 0);
 }
 
 // int	checklignefc2(char **tab, int ligne)
