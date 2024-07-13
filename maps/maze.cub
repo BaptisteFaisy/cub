@@ -3,7 +3,7 @@ SO ./maps/meuf.xpm
 WE ./maps/minion.xpm
 EA ./maps/east.xpm
 
-F 220,100,0
+F 1,00,000
 C 0,255,0
 
 1111111111111111111111111

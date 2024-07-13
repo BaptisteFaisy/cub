@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 20:12:38 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 19:46:30 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 19:54:37 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ int	get_longest_line(char **map)
 	return (max);
 }
 
-static void	fill_map_data_ext(int i, char **map, int len)
-{
-	map[i] = ft_calloc(sizeof(char), len + 1);
-	map[i + 1] = NULL;
-}
+// static void	fill_map_data_ext(int i, char **map, int len)
+// {
+// 	map[i] = ft_calloc(sizeof(char), len + 1);
+// 	map[i + 1] = NULL;
+// }
 
 // bool	fill_map_data(t_map_data *dat, t_list *val)
 // {

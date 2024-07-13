@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_pref.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:43:34 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 18:34:16 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 19:16:54 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,5 @@ char	**get_pref(t_tab *head)
 		free(prev);
 	}
 	pref[6] = NULL;
-	printf("NO : %s\n", pref[0]);
 	return (pref);
 }

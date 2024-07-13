@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkermapmain.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:20:09 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/13 19:04:34 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 19:16:44 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,15 @@ static int	check_last(char **tab)
 
 	i = 0;
 	j = 0;
-	while (tab[i + 1])
-	{
-		while (tab[i][j])
-		{
-			if (tab[i][j] != '1' && tab[i][j] != ' ')
-				return (0);
-			j++;
-		}
+	while (tab[i + 1] != NULL)
 		i++;
+	while (tab[i][j])
+	{
+		if (tab[i][j] != '1' && tab[i][j] != ' ' && tab[i][j] != '\n')
+		{
+			return (0);
+		}
+		j++;
 	}
 	i = -1;
 	while (tab[++i])

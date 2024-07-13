@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stock_image.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 14:26:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 18:28:50 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 19:17:29 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	stock_image(t_mlxvars *vars)
 	i = 0;
 	while (i <= EAST)
 	{
-		printf("pref : %s\n", vars->map_data->pref[0]);
+		ft_printf("pref : %s\n", vars->map_data->pref[0]);
 		ret &= register_image(vars,
 				get_new_sprite_image_ptr(vars, vars->map_data->pref[i] + 3));
 		if (!ret)

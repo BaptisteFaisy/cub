@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/13 18:36:01 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 19:28:16 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,15 +118,20 @@ int	checklignefc(char **tab, int *para, int ligne, t_tab *liste)
 
 static int	checker_nbr(char **tab, int i, int ligne, bool cond)
 {
-	int	nbr;
+	int		nbr;
+	bool	cond2;
 
 	nbr = 0;
+	cond2 = 0;
 	while (tab[ligne][i] != ',' && ft_isdigit(tab[ligne][i]))
 	{
 		nbr = nbr * 10 + tab[ligne][i] - '0';
 		i++;
+		cond2 = 1;
 	}
-	if (tab[ligne][i] == 0 && cond == false)
+	if (cond2 == 0)
+		return (0);
+	if (tab[ligne][i + 1] && cond == true)
 		return (0);
 	if (nbr < 0 || nbr > 256)
 		return (0);

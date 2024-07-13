@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 19:50:22 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 19:57:48 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,7 @@ static bool	nomralize_map(char **map)
 		map[i] = ft_calloc(sizeof(char), len + 1);
 		ft_strlcpy(map[i], s, ft_strlen(s));
 		free(s);
+		i++;
 	}
 	return (true);
 }
