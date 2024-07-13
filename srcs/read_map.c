@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 19:04:55 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 19:10:55 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,9 @@ static bool	get_map(t_map_data *dat, t_list *lst)
 	i = 0;
 	while (lst)
 	{
-		dat->map[i++] = ft_strdup((char *)lst->content);
+		dat->map[i] = ft_strdup((char *)lst->content);
+		dat->map[i][ft_strlen(dat->map[i]) - 1] = 0;
+		i++;
 		lst = lst->next;
 	}
 	dat->map[i] = 0;
