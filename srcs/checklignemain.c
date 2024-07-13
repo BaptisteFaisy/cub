@@ -6,13 +6,13 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 15:14:37 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/13 16:00:58 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 16:03:51 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-int	checklignemain(char **mer, t_tab *head) // ici
+int	checklignemain(char **mer, t_tab *head)
 {
 	int		*para;
 	int		i;
@@ -24,10 +24,7 @@ int	checklignemain(char **mer, t_tab *head) // ici
 	if (!para || !liste)
 		exit (1);
 	while (i != 6)
-	{
-		para[i] = 0;
-		i++;
-	}
+		para[i++] = 0;
 	i = 0;
 	while (i != 7) // ligne jusqu a check
 	{
@@ -48,6 +45,5 @@ int	checklignemain(char **mer, t_tab *head) // ici
 		}
 		i++;
 	}
-	free(para);
-	return (1);
+	return (free(para), 1);
 }
