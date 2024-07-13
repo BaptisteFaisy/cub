@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 18:17:25 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 19:04:55 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,9 @@ static bool	get_map(t_map_data *dat, t_list *lst)
 	while (lst != NULL)
 	{
 		j = 0;
-		while (((char *)lst->content)[j] && ((char *)lst->content)[j] != '\n')
+		while (lst != NULL
+			&& ((char *)lst->content)[j]
+			&& ((char *)lst->content)[j] != '\n')
 		{
 			if (((char *)lst->content)[j] != '1'
 				&& ((char *)lst->content)[j] != ' ')
@@ -129,7 +131,8 @@ static bool	get_map(t_map_data *dat, t_list *lst)
 		}
 		if (is_1 == true)
 			break ;
-		lst = lst->next;
+		if (lst)
+			lst = lst->next;
 	}
 	dat->pref = get_map_pref(head, ft_lstsize(head) - ft_lstsize(lst));
 	dat->map = (char **)malloc((ft_lstsize(lst) + 1) * sizeof(char *));
