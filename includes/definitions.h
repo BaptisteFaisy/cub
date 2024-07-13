@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 15:52:24 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 16:04:42 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int				check_input(char **tab);
 int				checkmap_y(char **tab, int j, int i);
 int				checkmap_x(char **tab, int i, int j);
 int				checkmap_check_wall(char **tab);
-int				checklignev2(char **tab, int ligne, char *str, int i, t_tab *liste);
+int				checklignev2(char **tab, int ligne, int i, t_tab *liste);
 t_rgb			grepccolor(char **tab);
 t_rgb			grepfloorcolor(char **tab);
 int				checklignefc(char **tab, int *para, int ligne, t_tab *liste);
