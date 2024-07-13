@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_pipeline.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 16:10:24 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 16:23:47 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ static bool	maps_pipeline(t_mlxvars *vars)
 {
 	t_tab	*head;
 
+	head = NULL;
+	
 	head = (t_tab *)malloc(sizeof(t_tab));
 	if (!head)
 		return (ft_printf("fatal : malloc"), false);
 	init(head);
+	
 	if (!verifie_cub(vars->map_filename))
 		return (ft_printf("Error: file is not .cub\n"), false);
 	vars->map_data = read_map(vars->map_filename);
