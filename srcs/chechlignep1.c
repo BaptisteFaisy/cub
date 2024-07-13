@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/13 17:32:36 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 18:24:02 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	checklignev2(char **tab, int ligne, int i, t_tab *liste)
 	if (i == -1)
 	{
 		printf("a\n");
-		return (create_next(liste, str), free(str), 1);
+		return (create_next(liste, str), 1);
 	}
 	return (close(i),
 		ft_putstr_fd("Error : Directory found \n", 1), free(str), 0);

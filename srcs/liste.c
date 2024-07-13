@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:23:03 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/13 17:30:42 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 18:20:20 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ void	create_next(t_tab *liste, char *str)
 	next = malloc(sizeof(t_tab));
 	if (!next)
 		exit (1);
+	while (liste->next)
+	{
+		liste = liste->next;
+	}
 	liste->next = next;
 	next->next = NULL;
 	next->str = str;
@@ -48,7 +52,7 @@ void	print_liste(t_tab *liste)
 {
 	while (liste)
 	{
-		printf("%s\n", liste->str);
+		printf("i%s\n", liste->str);
 		liste = liste->next;
 	}
 }
