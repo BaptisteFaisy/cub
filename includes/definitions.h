@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   definitions.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 16:04:42 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 16:08:42 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ int				check_xv2(int j2, char **tab, int i, t_i cond);
 void			create_next(t_tab *liste, char *str);
 void			init(t_tab *liste);
 char			**get_pref(t_tab *head);
+void			free_liste(t_tab *liste);
 
 #endif
