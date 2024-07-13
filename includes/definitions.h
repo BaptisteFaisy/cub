@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   definitions.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/12 17:05:59 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 15:52:24 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ void			y_calculate_coordination(t_ray *ray);
 int				check_xv2(int j2, char **tab, int i, t_i cond);
 void			create_next(t_tab *liste, char *str);
 void			init(t_tab *liste);
+char			**get_pref(t_tab *head);
 
 #endif

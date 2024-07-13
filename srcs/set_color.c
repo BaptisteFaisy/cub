@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 21:59:38 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/17 22:23:33 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 15:54:02 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool	set_color(t_mlxvars *var)
 	i = 0;
 	while (i < 2)
 	{
-		val = ft_split(var->map_data->pref[5 + i], ',');
+		val = ft_split(var->map_data->pref[3 + i], ',');
 		if (!val)
 			return (false);
 		r = ft_atoi(val[0] + 2);

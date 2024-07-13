@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/05/20 16:14:06 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 15:43:08 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,28 +56,28 @@ static t_list	*get_read_map(char *filename)
 
 static bool	fill_datas(t_map_data *dat, t_list *val)
 {
-	int	i;
+	// int	i;
 
-	dat->pref = (char **)malloc(sizeof(char *) * 8);
-	if (!dat->pref)
-		return (false);
-	i = 0;
-	while (val && i <= 6)
-	{
-		if (ft_strncmp((const char *)val->content, "\n", 1) == 0)
-		{
-			val = val->next;
-			dat->pref[i] = (char *)malloc(sizeof(char));
-			if (dat->pref[i] == NULL)
-				return (free(dat->pref), false);
-			dat->pref[i++][0] = '\0';
-			continue ;
-		}
-		((char *)val->content)[ft_strlen(val->content) - 1] = '\0';
-		dat->pref[i++] = ft_strdup(val->content);
-		val = val->next;
-	}
-	dat->pref[i] = NULL;
+	// dat->pref = (char **)malloc(sizeof(char *) * 8);
+	// if (!dat->pref)
+	// 	return (false);
+	// i = 0;
+	// while (val && i <= 6)
+	// {
+	// 	if (ft_strncmp((const char *)val->content, "\n", 1) == 0)
+	// 	{
+	// 		val = val->next;
+	// 		dat->pref[i] = (char *)malloc(sizeof(char));
+	// 		if (dat->pref[i] == NULL)
+	// 			return (free(dat->pref), false);
+	// 		dat->pref[i++][0] = '\0';
+	// 		continue ;
+	// 	}
+	// 	((char *)val->content)[ft_strlen(val->content) - 1] = '\0';
+	// 	dat->pref[i++] = ft_strdup(val->content);
+	// 	val = val->next;
+	// }
+	// dat->pref[i] = NULL;
 	if (!fill_map_data(dat, val))
 		return (ft_lstclear(&val, free), free(dat->pref), false);
 	return (true);
