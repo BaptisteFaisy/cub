@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 16:17:53 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 16:20:20 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,14 @@ static char	**get_origin_map(t_list *lst)
 	char	**map;
 	size_t	i;
 
-	map = (char **)malloc(ft_lstsize(lst) * sizeof(char *));
+	map = (char **)malloc((ft_lstsize(lst) + 1) * sizeof(char *));
 	i = 0;
 	while (lst)
 	{
 		map[i++] = ft_strdup((char *)lst->content);
 		lst = lst->next;
 	}
+	map[i] = 0;
 	return (map);
 }
 
