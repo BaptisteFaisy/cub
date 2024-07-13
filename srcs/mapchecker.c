@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:22:23 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/13 17:17:40 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 17:20:43 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ static int	ft_strlenvertical(char **str, int ligne)
 
 	i = 0;
 	nbr = 0;
-	while (str[i][ligne])
+	(void)ligne;
+	while (str[i])
 	{
 		nbr++;
 		i++;

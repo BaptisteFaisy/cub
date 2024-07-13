@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/13 15:56:29 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 17:22:04 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	checklignev2(char **tab, int ligne, int i, t_tab *liste)
 		j++;
 	}
 	str[j] = '\0';
+	printf("%s\n", str);
 	i = open(str, O_RDONLY);
 	if (i == -1)
 		return (ft_putstr_fd("Error : I can't open texture\n", 1), free(str), 0);
