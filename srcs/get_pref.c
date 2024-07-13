@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:43:34 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 16:00:20 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 16:12:05 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ char	**get_pref(t_tab *head)
 	char	**pref;
 	t_tab	*prev;
 
-	pref = (char **)malloc(sizeof(char **) * 8); // is it 8 or 7 ?
+	prev = head;
+	head = head->next;
+	free(prev);
+	pref = (char **)malloc(sizeof(char **) * 8);
 	if (!pref)
 		return (NULL);
 	while (head)
