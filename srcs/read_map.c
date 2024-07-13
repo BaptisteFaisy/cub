@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 19:10:55 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 19:50:22 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,24 @@ static bool	get_map(t_map_data *dat, t_list *lst)
 	return (true);
 }
 
+static bool	nomralize_map(char **map)
+{
+	int		len;
+	char	*s;
+	int		i;
+
+	len = get_longest_line(map);
+	i = 0;
+	while (map[i])
+	{
+		s = map[i];
+		map[i] = ft_calloc(sizeof(char), len + 1);
+		ft_strlcpy(map[i], s, ft_strlen(s));
+		free(s);
+	}
+	return (true);
+}
+
 t_map_data	*read_map(char *filename)
 {
 	t_list		*map_value;
@@ -162,6 +180,7 @@ t_map_data	*read_map(char *filename)
 	init_map_data(map_data);
 	if (get_map(map_data, map_value) == false)
 		return (ft_lstclear(&map_value, free), free(map_data), NULL);
+	nomralize_map(map_data->map);
 	if (!map_data->pref)
 		return (ft_lstclear(&map_value, free), free(map_data), NULL);
 	ft_lstclear(&map_value, free);
