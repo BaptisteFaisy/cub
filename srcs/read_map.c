@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 17:13:39 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 17:17:42 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,15 @@ static char	**get_map_pref(t_list *lst, int limit)
 	char	**pref;
 
 	i = 0;
-	pref = (char **)malloc(sizeof(char *) * limit);
+	pref = (char **)malloc(sizeof(char *) * (limit + 1));
 	while (i < limit)
 	{
+		printf("limit : %d gmp : %s\n",limit, (char *)lst->content);
 		pref[i] = ft_strdup((char *)lst->content);
 		i++;
 		lst = lst->next;
 	}
+	pref[i] = NULL;
 	return (pref);
 }
 
@@ -110,12 +112,14 @@ static bool	get_map(t_map_data *dat, t_list *lst)
 	head = lst;
 	while (lst != NULL)
 	{
+		// is_1 = false;
 		j = 0;
 		while (((char *)lst->content)[j] && ((char *)lst->content)[j] != '\n')
 		{
 			if (((char *)lst->content)[j] != '1'
 				&& ((char *)lst->content)[j] != ' ')
 			{
+				printf("FUCK %s %zu\n", (char *)lst->content, j);
 				lst = lst->next;
 				j = 0;
 				is_1 = false;
@@ -129,11 +133,13 @@ static bool	get_map(t_map_data *dat, t_list *lst)
 			break ;
 		lst = lst->next;
 	}
+	printf("lstsizes : %d %d\n", ft_lstsize(head), ft_lstsize(lst));
 	dat->pref = get_map_pref(head, ft_lstsize(head) - ft_lstsize(lst));
 	dat->map = (char **)malloc((ft_lstsize(lst) + 1) * sizeof(char *));
 	i = 0;
 	while (lst)
 	{
+		printf("gm : %s\n", (char *)lst->content);
 		dat->map[i++] = ft_strdup((char *)lst->content);
 		lst = lst->next;
 	}
