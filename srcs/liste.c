@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:23:03 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/13 16:19:37 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 16:43:53 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	free_liste(t_tab *liste)
 
 	if (liste)
 	{
-		while (liste->next)
+		while (liste)
 		{
 			tmp = liste;
 			liste = liste->next;
@@ -47,8 +47,8 @@ void	free_liste(t_tab *liste)
 
 void	print_liste(t_tab *liste)
 {
-	printf("%p\n", liste->next);
-	while (liste->next)
+	// printf("%p\n", liste->next);
+	while (liste)
 	{
 		printf("%s\n", liste->str);
 		liste = liste->next;
