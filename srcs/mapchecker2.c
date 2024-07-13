@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 00:51:37 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 17:15:14 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 18:41:01 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ int	check_input(char **tab)
 			if (tab[i][j] != '0' && tab[i][j] != '1' && tab[i][j] != 'N'
 				&& tab[i][j] != 'S' && tab[i][j] != 'E' && tab[i][j] != 'W'
 				&& tab[i][j] != ' ' && tab[i][j] != '\n')
-			{
-				printf("input\n");
 				return (0);
-			}
 			j++;
 		}
 		i++;

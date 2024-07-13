@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/13 18:33:43 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 18:36:01 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,7 @@ int	checklignefc(char **tab, int *para, int ligne, t_tab *liste)
 		return (0);
 	if (tab[ligne][i] != '\0')
 		return (0);
-	create_next(liste, tab[ligne]);
-	return (1);
-	// return (checklignefc2(tab, ligne));
+	return (create_next(liste, tab[ligne]), 1);
 }
 
 static int	checker_nbr(char **tab, int i, int ligne, bool cond)

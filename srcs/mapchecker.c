@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:22:23 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/13 17:20:43 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 18:58:14 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	checkmap_check_wall(char **tab)
 			{
 				if (!(checkmap_x(tab, i, j) == 1 && checkmap_y(tab, j, i) == 1))
 				{
-					printf("wall\n");
 					return (0);
 				}
 			}
