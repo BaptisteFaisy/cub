@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_pipeline.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 16:23:47 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 16:44:05 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,17 @@ static bool	maps_pipeline(t_mlxvars *vars)
 {
 	t_tab	*head;
 
-	head = NULL;
-	
 	head = (t_tab *)malloc(sizeof(t_tab));
 	if (!head)
 		return (ft_printf("fatal : malloc"), false);
 	init(head);
-	
 	if (!verifie_cub(vars->map_filename))
-		return (ft_printf("Error: file is not .cub\n"), false);
+		return (free(head), ft_printf("Error: file is not .cub\n"), false);
 	vars->map_data = read_map(vars->map_filename);
 	if (!vars->map_data)
-		return (ft_printf("map_data : "), false);
+		return (free(head), ft_printf("map_data : "), false);
 	if (!mapcheck_main(vars->map_data, head))
-		return (ft_printf(DEF_MAPCHECK_MAIN_ERR), false);
+		return (free_liste(head), ft_printf(DEF_MAPCHECK_MAIN_ERR), false);
 	vars->map_data->pref = get_pref(head);
 	if (!vars->map_data->pref)
 		return (ft_printf("get_pref : "), false);
