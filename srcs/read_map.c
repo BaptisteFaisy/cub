@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 15:43:08 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 16:20:20 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,22 @@ static bool	fill_datas(t_map_data *dat, t_list *val)
 	return (true);
 }
 
+static char	**get_origin_map(t_list *lst)
+{
+	char	**map;
+	size_t	i;
+
+	map = (char **)malloc((ft_lstsize(lst) + 1) * sizeof(char *));
+	i = 0;
+	while (lst)
+	{
+		map[i++] = ft_strdup((char *)lst->content);
+		lst = lst->next;
+	}
+	map[i] = 0;
+	return (map);
+}
+
 t_map_data	*read_map(char *filename)
 {
 	t_list		*map_value;
@@ -96,6 +112,9 @@ t_map_data	*read_map(char *filename)
 		return (free(map_data), NULL);
 	init_map_data(map_data);
 	if (!fill_datas(map_data, map_value))
+		return (ft_lstclear(&map_value, free), free(map_data), NULL);
+	map_data->pref = get_origin_map(map_value);
+	if (!map_data->pref)
 		return (ft_lstclear(&map_value, free), free(map_data), NULL);
 	ft_lstclear(&map_value, free);
 	return (map_data);
