@@ -6,13 +6,14 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:20:09 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/13 19:00:04 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 19:04:34 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
 static int	check_double(char **tab);
+static int	check_last(char **tab);
 
 int	mapcheck_main(t_map_data *data, t_tab *head)
 {
@@ -20,7 +21,8 @@ int	mapcheck_main(t_map_data *data, t_tab *head)
 
 	tmp = head;
 	if (!check_double(data->map) || !check_input(data->map)
-		|| !checkmap_check_wall(data->map) || !checklignemain(data->pref, tmp))
+		|| !checkmap_check_wall(data->map) || !checklignemain(data->pref, tmp)
+		|| !check_last(data->pref))
 	{
 		return (0);
 	}
@@ -50,5 +52,29 @@ static int	check_double(char **tab)
 		}
 		i++;
 	}
+	return (1);
+}
+
+static int	check_last(char **tab)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (tab[i + 1])
+	{
+		while (tab[i][j])
+		{
+			if (tab[i][j] != '1' && tab[i][j] != ' ')
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	i = -1;
+	while (tab[++i])
+		if (tab[i][0] == '\0' )
+			free(tab[i]);
 	return (1);
 }

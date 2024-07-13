@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 15:14:37 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/13 18:48:33 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 19:01:04 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,6 @@ int	checklignemain(char **mer, t_tab *head)
 	while (mer[i])
 		if (!checklignefc(mer, para, i++, liste))
 			return (free(para), 0);
-	i = -1;
-	while (mer[++i])
-		if (mer[i][0] == '\0' )
-			free(mer[i]);
 	i = 0;
 	while (i != 6)
 		if (para[i++] == 0)
