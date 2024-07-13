@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:43:34 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 15:51:12 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 16:00:20 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ char	**get_pref(t_tab *head)
 		head = head->next;
 		free(prev);
 	}
+	pref[6] = NULL;
 	return (pref);
 }

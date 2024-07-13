@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:02:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/12 18:28:21 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 16:00:06 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static bool	maps_pipeline(t_mlxvars *vars)
 {
 	t_tab	*head;
 
-	head = (t_tab *)malloc(sizeof(t_tab *));
+	head = (t_tab *)malloc(sizeof(t_tab));
 	if (!head)
 		return (ft_printf("fatal : malloc"), false);
 	init(head);
