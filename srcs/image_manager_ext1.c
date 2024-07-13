@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 17:01:31 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/03/27 18:49:22 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 18:27:28 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_mlximage	*get_new_sprite_image_ptr(t_mlxvars *vars, char *path)
 	int			x;
 	int			y;
 
+	printf("dd -> %s\n", path);
 	img = mlx_xpm_file_to_image(vars->mlx,
 			path, &x, &y);
 	if (!img)
