@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:23:03 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/13 16:06:59 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 16:14:42 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,14 @@ void	free_liste(t_tab *liste)
 			liste = liste->next;
 			free(tmp);
 		}
+	}
+}
+
+void	print_liste(t_tab *liste)
+{
+	while (liste->next)
+	{
+		printf("%s\n", liste->str);
+		liste = liste->next;
 	}
 }
