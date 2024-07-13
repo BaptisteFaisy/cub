@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 17:17:42 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/13 17:23:49 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ static char	**get_map_pref(t_list *lst, int limit)
 	pref = (char **)malloc(sizeof(char *) * (limit + 1));
 	while (i < limit)
 	{
-		printf("limit : %d gmp : %s\n",limit, (char *)lst->content);
 		pref[i] = ft_strdup((char *)lst->content);
+		pref[i][ft_strlen(pref[i]) - 1] = 0;
 		i++;
 		lst = lst->next;
 	}
