@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   definitions.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 16:15:00 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/13 19:46:40 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ void			init(t_tab *liste);
 char			**get_pref(t_tab *head);
 void			free_liste(t_tab *liste);
 void			print_liste(t_tab *liste);
+int				get_longest_line(char **map);
 
 #endif
