@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   checkermapmain.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:20:09 by bfaisy            #+#    #+#             */
 /*   Updated: 2024/07/24 15:47:30 by bfaisy           ###   ########.fr       */

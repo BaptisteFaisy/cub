@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:50:23 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 19:46:40 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/24 15:57:33 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ char			**get_pref(t_tab *head);
 void			free_liste(t_tab *liste);
 void			print_liste(t_tab *liste);
 int				get_longest_line(char **map);
+bool			get_map(t_map_data *dat, t_list *lst);
 
 #endif

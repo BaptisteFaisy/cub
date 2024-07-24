@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/24 15:41:35 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/24 15:51:30 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,53 +99,6 @@ static char	**get_map_pref(t_list *lst, int limit)
 	}
 	pref[i] = NULL;
 	return (pref);
-}
-
-static bool	get_map(t_map_data *dat, t_list *lst)
-{
-	size_t	i;
-	size_t	j;
-	t_list	*head;
-	bool	is_1;
-
-	is_1 = false;
-	head = lst;
-	while (lst != NULL)
-	{
-		j = 0;
-		while (lst != NULL
-			&& ((char *)lst->content)[j]
-			&& ((char *)lst->content)[j] != '\n')
-		{
-			if (((char *)lst->content)[j] != '1'
-				&& ((char *)lst->content)[j] != ' ')
-			{
-				lst = lst->next;
-				j = 0;
-				is_1 = false;
-				continue ;
-			}
-			if (((char *)lst->content)[j] == '1')
-				is_1 = true;
-			j++ ;
-		}
-		if (is_1 == true)
-			break ;
-		if (lst)
-			lst = lst->next;
-	}
-	dat->pref = get_map_pref(head, ft_lstsize(head) - ft_lstsize(lst));
-	dat->map = (char **)malloc((ft_lstsize(lst) + 1) * sizeof(char *));
-	i = 0;
-	while (lst)
-	{
-		dat->map[i] = ft_strdup((char *)lst->content);
-		dat->map[i][ft_strlen(dat->map[i])] = 0;
-		i++;
-		lst = lst->next;
-	}
-	dat->map[i] = 0;
-	return (true);
 }
 
 static bool	nomralize_map(char **map)
