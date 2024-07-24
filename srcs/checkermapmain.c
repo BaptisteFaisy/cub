@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:20:09 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/13 19:16:44 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/24 15:27:37 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ static int	check_double(char **tab)
 				cond = true;
 			else if ((tab[i][j] == 'N' || tab[i][j] == 'S' || tab[i][j] == 'E'
 				|| tab[i][j] == 'W'))
-				return (0);
+			{
+				ft_printf("double\n");
+				return (0);}
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 00:51:37 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 19:38:54 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/24 15:34:13 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ int	check_input(char **tab)
 			if (tab[i][j] != '0' && tab[i][j] != '1' && tab[i][j] != 'N'
 				&& tab[i][j] != 'S' && tab[i][j] != 'E' && tab[i][j] != 'W'
 				&& tab[i][j] != ' ' && tab[i][j] != '\n')
+			{
+				ft_printf("input\n");
 				return (0);
+			}
 			j++;
 		}
 		i++;
@@ -47,10 +50,10 @@ int	check_xv2(int j2, char **tab, int i, t_i cond)
 		j2--;
 	}
 	if (j2 < 0)
-		return (0);
+		return (ft_printf("check_map_x1\n"), 0);
 	if (tab[i][j2] == ' ')
-		return (0);
+		return (ft_printf("check_map_x2\n"), 0);
 	if (cond.para1 == 0 || cond.para == 0)
-		return (0);
+		return (ft_printf("check_map_x3 %d %d \n", cond.para1, cond.para), 0);
 	return (1);
 }
