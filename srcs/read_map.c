@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 19:57:48 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/24 15:41:35 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ static bool	get_map(t_map_data *dat, t_list *lst)
 	while (lst)
 	{
 		dat->map[i] = ft_strdup((char *)lst->content);
-		dat->map[i][ft_strlen(dat->map[i]) - 1] = 0;
+		dat->map[i][ft_strlen(dat->map[i])] = 0;
 		i++;
 		lst = lst->next;
 	}
