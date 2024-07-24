@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:15:22 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/24 15:51:30 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/07/24 16:16:08 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,24 +82,6 @@ static t_list	*get_read_map(char *filename)
 // 		return (ft_lstclear(&val, free), free(dat->pref), false);
 // 	return (true);
 // }
-
-static char	**get_map_pref(t_list *lst, int limit)
-{
-	int		i;
-	char	**pref;
-
-	i = 0;
-	pref = (char **)malloc(sizeof(char *) * (limit + 1));
-	while (i < limit)
-	{
-		pref[i] = ft_strdup((char *)lst->content);
-		pref[i][ft_strlen(pref[i]) - 1] = 0;
-		i++;
-		lst = lst->next;
-	}
-	pref[i] = NULL;
-	return (pref);
-}
 
 static bool	nomralize_map(char **map)
 {

@@ -6,7 +6,7 @@
 #    By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 11:05:03 by lhojoon           #+#    #+#              #
-#    Updated: 2024/07/13 15:56:34 by lhojoon          ###   ########.fr        #
+#    Updated: 2024/07/24 16:16:31 by lhojoon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,8 @@ SRCS_RAW =	main.c \
 			set_color.c \
 			get_wall_info_2.c \
 			liste.c \
-			get_pref.c
+			get_pref.c \
+			get_map.c
 SRCS = $(addprefix $(DIR)/,$(SRCS_RAW))
 OBJS = $(SRCS:c=o)
 INCLUDES = -I./includes -I./libft -I./ft_printf/includes
