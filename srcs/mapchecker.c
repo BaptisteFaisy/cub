@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:22:23 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/24 15:38:37 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/24 15:42:35 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	checkmap_x(char **tab, int i, int j)
 			break ;
 		}
 		j++;
-		printf("%c\n", tab[i][j]);
 	}
 	if (tab[i][j] == ' ')
 	{
