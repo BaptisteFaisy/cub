@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 14:26:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 19:17:29 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/24 16:32:02 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ bool	stock_image(t_mlxvars *vars)
 	i = 0;
 	while (i <= EAST)
 	{
-		ft_printf("pref : %s\n", vars->map_data->pref[0]);
 		ret &= register_image(vars,
 				get_new_sprite_image_ptr(vars, vars->map_data->pref[i] + 3));
 		if (!ret)

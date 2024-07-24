@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:19:50 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 16:10:40 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/24 16:30:21 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ typedef struct s_ray
 	t_posd	pos;
 	float	angle;
 }	t_ray;
-typedef	struct	s_tab
+typedef struct s_tab
 {
 	char			*str;
 	struct s_tab	*next;
