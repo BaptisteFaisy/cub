@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:22:23 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/24 15:42:35 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/24 15:47:08 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	checkmap_x(char **tab, int i, int j)
 	}
 	if (tab[i][j] == ' ')
 	{
-		ft_printf("check_map_x\n");
+		ft_printf("error : check_map_x\n");
 		return (0);
 	}
 	return (check_xv2(j2, tab, i, cond));
@@ -88,24 +88,24 @@ int	checkmap_y(char **tab, int j, int i)
 	i2 = 0;
 	i3 = i;
 	if (tab[0][j] != '1' && tab[0][j] != ' ' && tab[0][j] != '\0')
-		return (ft_printf("1"), 0);
+		return (ft_printf("error : 1"), 0);
 	if (tab[0][j] == ' ')
 	{
 		while (tab[i2][j] != '1' && i2 != ft_strlenvertical(tab, j))
 			i2++;
 		if ((tab[i2][j] == '0' && tab[i2 + 1][j] == '\0') || tab[i][j] == '\0')
-			return (ft_printf("2"),0);
+			return (ft_printf("error : 2"), 0);
 	}
 	while (tab[i][j] != '1' && i != ft_strlenvertical(tab, j)
 		&& tab[i][j] != ' ')
 		i++;
 	if (tab[i][j] == ' ')
-		return (ft_printf("3"),0);
+		return (ft_printf("error : 3"), 0);
 	if ((tab[i][j] == '0' && tab[i + 1][j] == '\0') || tab[i][j] == '\0')
-		return (ft_printf("4"),0);
+		return (ft_printf("error : 4"), 0);
 	while (tab[i3--][j] != '1' && i3 != -1)
 		if (tab[i3][0] == '\0' || tab[i3][j] == ' ' || tab[i3][j] == '\0' )
-			return (ft_printf("5"),0);
+			return (ft_printf("error : 5"), 0);
 	return (1);
 }
 
