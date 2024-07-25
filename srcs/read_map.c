@@ -96,7 +96,6 @@ static bool	nomralize_map(char **map)
 		s = map[i];
 		map[i] = ft_calloc(sizeof(char), len + 1);
 		ft_strlcpy(map[i], s, ft_strlen(s) + 1);
-		printf("test : %s|||\n", map[i]);
 		free(s);
 		i++;
 	}
