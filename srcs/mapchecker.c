@@ -96,10 +96,11 @@ int	checkmap_y(char **tab, int j, int i)
 		if ((tab[i2][j] == '0' && tab[i2 + 1][j] == '\0') || tab[i][j] == '\0')
 			return (ft_printf("error : 2"), 0);
 	}
-	while (tab[i][j] != '1' && i != ft_strlenvertical(tab, j)
+	while (i != ft_strlenvertical(tab, j) && tab[i][j] != '1'
 		&& tab[i][j] != ' ')
 		i++;
-	if (tab[i][j] == ' ')
+	printf("strlenmachin %d\n",ft_strlenvertical(tab, j));
+	if (ft_strlenvertical(tab, j) < i && tab[i][j] == ' ')
 		return (ft_printf("error : 3"), 0);
 	if ((tab[i][j] == '0' && tab[i + 1][j] == '\0') || tab[i][j] == '\0')
 		return (ft_printf("error : 4"), 0);

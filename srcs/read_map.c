@@ -99,6 +99,8 @@ static bool	nomralize_map(char **map)
 		free(s);
 		i++;
 	}
+	// map[i] = ft_calloc(sizeof(char), len + 1);
+	map[i] = NULL;
 	return (true);
 }
 
