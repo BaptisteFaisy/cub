@@ -40,8 +40,7 @@ static void	put_datas_in_mem(t_map_data *dat, size_t *i,
 	{
 		dat->map[*i] = ft_strdup((char *)lst->content);
 		dat->map[*i][ft_strlen(dat->map[*i]) - 1] = 0;
-		printf("prt 1 : %s|||\n", dat->map[*i]);
-		// dat->map[*i][ft_strlen(dat->map[*i]) + 1] = 0;
+		printf("test : %s|||\n", dat->map[*i]);
 		*i += 1;
 		lst = lst->next;
 	}
