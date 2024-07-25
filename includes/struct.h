@@ -121,12 +121,14 @@ typedef struct s_ray
 	t_posd	pos;
 	float	angle;
 }	t_ray;
+
 typedef struct s_tab
 {
 	char			*str;
 	struct s_tab	*next;
 	bool			is_first;
 }	t_tab;
+
 typedef struct s_wall_info {
 	float		distance;
 	float		percentage;

@@ -12,17 +12,26 @@
 
 #include "cub.h"
 
+static void	str_space_treat(char **s)
+{
+	while (**s == ' ')
+		*s += 1;
+}
+
 bool	stock_image(t_mlxvars *vars)
 {
 	bool	ret;
 	int		i;
+	char	*s;
 
 	ret = true;
 	i = 0;
 	while (i <= EAST)
 	{
+		s = vars->map_data->pref[i] + 3;
+		str_space_treat(&s);
 		ret &= register_image(vars,
-				get_new_sprite_image_ptr(vars, vars->map_data->pref[i] + 3));
+				get_new_sprite_image_ptr(vars, s));
 		if (!ret)
 			return (img_lst_clear(&vars->imgs, vars), false);
 		ret &= ((t_mlximage *)ft_lstget_idx(vars->imgs,
