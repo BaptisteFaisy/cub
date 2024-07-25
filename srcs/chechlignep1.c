@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/13 19:28:16 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/25 17:27:42 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,8 @@ static int	checker_nbr(char **tab, int i, int ligne, bool cond)
 
 	nbr = 0;
 	cond2 = 0;
+	while (tab[ligne][i] == ' ')
+		i++;
 	while (tab[ligne][i] != ',' && ft_isdigit(tab[ligne][i]))
 	{
 		nbr = nbr * 10 + tab[ligne][i] - '0';
