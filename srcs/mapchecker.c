@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapchecker.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:22:23 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/24 15:47:08 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/07/25 16:41:26 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,7 @@ int	checkmap_y(char **tab, int j, int i)
 	while (i != ft_strlenvertical(tab, j) && tab[i][j] != '1'
 		&& tab[i][j] != ' ')
 		i++;
-	printf("strlenmachin %d\n",ft_strlenvertical(tab, j));
-	if (ft_strlenvertical(tab, j) < i && tab[i][j] == ' ')
+	if (i == ft_strlenvertical(tab, j) || tab[i][j] == ' ')
 		return (ft_printf("error : 3"), 0);
 	if ((tab[i][j] == '0' && tab[i + 1][j] == '\0') || tab[i][j] == '\0')
 		return (ft_printf("error : 4"), 0);
