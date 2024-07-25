@@ -12,6 +12,13 @@
 
 #include "cub.h"
 
+static char	*spaceaddr(char *s)
+{
+	while (*s == ' ')
+		s++;
+	return (s);
+}
+
 bool	set_color(t_mlxvars *var)
 {
 	int		r;
@@ -23,7 +30,8 @@ bool	set_color(t_mlxvars *var)
 	i = 0;
 	while (i < 2)
 	{
-		val = ft_split(var->map_data->pref[4 + i], ',');
+		printf("fdf %s\n",spaceaddr(var->map_data->pref[4 + i]));
+		val = ft_split(spaceaddr(var->map_data->pref[4 + i]), ',');
 		if (!val)
 			return (false);
 		r = ft_atoi(val[0] + 2);
