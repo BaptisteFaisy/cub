@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/08/28 17:23:14 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/08/28 17:25:05 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,8 +143,7 @@ static int	checker_nbr(char **tab, int i, int ligne, bool cond)
 		return (0); // ????????????????
 	if (nbr < 0 || nbr >= 256)
 		return (0);
-	printf("%d\n", i);
 	if (cond == false)
 		i++;
-	return (printf("i\n"), i);
+	return (i);
 }
