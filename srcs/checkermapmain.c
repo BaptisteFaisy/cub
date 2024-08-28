@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkermapmain.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:20:09 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/24 15:47:30 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/08/28 19:04:18 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	check_double(char **tab);
 static int	check_last(char **tab);
+int	intrus(char *str);
 
 int	mapcheck_main(t_map_data *data, t_tab *head)
 {
@@ -74,7 +75,16 @@ static int	check_last(char **tab)
 	}
 	i = -1;
 	while (tab[++i])
-		if (tab[i][0] == '\0' )
+		if (intrus(tab[i]))
 			free(tab[i]);
+	return (1);
+}
+
+int	intrus(char *str)
+{
+	if (str[0] == 'F' || str[0] == 'C' || (str[0] == 'N' && str[1] == 'O')
+		|| (str[0] == 'S' && str[1] == 'O' ) || (str[0] == 'W' && str[1] == 'E')
+		|| (str[0] == 'E' && str[1] == 'A'))
+		return (0);
 	return (1);
 }

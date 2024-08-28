@@ -3,8 +3,12 @@ SO                                ./maps/mec.xpm
 WE ./maps/meuf.xpm
 EA ./maps/east.xpm
 
+
+merde
+
 F 0,0,0
 C 0,255,0
+
 
 11111111111111111
 11111111111111
