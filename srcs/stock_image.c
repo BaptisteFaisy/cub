@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stock_image.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 14:26:57 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/24 16:32:02 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/08/28 17:14:46 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ bool	stock_image(t_mlxvars *vars)
 	while (i <= EAST)
 	{
 		s = vars->map_data->pref[i] + 3;
+		printf("-> %s\n", s);
 		str_space_treat(&s);
 		ret &= register_image(vars,
 				get_new_sprite_image_ptr(vars, s));

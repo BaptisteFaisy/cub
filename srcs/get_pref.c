@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:43:34 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/24 16:11:41 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/08/28 19:01:37 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ char	**get_pref(t_tab *head)
 	t_tab	*prev;
 
 	prev = head;
-	print_liste(head);
 	head = head->next;
 	free(prev);
 	pref = (char **)malloc(sizeof(char **) * 8);

@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:20:09 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/07/24 15:47:30 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/08/28 19:01:26 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	check_last(char **tab)
 	}
 	i = -1;
 	while (tab[++i])
-		if (tab[i][0] == '\0' )
+		if (tab[i][0] == '\0')
 			free(tab[i]);
 	return (1);
 }
