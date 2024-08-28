@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:15:22 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/08/28 17:25:05 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/08/28 18:33:22 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@ int	checklignefc(char **tab, int *para, int ligne, t_tab *liste)
 	if ((tab[ligne][0] == 'F' && para[4] == 1)
 		|| (tab[ligne][0] == 'F' && tab[ligne][1] != ' '))
 		return (0);
-	if (tab[ligne][0] == 'F' && para[4] == 0)
+	else if (tab[ligne][0] == 'F' && para[4] == 0)
 		para[4] = 1;
-	if ((tab[ligne][0] == 'C' && para[5] == 1)
+	else if ((tab[ligne][0] == 'C' && para[5] == 1)
 		|| (tab[ligne][0] == 'C' && tab[ligne][1] != ' '))
 		return (0);
 	else if (tab[ligne][0] == 'C' && para[5] == 0)
@@ -115,9 +115,7 @@ int	checklignefc(char **tab, int *para, int ligne, t_tab *liste)
 	if (i == 0)
 		return (0);
 	i = checker_nbr(tab, i, ligne, true);
-	if (i == 0)
-		return (0);
-	if (tab[ligne][i] != '\0')
+	if (i == 0 || tab[ligne][i] != '\0')
 		return (0);
 	return (create_next(liste, tab[ligne]), 1);
 }
@@ -140,7 +138,7 @@ static int	checker_nbr(char **tab, int i, int ligne, bool cond)
 	if (cond2 == 0)
 		return (0);
 	if (tab[ligne][i + 1] && cond == true)
-		return (0); // ????????????????
+		return (0);
 	if (nbr < 0 || nbr >= 256)
 		return (0);
 	if (cond == false)
