@@ -6,7 +6,7 @@
 /*   By: lhojoon <lhojoon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 21:59:38 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/13 18:36:21 by lhojoon          ###   ########.fr       */
+/*   Updated: 2024/08/28 18:32:30 by lhojoon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	set_color(t_mlxvars *var)
 	i = 0;
 	while (i < 2)
 	{
-		printf("fdf %s\n",spaceaddr(var->map_data->pref[4 + i]));
+		printf("fdf %s\n", var->map_data->pref[4]);
 		val = ft_split(spaceaddr(var->map_data->pref[4 + i]), ',');
 		if (!val)
 			return (false);
