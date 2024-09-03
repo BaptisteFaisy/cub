@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:22:23 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/09/03 15:25:20 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/09/03 15:32:03 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	checkmap_x(char **tab, int i, int j)
 			cond.para = 1;
 			break ;
 		}
+		else if (tab[i][j] == ' ')
+			return (0);
 		j++;
 	}
 	if (tab[i][j] == ' ')
@@ -90,7 +92,8 @@ int	checkmap_y(char **tab, int j, int i)
 	if (tab[0][j] != '1' && tab[0][j] != ' ' && tab[0][j] != '\0')
 		return (ft_printf("error : 1"), 0);
 	while (++i2 != ft_strlenvertical(tab, j))
-		if ((tab[i2][j] == '0' && tab[i2 + 1][j] == '\0') || tab[i][j] == '\0')
+		if ((tab[i2][j] == '0' && tab[i2 + 1][j] == '\0') || tab[i][j] == '\0'
+			|| (tab[i2][j] == '0' && tab[i2 + 1][j] == ' '))
 			return (ft_printf("error : 2"), 0);
 	while (i != ft_strlenvertical(tab, j) && tab[i][j] != '1'
 		&& tab[i][j] != ' ')
@@ -100,7 +103,7 @@ int	checkmap_y(char **tab, int j, int i)
 	if ((tab[i][j] == '0' && tab[i + 1][j] == '\0') || tab[i][j] == '\0')
 		return (ft_printf("error : 4"), 0);
 	while (tab[i3--][j] != '1' && i3 != -1)
-		if (tab[i3][0] == '\0' || tab[i3][j] == ' ' || tab[i3][j] == '\0' )
+		if (tab[i3][0] == '\0' || tab[i3][j] == ' ' || tab[i3][j] == '\0')
 			return (ft_printf("error : 5"), 0);
 	return (1);
 }

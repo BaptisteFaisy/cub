@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 00:51:37 by lhojoon           #+#    #+#             */
-/*   Updated: 2024/07/24 15:34:13 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/09/03 15:32:27 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	check_xv2(int j2, char **tab, int i, t_i cond)
 			cond.para1 = 1;
 			break ;
 		}
+		if (tab[i][j2] == ' ')
+			return (0);
 		j2--;
 	}
 	if (j2 < 0)
