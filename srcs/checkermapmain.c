@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:20:09 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/08/28 19:04:18 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/09/03 15:34:55 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	check_double(char **tab);
 static int	check_last(char **tab);
-int	intrus(char *str);
+int			intrus(char *str);
 
 int	mapcheck_main(t_map_data *data, t_tab *head)
 {
