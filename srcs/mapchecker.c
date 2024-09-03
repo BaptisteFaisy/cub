@@ -6,7 +6,7 @@
 /*   By: bfaisy <bfaisy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 19:22:23 by bfaisy            #+#    #+#             */
-/*   Updated: 2024/08/28 19:20:27 by bfaisy           ###   ########.fr       */
+/*   Updated: 2024/09/03 15:25:20 by bfaisy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,9 @@ int	checkmap_y(char **tab, int j, int i)
 	i3 = i;
 	if (tab[0][j] != '1' && tab[0][j] != ' ' && tab[0][j] != '\0')
 		return (ft_printf("error : 1"), 0);
-	if (tab[0][j] == ' ')
-	{
-		while (++i2 != ft_strlenvertical(tab, j))
-			if ((tab[i2][j] == '0' && tab[i2 + 1][j] == '\0') || tab[i][j] == '\0')
-				return (ft_printf("error : 2"), 0);
-	}
+	while (++i2 != ft_strlenvertical(tab, j))
+		if ((tab[i2][j] == '0' && tab[i2 + 1][j] == '\0') || tab[i][j] == '\0')
+			return (ft_printf("error : 2"), 0);
 	while (i != ft_strlenvertical(tab, j) && tab[i][j] != '1'
 		&& tab[i][j] != ' ')
 		i++;
